@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('backOffice/css/bootstrap.min.css') }}">
+{#    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >#}
+    <link rel="stylesheet" type="text/css" href="{{ asset('backOffice/css/icons.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('backOffice/plugins/uniform/css/default.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('backOffice/plugins/switchery/switchery.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('backOffice/plugins/morris/morris.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('backOffice/plugins/morris/morris.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('backOffice/css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.css"/>
+
+</head>
+<body>
+<div class="page-container">
+    <div class="page-sidebar">
+        <a class="logo-box" >
+            <span> <i class="mdi mdi-chemical-weapon" id="fixed-sidebar-toggle-button"></i>
+                <span>Admin</span> </span>
+            <i class="mdi mdi-close" id="sidebar-toggle-button-close"></i>
+        </a>
+        <div class="page-sidebar-inner">
+            <div class="page-sidebar-menu">
+                <ul class="accordion-menu">
+                    <li class="active-page">
+                        <a href="{{ path('dashboard') }}">
+                            <i class="menu-icon mdi mdi-home">
+
+                            </i><span>Dashboard</span> </a>
+                    </li>
+                    <li>
+                        <a >
+                            <i class="menu-icon mdi mdi-bullseye"></i>
+                            <span>Gestion des paquets</span><i class="accordion-icon fa fa-angle-right"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="{{ path('manageBundle') }}">Liste des paquets</a></li>
+                            <li><a href="{{ path('addBundle') }}">Ajouter paquet</a></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a >
+                            <i class="menu-icon mdi mdi-clipboard-outline"></i>
+                            <span>Gestion des produits</span><i class="accordion-icon fa fa-angle-right"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="{{ path('manageProduct') }}">Liste des produits</a></li>
+                            <li><a href="{{ path('addProduct') }}">Ajouter produit</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a >
+                            <i class="menu-icon mdi mdi-apple-keyboard-command"></i>
+                            <span>Gestion des planches</span><i class="accordion-icon fa fa-angle-right"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="{{ path('listFashionBoard') }}">Liste des planches</a></li>
+                            <li><a href="{{ path('manageFashionBoard') }}">Gérer une planche</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="menu-icon mdi mdi-table"></i>
+                            <span>Gestion des ordes</span>
+                            <i class="accordion-icon fa fa-angle-right"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="{{ path('manageOrders') }}">Liste des ordes</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a >
+                            <i class="menu-icon mdi mdi-stackexchange"></i>
+                            <span>Gestion des quizs</span><i class="accordion-icon fa fa-angle-right"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="{{ path('manageQuiz') }}">Liste des quizs</a></li>
+                            <li><a href="{{ path('addQuiz') }}">Ajouter quiz</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="page-content">
+        <div class="page-header">
+            <div class="search-form">
+                <form action="#" method="GET">
+                    <div class="input-group">
+                        <input type="text" name="search" class="form-control search-input"
+                               placeholder="Type something..."> <span class="input-group-btn">
+                        <button class="btn btn-default" id="close-search" type="button">
+                            <i class="mdi mdi-close"></i></button> </span></div>
+                </form>
+            </div>
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <div class="logo-sm">
+                            <a href="javascript:void(0)" id="sidebar-toggle-button"><i
+                                        class="fa fa-bars"></i></a>
+                            <a class="logo-box"><span>admin</span></a>
+                        </div>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav d-res-none-full">
+                            <li><a href="javascript:void(0)" id="collapsed-sidebar-toggle-button"><i
+                                            class="mdi mdi-menu"></i></a></li>
+                            <li><a href="javascript:void(0)" id="toggle-fullscreen"><i
+                                            class="mdi mdi-fullscreen"></i></a></li>
+                            <li><a href="javascript:void(0)" id="search-button">
+                                    <i class="mdi mdi-magnify"></i></a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="javascript:void(0)" class="right-sidebar-toggle"
+                                   data-sidebar-id="main-right-sidebar"><i class="mdi mdi-email-outline">
+
+                                    </i></a></li>
+                            <li class="dropdown">
+                                <a href="javascript:void(0)" class="dropdown-toggle"
+                                                    data-toggle="dropdown" role="button" aria-haspopup="true"
+                                                    aria-expanded="false"><i class="mdi mdi-bell-outline"></i></a>
+                                <ul class="dropdown-menu dropdown-lg dropdown-content">
+                                    <li class="drop-title">Notifications<a href="#" class="drop-title-link"><i
+                                                    class="fa fa-angle-right"></i></a></li>
+                                    <li class="slimscroll dropdown-notifications">
+                                        <ul class="list-unstyled dropdown-oc">
+                                            <li>
+                                                <a href="#">
+                                                    <span class="notification-badge bg-primary"><i
+                                                                class="fa fa-photo"></i></span>
+                                                    <span class="notification-info">Finished uploading photos to gallery
+                                                        <b>"South Africa"</b>. <small
+                                                                class="notification-date">20:00</small>
+                                                    </span></a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown user-dropdown">
+                                <a href="#" class="dropdown-toggle"
+                                                                  data-toggle="dropdown" role="button"
+                                                                  aria-haspopup="true" aria-expanded="false">
+                                    <img src={{ asset('backOffice/images/avatar/avatar-1.jpg') }} alt="" class="img-circle"></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Profile</a></li>
+                                    <li><a href="#">Calendar</a></li>
+                                    <li><a href="#"><span class="badge pull-right badge-danger">42</span>Messages</a>
+                                    </li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Account Settings</a></li>
+                                    <li><a  href="{{ path('fos_user_security_logout') }}">Log Out</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="page-inner">
+            {% block body %}
+            {% endblock %}
+        </div>
+    </div>
+    </div>
+<script src="{{ asset('backOffice/js/jquery.min.js') }}"></script>
+<script src="{{ asset('backOffice/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('backOffice/plugins/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
+<script src="{{ asset('backOffice/plugins/uniform/js/jquery.uniform.standalone.js') }}"></script>
+<script src="{{ asset('backOffice/plugins/switchery/switchery.min.js') }}"></script>
+<script src="{{ asset('backOffice/plugins/morris/morris.min.js') }}"></script>
+<script src="{{ asset('backOffice/plugins/raphael/raphael-min.js') }}"></script>
+<script src="{{ asset('backOffice/pages/dashborad.js') }}"></script>
+<script src="{{ asset('backOffice/js/custom.js') }}"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#dtBasicExample').DataTable();
+        $('.dataTables_length').addClass('bs-select');
+    });
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+
+</body>
+</html>
