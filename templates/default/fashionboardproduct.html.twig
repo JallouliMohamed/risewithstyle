@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+        <div id="selling" class="container-fluid no-left-padding no-right-padding woocommerce-selling" style="background-color: #ffffff;">
+            <!-- Container -->
+            <div class="container">
+                <!-- Section Header -->
+                <div class="section-header">
+                    <h3>Your fashion board products</h3>
+                    <p> Products</p>
+                    <img src="images/section-seprator.png" alt="section-seprator" />
+                </div><!-- Section Header /- -->
+          {% for i in fashionboard.products %}
+                <div class="col-md-4 col-sm-6 col-xs-6">
+                    <div  class="selling-box">
+                        <img src="{{ asset('uploads/brochures/'~i.brochureFilename) }}" width="140px" height="140px">
+                        <div class="selling-content">
+                            <h6><a href="{{ path('singleProduct',{"id":i.id}) }}">{{ i.nom }}</a></h6>
+                            <span class="price">{{ i.prix  }} €</span>
+                        </div>
+
+                    </div>
+                </div>
+
+           {% endfor %}
+            </div><!-- Container /- -->
+        </div><!-- Selling /- -->
+
+
+
+
+{% endblock %}

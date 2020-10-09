@@ -1,3 +1,91 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+formule:
+  path: /formule
+  controller: App\Controller\DefaultController::formule
+purchase:
+  path: /purchase
+  controller: App\Controller\DefaultController::purchase
+updateuser:
+  path: /updateuser
+  controller: App\Controller\DefaultController::updateuser
+userProfile:
+  path: /userprofile
+  controller: App\Controller\DefaultController::userProfile
+
+
+manageOrders:
+  path: /manageOrders
+  controller: App\Controller\DefaultController::manageOrders
+manageQuiz:
+  path: /manageQuiz
+  controller: App\Controller\DefaultController::manageQuiz
+addQuiz:
+  path: /addQuiz
+  controller: App\Controller\DefaultController::addQuiz
+dashboard:
+  path: /dashboard
+  controller: App\Controller\DefaultController::viewDashboard
+wardrobe:
+  path: /wardrob
+  controller: App\Controller\DefaultController::wardropfashionboard
+activatedfasionboard:
+  path: /activatefasionboard
+  controller: App\Controller\DefaultController::activationfasionboard
+quizanswer:
+  path: /quiz
+  controller: App\Controller\DefaultController::quizAnswer
+quizsubmit:
+  path: /submitquiz
+  controller: App\Controller\DefaultController::submitquiz
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+manageBundle:
+  path: /manageBundle
+  controller: App\Controller\FashionBundleController::manageBundle
+addBundle:
+  path: /addBundle
+  controller: App\Controller\FashionBundleController::addBundle
+updateBundle:
+  path: /updateBundle/{id}
+  controller: App\Controller\FashionBundleController::updateBundle
+deleteBundle:
+  path: /deleteBundle/{id}
+  controller: App\Controller\FashionBundleController::deleteFashionBUndle
+manageProduct:
+  path: /manageProducts
+  controller: App\Controller\ProductController::manageProducts
+addProduct:
+  path: /addProduct
+  controller: App\Controller\ProductController::newProduct
+updateProduct:
+  path: /updateProduct/{id}
+  controller: App\Controller\ProductController::updateProduct
+deleteProduct:
+  path: /deleteProduct/{id}
+  controller: App\Controller\ProductController::deleteProduct
+listFashionBoard:
+  path: /listFashionBoard
+  controller: App\Controller\FashionBoardController::listFashionBoard
+manageFashionBoard:
+  path: /manageFashionBoard
+  controller: App\Controller\FashionBoardController::manageFashionBoard
+updateFashionBoard:
+  path: /updateFashionBoard
+  controller: App\Controller\FashionBoardController::updateFashionBoard
+viewActivatedFashionBoard:
+  path: /viewActivatedFashionBoard
+  controller: App\Controller\DefaultController::viewActivatedFashionBoard
+getQuiz:
+  path: /getQuiz
+  controller: App\Controller\FashionBoardController::getQuizByUser
+listOrders:
+  path: /listPaymentOrder
+  controller: App\Controller\OrderController::listPaymentOrder
+singleProduct:
+  path: /singleProduct
+  controller: App\Controller\DefaultController::viewSingleProduct
+

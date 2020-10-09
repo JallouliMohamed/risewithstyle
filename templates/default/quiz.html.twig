@@ -1,0 +1,336 @@
+{% extends 'base.html.twig' %}
+{% block scripts %}
+<style>
+    .privew {
+        margin-bottom: 20px;
+    }
+    .questionsBox {
+        display: block;
+        border: solid 1px #e3e3e3;
+        padding: 10px 20px 0px;
+        box-shadow: inset 0 0 30px rgba(000,000,000,0.1), inset 0 0 4px rgba(255,255,255,1);
+        border-radius: 3px;
+        margin: 0 10px;
+    }.questions {
+         background: #007fbe;
+         color: #FFF;
+         font-size: 22px;
+         padding: 8px 30px;
+         font-weight: 300;
+         margin: 0 -30px 10px;
+         position: relative;
+     }
+    .questions:after {
+        background: url(../img/icon.png) no-repeat left 0;
+        display: block;
+        position: absolute;
+        top: 100%;
+        width: 9px;
+        height: 7px;
+        content: '.';
+        left: 0;
+        text-align: left;
+        font-size: 0;
+    }
+    .questions:after {
+        left: auto;
+        right: 0;
+        background-position: -10px 0;
+    }
+    .questions:before, .questions:after {
+        background: black;
+        display: block;
+        position: absolute;
+        top: 100%;
+        width: 9px;
+        height: 7px;
+        content: '.';
+        left: 0;
+        text-align: left;
+        font-size: 0;
+    }
+    .answerList {
+        margin-bottom: 15px;
+    }
+
+
+    ol, ul {
+        list-style: none;
+    }
+    .answerList li:first-child {
+        border-top-width: 0;
+    }
+
+    .answerList li {
+        padding: 3px 0;
+    }
+    .answerList label {
+        display: block;
+        padding: 6px;
+        border-radius: 6px;
+        border: solid 1px #dde7e8;
+        font-weight: 400;
+        font-size: 13px;
+        cursor: pointer;
+        font-family: Arial, sans-serif;
+    }
+    input[type=checkbox], input[type=radio] {
+        margin: 4px 0 0;
+        margin-top: 1px;
+        line-height: normal;
+    }
+    .questionsRow {
+        background: #dee3e6;
+        margin: 0 -20px;
+        padding: 10px 20px;
+        border-radius: 0 0 3px 3px;
+    }
+    .button, .greyButton {
+        background-color: #f2f2f2;
+        color: #888888;
+        display: inline-block;
+        border: solid 3px #cccccc;
+        vertical-align: middle;
+        text-shadow: 0 1px 0 #ffffff;
+        line-height: 27px;
+        min-width: 160px;
+        text-align: center;
+        padding: 5px 20px;
+        text-decoration: none;
+        border-radius: 0px;
+        text-transform: capitalize;
+    }
+    .questionsRow span {
+        float: right;
+        display: inline-block;
+        line-height: 30px;
+        border: solid 1px #aeb9c0;
+        padding: 0 10px;
+        background: #FFF;
+        color: #007fbe;
+    }
+
+
+
+</style>
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="privew">
+        <form>
+
+        <div class="questionsBox">
+            <div style="background: #FF8661" class="questions form-group">Quel est votre age?</div>
+            <ul class="answerList">
+                <li>
+                    <label>
+                        <input  class="form-check-input" type="radio" name="answerGroup1" value="18-30" id="answerGroup_10" required>18-30</label>
+                </li>
+                <li>
+                    <label>
+                        <input class="form-check-input" type="radio" name="answerGroup1" value="30-45" id="answerGroup_11" required> 30-45</label>
+                </li>
+                <li>
+                    <label>
+                        <input class="form-check-input" type="radio" name="answerGroup1" value="45-.." id="answerGroup_12" required> 45-..</label>
+                </li>
+
+            </ul>
+        </div>
+        <div class="questionsBox">
+            <div style="background: #FF8661" class="questions form-group">Quel est votre taille?</div>
+            <ul class="answerList">
+                <li>
+                    <label>
+                        <input class="form-check-input" type="radio" name="answerGroup2" value="moins" id="answerGroup_20" required>moins</label>
+                </li>
+                <li>
+                    <label>
+                        <input class="form-check-input" type="radio" name="answerGroup2" value="1.4m jusqu'à 1.5m" id="answerGroup_21" required> 1.4m jusqu'à 1.5m</label>
+                </li>
+                <li>
+                    <label>
+                        <input class="form-check-input" type="radio" name="answerGroup2" value="1.5m jusqu'à 1.6m" id="answerGroup_22" required> 1.5m jusqu'à 1.6m</label>
+                </li>
+                <li>
+                    <label>
+                        <input class="form-check-input" type="radio" name="answerGroup2" value="1.6m jusqu'à 1.7m" id="answerGroup_23" required> 1.6m jusqu'à 1.7m</label>
+                </li>
+                <li>
+                    <label>
+                        <input class="form-check-input" type="radio" name="answerGroup2" value="1.7m jusqu'à 1.8m" id="answerGroup_24" required> 1.6m jusqu'à 1.7m</label>
+                </li>
+                <li>
+                    <label>
+                        <input class="form-check-input" type="radio" name="answerGroup2" value="1.8m jusqu'à 1.9m" id="answerGroup_25" required> 1.6m jusqu'à 1.7m</label>
+                </li>
+                <li>
+                    <label>
+                        <input class="form-check-input" type="radio" name="answerGroup2" value="plus" id="answerGroup_26" required>plus</label>
+                </li>
+            </ul>
+        </div>
+        <div  class="questionsBox">
+            <div style="background: #FF8661" class="questions form-group">Qu’est ce vous cherchiez comme tenue pour cette session ?</div>
+            <ul class="answerList">
+                <li>
+                    <label>
+                        <input class="form-check-input" type="radio" name="answerGroup3" value="Tenue pour feter un marriage" id="answerGroup_30" required> Tenue pour feter un marriage</label>
+                </li>
+                <li>
+                    <label>
+                        <input class="form-check-input" type="radio" name="answerGroup3" value="Tenue de travail" id="answerGroup_31" required>Tenue de travail</label>
+                </li>
+                <li>
+                    <label>
+                        <input class="form-check-input" type="radio" name="answerGroup3" value="Tenue de détente" id="answerGroup_32" required>Tenue de détente</label>
+                </li>
+                <li>
+                    <label>
+                        <input class="form-check-input" type="radio" name="answerGroup3" value="Tenue de plage" id="answerGroup_33" required>Tenue de plage</label>
+                </li>
+                <li>
+                    <label>
+                        <input class="form-check-input" type="radio" name="answerGroup3" value="Tenue de sortie" id="answerGroup_34" required>Tenue de sortie</label>
+                </li>
+            </ul>
+        </div>
+            <div class="questionsBox">
+                <div style="background: #FF8661" class="questions form-group">Quel est votre budget?</div>
+                <ul class="answerList">
+                    <li>
+                        <label>
+                            <input class="form-check-input" type="radio" name="answerGroup4" value="moins" id="answerGroup_40" required>moins</label>
+                    </li>
+                    <li>
+                        <label>
+                            <input class="form-check-input" type="radio" name="answerGroup4" value="Moins que 50€" id="answerGroup_41" required>Moins que 50€</label>
+                    </li>
+                    <li>
+                        <label>
+                            <input class="form-check-input" type="radio" name="answerGroup4" value="50€ jusqu'à 100€" id="answerGroup_42" required>50€ jusqu'à 100€</label>
+                    </li>
+                    <li>
+                        <label>
+                            <input class="form-check-input" type="radio" name="answerGroup4" value="100€ jusqu'à 200€" id="answerGroup_43" required>100€ jusqu'à 200€</label>
+                    </li>
+                    <li>
+                        <label>
+                            <input class="form-check-input" type="radio" name="answerGroup4" value="plus que 200€" id="answerGroup_44" required>plus que 200€</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="questionsBox">
+                <div style="background: #FF8661" class="questions form-group">Quelle est ta forme corporelle?</div>
+                <ul class="answerList">
+                    <li>
+                        <label>
+                            <input class="form-check-input" type="radio" name="answerGroup5" value="Pomme" id="answerGroup_50" required>Pomme</label>
+                    </li>
+                    <li>
+                        <label>
+                            <input class="form-check-input" type="radio" name="answerGroup5" value="Poire" id="answerGroup_51" required>Poire</label>
+                    </li>
+                    <li>
+                        <label>
+                            <input class="form-check-input" type="radio" name="answerGroup5" value="Triangle inversé" id="answerGroup_52" required>Triangle inversé</label>
+                    </li>
+                    <li>
+                        <label>
+                            <input class="form-check-input" type="radio" name="answerGroup5" value="Rectangle" id="answerGroup_53" required>Rectangle</label>
+                    </li>
+                    <li>
+                        <label>
+                            <input class="form-check-input" type="radio" name="answerGroup5" value="Sablier" id="answerGroup_54" required>Sablier</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="questionsBox">
+                <div style="background: #FF8661" class="questions form-group">Votre look est plutôt :</div>
+                <ul class="answerList">
+                    <li>
+                        <label>
+                            <input class="form-check-input" type="radio" name="answerGroup6" value="Classique" id="answerGroup_60" required>Classique</label>
+                    </li>
+                    <li>
+                        <label>
+                            <input class="form-check-input" type="radio" name="answerGroup6" value="Vintage" id="answerGroup_61" required>Vintage</label>
+                    </li>
+                    <li>
+                        <label>
+                            <input class="form-check-input" type="radio" name="answerGroup6" value="Glamour" id="answerGroup_62" required>Glamour</label>
+                    </li>
+                    <li>
+                        <label>
+                            <input class="form-check-input" type="radio" name="answerGroup6" value="Bohemian" id="answerGroup_63" required>Bohemian</label>
+                    </li>
+                    <li>
+                        <label>
+                            <input class="form-check-input" type="radio" name="answerGroup6" value="Tendance" id="answerGroup_64" required>Tendance</label>
+                    </li>
+                    <li>
+                        <label>
+                            <input class="form-check-input" type="radio" name="answerGroup6" value="Naturel" id="answerGroup_64" required>Naturel</label>
+                    </li>
+                </ul>
+            </div>
+
+
+            <button onclick="submitquiz()" class="btn btn-lg btn-primary btn-block" type="submit">Finish</button>
+        </form>
+    </div>
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Message</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    fashionboard activation completed waiting for response from administrator
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script>
+        function handleForm(event) { event.preventDefault(); }
+
+        function submitquiz(){
+            var values = [];
+            var item1;
+            var questions=["Quel est votre age?","Quel est votre taille?","Qu’est ce vous cherchiez comme tenue pour cette session ?","Quel est votre budget?","Quelle est ta forme corporelle?","Votre look est plutôt ?"]
+            var f = document.getElementsByTagName('form')[0];
+            f.addEventListener('submit', handleForm);
+            if(f.checkValidity())
+            {
+                for(var i = 1; i <= 6; i++) {
+                    var radios = document.getElementsByName('answerGroup'+i);
+
+                    for(var j = 0; j < radios.length; j++) {
+                        var radio = radios[j];
+                        if( radio.checked) {
+                            item1= {"question":questions[i-1],"answer":radio.value}
+                        }
+                    }
+                    values.push(item1);
+                }
+                console.log(JSON.stringify(values));
+                $.ajax({
+                    url: "{{ path('quizsubmit') }}",
+                    type: "POST",
+                    data: {'values' :  JSON.stringify(values)},
+
+                    success: function (result) {
+
+                    }
+                });            }
+
+        }
+
+    </script>
+{% endblock %}

@@ -22,6 +22,7 @@ class ProductType extends AbstractType
                 array('attr' => array('class' => 'form-control','style' => ''),'required'=>true))
             ->add('prix', TextType::class, array('attr' => array('class' => 'form-control','style' => '')))
             ->add('url', TextType::class, array('attr' => array('class' => 'form-control','style' => '')))
+            ->add('marque', TextType::class, array('attr' => array('class' => 'form-control','style' => '')))
             ->add('image', FileType::class, [
                 'label' => 'Image',
 // unmapped means that this field is not associated to any entity property
@@ -38,6 +39,7 @@ class ProductType extends AbstractType
                         'mimeTypes' => [
                             'image/png',
                             'image/jpg',
+                            'image/jpeg',
                             'application/pdf',
                             'application/x-pdf',
                         ],
@@ -46,7 +48,7 @@ class ProductType extends AbstractType
                 ]
             ])
             ->add('save', SubmitType::class, ['label' => 'Sauvegarder',
-                'attr' => array('class' => 'btn btn-primary btn-md-2','style' => 'color:blue','margin-top:15px')])// ...
+                'attr' => array('class' => 'btn btn-primary btn-md-2','style' =>'margin-top:15px')])// ...
         ;
     }
 

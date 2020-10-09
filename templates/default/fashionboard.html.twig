@@ -1,0 +1,130 @@
+{% extends 'base.html.twig' %}
+{% block scripts %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('alertify/css/alertify.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('alertify/css/alertify.rtl.css') }}">
+
+    <!--<script src="notify.js"></script> DITCH THIS LINE -->
+    <script src="{{ asset('alertify/alertify.js') }}"></script>
+
+    <script>
+
+
+        function purchasedirection(){
+
+        $.ajax({
+            url: "{{ path('activatedfasionboard') }}",
+
+            type: "POST",
+            success: function (result) {
+                console.log(result)
+                $('#exampleModalLong').modal('hide');
+                window.location.href = result.message;
+
+
+            }
+        });
+    }
+
+</script>
+{% endblock %}
+{% block body %}
+
+    <div class="product-section product-section1 product-section2 container-fluid no-padding">
+        <!-- Container -->
+        <div class="container">
+            <div class="row">
+                <div style="height: 100px;" class="col-md-3 col-sm-3 col-xs-12 widget-area no-right-padding">
+                    <!-- Widget Search -->
+                    <!-- Widget Categories -->
+                    <aside style="padding-bottom: 10px;" class="widget widget_categories">
+                        <h3 class="widget-title">fashion board informations</h3>
+                        <ul>
+
+                            <li><a href="#" title="Beautiful Chairs">activated <span>({{ nbactivatedboards }})</span></a></li>
+
+                            <li><a href="#" title="Beautiful Chairs">total fashionboard <span>({{ nbboards }})</span></a></li>
+
+                        </ul>
+
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Confirmation</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        do you really want to activate the fashion board                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" onclick="purchasedirection()" class="btn btn-primary">confirm</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div style="padding-left: 30px;" class="form-group col-md-6">
+                                <a href="{{ path('formule') }}" type="button" class="btn btn-warning" name="post">Purchase</a>
+
+                            </div>                                <div  class="form-detail">
+
+                            <div style="padding-left: 30px;" class="form-group col-md-6">
+                                {%if (nbactivatedboards==nbboards) %}
+                                <a type="button" disabled  data-confirm="Etes-vous certain de vouloir supprimer? " class="btn btn-warning" name="post">Activate</a>
+
+                                {% else %}
+                                    <a type="button"  data-confirm="Etes-vous certain de vouloir supprimer? " data-toggle="modal" data-target="#exampleModalLong" class="btn btn-warning" name="post">Activate</a>
+
+                                {% endif %}
+                            </div>
+                            </div>
+
+                        </div>
+                    </aside><!-- Widget Categories /-  -->
+                    <!-- Widget Price -->
+                    <!-- Widget Latest Post -->
+<br><br>
+
+                </div><!-- Widget Area /- -->
+
+                <!-- Content Area -->
+                <div class="col-md-9 col-sm-7 col-xs-12 content-area product-section2">
+                    <!-- Products -->
+                    <div class="tab-pane" id="messages">
+                        <div class="woocommerce-cart container-fluid no-left-padding no-right-padding">
+                            <!-- Container -->
+
+                                    <table class="table table-bordered table-responsive">
+                                        <thead>
+                                        <tr>
+                                            <th class="product-thumbnail">Item</th>
+                                            <th class="product-name">Product Name</th>
+                                            <th class="product-unit-price">status</th>
+                                            <th class="product-remove">Action</th>
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for i in boards %}
+                                            <tr class="cart_item">
+                                                <td data-title="Item" class="product-thumbnail"><a href="#"><img src="images/fashionboard.png" alt="Product" /></a></td>
+                                                <td data-title="Product Name" class="product-name"><a href="#">fashion board</a></td>
+                                                <td data-title="Unit Price" class="product-unit-price">{% if i.clientActivation == 0 %}ready to activate {% else %} activated {% endif %}</td>
+                                                <td data-title="Remove" class="product-remove">{% if i.adminValidation == 0 %}<a href="#"><i class="icon icon-Flag"></i></a>{% else %}<a href="{{ path('viewActivatedFashionBoard',{'id':i.id}) }}"> <i class="icon icon-Eye"></i></a> {% endif %}</td>
+                                            </tr>
+                                        {% endfor %}
+
+                                        </tbody>
+                                    </table>
+                              <!-- Cart Table /- -->
+
+                        </div><!--/tab-pane-->
+
+                    </div><!--/tab-pane-->
+                </div><!-- Content Area /- -->
+            </div></div>
+{% endblock %}

@@ -207,7 +207,7 @@ a {
 	transition: all 1s ease 0s;    
 }
 .top-header .header-social li a:hover {
-	color: #b6795f;
+	color: #FF8661;
 }
 .menu-icon > div {
 	display: inline-block;
@@ -245,7 +245,7 @@ a {
 	padding-bottom: 32px;
 }
 .middel-header .logo-block a.navbar-brand {
-	color: #b6795f;
+	color: #FF8661;
 	font-size: 44px;
 	font-family: 'Crimson Text', serif;
 	font-style: italic;
