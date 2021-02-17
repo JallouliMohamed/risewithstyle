@@ -29,6 +29,9 @@
             </th>
             <th class="th-sm">Fashion Bundle Name
             </th>
+            <th>
+                View Quiz
+            </th>
 
         </tr>
         </thead>
@@ -45,6 +48,14 @@
             {% else %}<td>Non Validé</td>
                 {% endif %}>
                 <td>{{ fashionBoard.fashionbundle.nom|e }}</td>
+                {% if fashionBoard.adminValidation == true and fashionBoard.clientActivation == true%}
+                    <td>
+                    <i onclick="viewQuiz({{ fashionBoard.id }})" class="fa fa-edit" style="color:yellowgreen"></i>
+                    </td>
+                {% else %}
+                    <td>Not validate</td>
+                {% endif %}
+
             </tr>
         {% endfor %}
 
@@ -66,5 +77,46 @@
         </tr>
         </tfoot>
     </table>
+    <div id="dataModal" class="modal fade">
 
+    </div>
+    <script>
+        function viewQuiz(i){
+            console.log(i)
+            jQuery.ajax({
+                url: "{{ (path('getQuizPerFashionBoard')) }}",
+                type: "POST",
+                dataType: "json",
+                data: {
+                    'id': i
+                },
+                async: true,
+                success: function (data) {
+                    quizs = data;
+                    console.log("res2", quizs)
+                    var inputs = '<div class="modal-dialog"><div class="panel mb-30"> <div class="panel-body"><p class=" header-title" style="font-size: 15px;">Quiz</p><div class="container" style="width: 100%">';
+                    /*for (var i = 0; i < quizs.length; i++) {
+                        inputs += '<div class="questionsBox">';
+                        if (i % 2 == 0) {
+                            inputs += '<div class="questions form-group">' + quizs[i] + '</div>'
+                        } else {
+                            inputs += '<ul class="answerList"><li>' + quizs[i] + '</li></ul>';
+                        }
+                        inputs += '</div>'
+                    }*/
+                    console.log(data)
+                    data.forEach(function (element){
+                        inputs += '<div class="questionsBox">';
+                            inputs += '<div class="questions form-group">' + element.questionid + '</div>'
+                            inputs += '<ul class="answerList"><li>' + element.responseid + '</li></ul>';
+                        inputs += '</div>'
+                    })
+                    inputs += '</div></div></div></div>'
+                    $('#dataModal').html('')
+                    document.getElementById('dataModal').insertAdjacentHTML('afterbegin', inputs);
+                    $('#dataModal').modal("show");
+                }
+            });
+        }
+    </script>
 {% endblock %}

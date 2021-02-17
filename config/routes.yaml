@@ -88,4 +88,19 @@ listOrders:
 singleProduct:
   path: /singleProduct
   controller: App\Controller\DefaultController::viewSingleProduct
+checkoutBrainTree:
+  path: /checkoutbraintree
+  controller: App\Controller\DefaultController::checkoutBrainTree
+viewColorsPerUser:
+  path: /viewcolorsperuser
+  controller: App\Controller\ProductController::selectUniqueColorsFromProducts
+selectProductsByColors:
+  path: /selectProductsByColors
+  controller: App\Controller\ProductController::selectProductsByColors
+selectProductsByGenre:
+  path: /selectProductsByGenre
+  controller: App\Controller\ProductController::selectProductsByGenre
+getQuizPerFashionBoard:
+  path: /getquizPerFashionBoard
+  controller: App\Controller\FashionBoardController::getQuizByfashionBoard
 

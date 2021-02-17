@@ -47,4 +47,11 @@ class ProductRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findUniqueColors(){
+        return $this->createQueryBuilder('a')
+            ->select('a.color')
+            ->distinct()
+            ->getQuery()
+            ->getResult();
+    }
 }

@@ -30,3 +30,12 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    Braintree_Gateway:
+        class: Braintree_Gateway
+        arguments:
+            -
+                'environment': 'sandbox'
+                'merchantId': 'rfszkvmy9dny63w8'
+                'publicKey': '6m896hfk35jdcmtr'
+                'privateKey': 'c4c2da6f784477ef1879aa88274c2583'

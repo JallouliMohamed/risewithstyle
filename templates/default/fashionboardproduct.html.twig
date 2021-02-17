@@ -13,10 +13,12 @@
           {% for i in fashionboard.products %}
                 <div class="col-md-4 col-sm-6 col-xs-6">
                     <div  class="selling-box">
-                        <img src="{{ asset('uploads/brochures/'~i.brochureFilename) }}" width="140px" height="140px">
-                        <div class="selling-content">
-                            <h6><a href="{{ path('singleProduct',{"id":i.id}) }}">{{ i.nom }}</a></h6>
+                        <a href="{{ path('singleProduct',{"id":i.id}) }}">
+                        <img src="{{ asset('uploads/brochures/'~i.brochureFilename) }}" width="140px" height="140px"></a>
+                        <br><div class="selling-content">
+                            <h6>nom : <a href="{{ path('singleProduct',{"id":i.id}) }}">{{ i.nom }}</a></h6>
                             <span class="price">{{ i.prix  }} €</span>
+                            <h6><a href="http://{{ i.url }}">http://{{ i.url }}</a></h6>
                         </div>
 
                     </div>

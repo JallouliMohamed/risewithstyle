@@ -20,7 +20,7 @@ class FashionboardRepository extends ServiceEntityRepository
     }
     public function getUsers(){
         return $this->createQueryBuilder('a')
-            ->Where('a.adminValidation = true')
+            ->Where('a.clientActivation = true and a.adminValidation=false')
             ->groupBy('a.user')
             ->getQuery()
             ->getResult();

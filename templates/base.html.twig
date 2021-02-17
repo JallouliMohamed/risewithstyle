@@ -1,9 +1,14 @@
 <!DOCTYPE html>
-<!--[if lt IE 7 ]> <html class="ie6"> <![endif]-->
-<!--[if IE 7 ]>    <html class="ie7"> <![endif]-->
-<!--[if IE 8 ]>    <html class="ie8"> <![endif]-->
-<!--[if IE 9 ]>    <html class="ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--><html lang="en" class=""><!--<![endif]-->
+<!--[if lt IE 7 ]>
+<html class="ie6"> <![endif]-->
+<!--[if IE 7 ]>
+<html class="ie7"> <![endif]-->
+<!--[if IE 8 ]>
+<html class="ie8"> <![endif]-->
+<!--[if IE 9 ]>
+<html class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="en" class=""><!--<![endif]-->
 
 <!-- Mirrored from premiumlayers.net/demo/html/maxshop/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 Aug 2020 11:27:34 GMT -->
 <head>
@@ -18,7 +23,7 @@
     <title>Rise with style</title>
 
     <!-- Standard Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}"/>
 
     <!-- For iPhone 4 Retina display: -->
     <link rel="apple-touch-icon-precomposed" href="{{ asset('images/apple-touch-icon-114x114-precomposed.png') }}">
@@ -30,7 +35,8 @@
     <link rel="apple-touch-icon-precomposed" href="{{ asset('images/apple-touch-icon-57x57-precomposed.png') }}">
 
     <!-- Library - Google Font Familys -->
-    <link href="https://fonts.googleapis.com/css?family=Arizonia|Crimson+Text:400,400i,600,600i,700,700i|Lato:100,100i,300,300i,400,400i,700,700i,900,900i|Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Arizonia|Crimson+Text:400,400i,600,600i,700,700i|Lato:100,100i,300,300i,400,400i,700,700i,900,900i|Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
+          rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="{{ asset('revolution/css/settings.css') }}">
 
@@ -51,9 +57,40 @@
     <!--[if lt IE 9]>
     <script src="{{ asset('js/html5/respond.min.js') }}"></script>
     <![endif]-->
-{% block scripts %}
+    {% block scripts %}
     {% endblock %}
 </head>
+<style>
+    .panel-heading .accordion-plus-toggle:before {
+        font-family: FontAwesome;
+        content: "\f068";
+        float: right;
+        color: silver;
+    }
+
+    .panel-heading .accordion-plus-toggle.collapsed:before {
+        content: "\f067";
+        color: silver;
+    }
+
+    /* arrow glyph for showing collapsible panels */
+    .panel-heading .accordion-arrow-toggle:before {
+        font-family: FontAwesome;
+        content: "\f078";
+        float: right;
+        color: silver;
+    }
+
+    .panel-heading .accordion-arrow-toggle.collapsed:before {
+        content: "\f054";
+        color: silver;
+    }
+
+    /* sets the link to the width of the entire panel title */
+    .panel-title > a {
+        display: block;
+    }
+</style>
 
 <body data-offset="200" data-spy="scroll" data-target=".ow-navigation">
 <div class="main-container">
@@ -76,7 +113,9 @@
                 <!-- nav -->
                 <nav class="navbar navbar-default ow-navigation">
                     <div class="navbar-header">
-                        <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                        <button style="background-color: #FF8661;border-color: #FF8661" aria-controls="navbar"
+                                aria-expanded="false" data-target="#navbar" data-toggle="collapse"
+                                class="navbar-toggle collapsed" type="button">
                             <span class="sr-only">Toggle navigation</span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
@@ -87,16 +126,22 @@
                     <!-- Menu Icon -->
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 
-                    <div style="color: #FF8661;" class="menu-icon">
-                        <ul class="cart" style="all: unset">
-                                <ul id="popover-content" style="display: inline-grid;background-color: white;padding: unset;width: 220px" class="dropdown-menu list-group no-padding" style="display: none">
-                                    <a href="{{ path('userProfile') }}" class="list-group-item"><i class="icon icon-User"></i>        Profile</a>
-                                    <a href="{{ path('wardrobe') }}" class="list-group-item"><i class="icon icon-House"></i>  wardrobe</a>
-                                    <a href="{{ path('fos_user_security_logout') }}" class="list-group-item"><i class="icon glyphicon-log-out"></i> log out</a>
+                        <div style="color: #FF8661;" class="menu-icon">
+                            <ul class="cart" style="all: unset">
+                                <ul id="popover-content"
+                                    style="display: inline-grid;background-color: white;padding: unset;width: 220px"
+                                    class="dropdown-menu list-group no-padding" style="display: none">
+                                    <a href="{{ path('userProfile') }}" class="list-group-item"><i
+                                                class="icon icon-User"></i> Profile</a>
+                                    <a href="{{ path('wardrobe') }}" class="list-group-item"><i
+                                                class="icon icon-House"></i> wardrobe</a>
+                                    <a href="{{ path('fos_user_security_logout') }}" class="list-group-item"><i
+                                                class="icon glyphicon-log-out"></i> log out</a>
                                 </ul>
-                            <li><a href="#" class="pop" data-placement="bottom"  data-trigger="hover" data-toggle="popover"><i class="icon icon-User"></i></a></li>
-                        </ul>
-                    </div><!-- Menu Icon /- -->
+                                <li><a href="#" class="pop" data-placement="bottom" data-trigger="hover"
+                                       data-toggle="popover"><i class="icon icon-User"></i></a></li>
+                            </ul>
+                        </div><!-- Menu Icon /- -->
 
                     {% else %}
 
@@ -105,11 +150,14 @@
                     <div class="navbar-collapse collapse navbar-right" id="navbar">
                         <ul class="nav navbar-nav">
                             <li class="dropdown">
-                                <a href="#" title="Home" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false" style="color: #FF8661">Accueil</a>
+                                <a href="#" title="Home" class="dropdown-toggle" role="button" aria-haspopup="true"
+                                   aria-expanded="false" style="color: #FF8661">Accueil</a>
 
                             </li>
                             <li class="dropdown">
-                                <a href="{{ path('formule') }}" title="Home" class="dropdown-toggle" role="button" aria-haspopup="true" style="color: #FF8661" aria-expanded="false">Formules et tarifs </a>
+                                <a href="{{ path('formule') }}" title="Home" class="dropdown-toggle" role="button"
+                                   aria-haspopup="true" style="color: #FF8661" aria-expanded="false">Formules et
+                                    tarifs </a>
 
                             </li>
                             <li><a href="#product-section" style="color: #FF8661" title="Products">FAQ</a></li>
@@ -117,8 +165,9 @@
                             <li class="dropdown">
                                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 
-                                {% else%}
-                            <li><a href="{{ path('fos_user_security_login') }}" style="color: #FF8661" title="Products">Log in</a></li>
+                                {% else %}
+                            <li><a href="{{ path('fos_user_security_login') }}" style="color: #FF8661" title="Products">Log
+                                    in</a></li>
 
                             {% endif %}
 
@@ -132,18 +181,24 @@
     </header><!-- Header /- -->
     {% block body %}
 
-    <main>
-        <!-- Slider Section 1 -->
-        <div id="home-revslider" class="slider-section container-fluid no-padding">
-            <!-- START REVOLUTION SLIDER 5.0 -->
-            <div class="rev_slider_wrapper">
+        <main>
+            <!-- Slider Section 1 -->
+            <div id="home-revslider" class="slider-section container-fluid no-padding">
+                <!-- START REVOLUTION SLIDER 5.0 -->
+                <div class="rev_slider_wrapper">
                     <div id="home-slider1" class="rev_slider" data-version="5.0">
                         <ul>
-                            <li data-transition="zoomout" data-slotamount="default"  data-easein="easeInOut" data-easeout="easeInOut" data-masterspeed="2000" data-rotate="0"  data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7">
-                                <img src="images/slider-1.jpg" alt="slider" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
-                                <div class="tp-caption NotGeneric-Title tp-resizeme rs-parallaxlevel-0" id="slide-layer-1"
+                            <li data-transition="zoomout" data-slotamount="default" data-easein="easeInOut"
+                                data-easeout="easeInOut" data-masterspeed="2000" data-rotate="0"
+                                data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7">
+                                <img src="images/slider-1.jpg" alt="slider" data-bgposition="center center"
+                                     data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10"
+                                     class="rev-slidebg" data-no-retina>
+                                <div class="tp-caption NotGeneric-Title tp-resizeme rs-parallaxlevel-0"
+                                     id="slide-layer-1"
                                      data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                                     data-y="['middle','middle','middle','middle']" data-voffset="['-200','-130','-110','-80']"
+                                     data-y="['middle','middle','middle','middle']"
+                                     data-voffset="['-200','-130','-110','-80']"
                                      data-fontsize="['38','30','25','16']"
                                      data-lineheight="['24','24','24','24']"
                                      data-width="none"
@@ -159,11 +214,14 @@
                                      data-splitout="none"
                                      data-responsive_offset="on"
                                      data-elementdelay="0.05"
-                                     style="z-index: 5; white-space: nowrap; letter-spacing: 3.04px; color:#333; font-weight: 700; font-family: 'Montserrat', sans-serif; text-transform: uppercase;">Rise with style
+                                     style="z-index: 5; white-space: nowrap; letter-spacing: 3.04px; color:#333; font-weight: 700; font-family: 'Montserrat', sans-serif; text-transform: uppercase;">
+                                    Rise with style
                                 </div>
-                                <div class="tp-caption NotGeneric-Title tp-resizeme rs-parallaxlevel-0" id="slide-layer-2"
+                                <div class="tp-caption NotGeneric-Title tp-resizeme rs-parallaxlevel-0"
+                                     id="slide-layer-2"
                                      data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                                     data-y="['middle','middle','middle','middle']" data-voffset="['-135','-80','-60','-50']"
+                                     data-y="['middle','middle','middle','middle']"
+                                     data-voffset="['-135','-80','-60','-50']"
                                      data-fontsize="['18','18','18','14']"
                                      data-lineheight="['26','26','26','26']"
                                      data-width="['750','750','738','450']"
@@ -179,11 +237,16 @@
                                      data-splitout="none"
                                      data-responsive_offset="on"
                                      data-elementdelay="0.05"
-                                     style="z-index: 5; white-space: nowrap; letter-spacing: 1.5px; color:#777; font-weight: normal; font-family: 'Lato', sans-serif;">vous permet de dénicher les pièces dont vous avez besoin, plus besoin de faire le tour des magasins et des sites web pour trouver la petite robe noire ou la tenue du samedi soir
+                                     style="z-index: 5; white-space: nowrap; letter-spacing: 1.5px; color:#777; font-weight: normal; font-family: 'Lato', sans-serif;">
+                                    vous permet de dénicher les pièces dont vous avez besoin, plus besoin de faire le
+                                    tour des magasins et des sites web pour trouver la petite robe noire ou la tenue du
+                                    samedi soir
                                 </div>
-                                <div class="tp-caption NotGeneric-Title tp-resizeme rs-parallaxlevel-0" id="slide-layer-3"
+                                <div class="tp-caption NotGeneric-Title tp-resizeme rs-parallaxlevel-0"
+                                     id="slide-layer-3"
                                      data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                                     data-y="['middle','middle','middle','middle']" data-voffset="['-110','-50','-35','-30']"
+                                     data-y="['middle','middle','middle','middle']"
+                                     data-voffset="['-110','-50','-35','-30']"
                                      data-fontsize="['18','18','18','14']"
                                      data-lineheight="['26','26','26','26']"
                                      data-height="none"
@@ -198,12 +261,15 @@
                                      data-splitout="none"
                                      data-responsive_offset="on"
                                      data-elementdelay="0.05"
-                                     style="z-index: 5; white-space: nowrap; letter-spacing: 1.5px; color:#777; font-weight: normal; font-family: 'Lato', sans-serif;">Un styliste expérimenté vous sélectionnera des pièces adéquates à votre morphologie et style et en un click vous pourriez les acheter directement du site de la marque.
+                                     style="z-index: 5; white-space: nowrap; letter-spacing: 1.5px; color:#777; font-weight: normal; font-family: 'Lato', sans-serif;">
+                                    Un styliste expérimenté vous sélectionnera des pièces adéquates à votre morphologie
+                                    et style et en un click vous pourriez les acheter directement du site de la marque.
 
                                 </div>
                                 <div class="tp-caption NotGeneric-Button rev-btn  rs-parallaxlevel-0" id="slide-layer-4"
                                      data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                                     data-y="['middle','middle','middle','middle']" data-voffset="['-30','20','40','30']"
+                                     data-y="['middle','middle','middle','middle']"
+                                     data-voffset="['-30','20','40','30']"
                                      data-fontsize="['14','14','14','12']"
                                      data-lineheight="['24','24','24','24']"
                                      data-width="none"
@@ -220,15 +286,22 @@
                                      data-actions='[{"event":"click","action":"scrollbelow","offset":"0px"}]'
                                      data-responsive_offset="on"
                                      data-responsive="off"
-                                     style="z-index: 10; padding:8px 38px; letter-spacing:0.56px; color: #b6795f; border-color: #b6795f; font-family: 'Montserrat', sans-serif; text-transform:uppercase; background-color:transparent; white-space: nowrap;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;">Shop Now
+                                     style="z-index: 10; padding:8px 38px; letter-spacing:0.56px; color: #b6795f; border-color: #b6795f; font-family: 'Montserrat', sans-serif; text-transform:uppercase; background-color:transparent; white-space: nowrap;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;">
+                                    Shop Now
                                 </div>
                             </li>
 
-                            <li data-transition="zoomout" data-slotamount="default"  data-easein="easeInOut" data-easeout="easeInOut" data-masterspeed="2000" data-rotate="0"  data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7">
-                                <img src="images/slider-1.jpg" alt="slider" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
-                                <div class="tp-caption NotGeneric-Title tp-resizeme rs-parallaxlevel-0" id="slide-layer-5"
+                            <li data-transition="zoomout" data-slotamount="default" data-easein="easeInOut"
+                                data-easeout="easeInOut" data-masterspeed="2000" data-rotate="0"
+                                data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7">
+                                <img src="images/slider-1.jpg" alt="slider" data-bgposition="center center"
+                                     data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10"
+                                     class="rev-slidebg" data-no-retina>
+                                <div class="tp-caption NotGeneric-Title tp-resizeme rs-parallaxlevel-0"
+                                     id="slide-layer-5"
                                      data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                                     data-y="['middle','middle','middle','middle']" data-voffset="['-200','-130','-110','-80']"
+                                     data-y="['middle','middle','middle','middle']"
+                                     data-voffset="['-200','-130','-110','-80']"
                                      data-fontsize="['38','30','25','16']"
                                      data-lineheight="['24','24','24','24']"
                                      data-width="none"
@@ -244,11 +317,14 @@
                                      data-splitout="none"
                                      data-responsive_offset="on"
                                      data-elementdelay="0.05"
-                                     style="z-index: 5; white-space: nowrap; letter-spacing: 3.04px; color:#333; font-weight: 700; font-family: 'Montserrat', sans-serif; text-transform: uppercase;">Rise with style
+                                     style="z-index: 5; white-space: nowrap; letter-spacing: 3.04px; color:#333; font-weight: 700; font-family: 'Montserrat', sans-serif; text-transform: uppercase;">
+                                    Rise with style
                                 </div>
-                                <div class="tp-caption NotGeneric-Title tp-resizeme rs-parallaxlevel-0" id="slide-layer-6"
+                                <div class="tp-caption NotGeneric-Title tp-resizeme rs-parallaxlevel-0"
+                                     id="slide-layer-6"
                                      data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                                     data-y="['middle','middle','middle','middle']" data-voffset="['-135','-80','-60','-50']"
+                                     data-y="['middle','middle','middle','middle']"
+                                     data-voffset="['-135','-80','-60','-50']"
                                      data-fontsize="['18','18','18','14']"
                                      data-lineheight="['26','26','26','26']"
                                      data-width="['750','750','738','450']"
@@ -264,11 +340,16 @@
                                      data-splitout="none"
                                      data-responsive_offset="on"
                                      data-elementdelay="0.05"
-                                     style="z-index: 5; white-space: nowrap; letter-spacing: 1.5px; color:#777; font-weight: normal; font-family: 'Lato', sans-serif;">» vous permet de dénicher les pièces dont vous avez besoin, plus besoin de faire le tour des magasins et des sites web pour trouver la petite robe noire ou la tenue du samedi soir
+                                     style="z-index: 5; white-space: nowrap; letter-spacing: 1.5px; color:#777; font-weight: normal; font-family: 'Lato', sans-serif;">
+                                    » vous permet de dénicher les pièces dont vous avez besoin, plus besoin de faire le
+                                    tour des magasins et des sites web pour trouver la petite robe noire ou la tenue du
+                                    samedi soir
                                 </div>
-                                <div class="tp-caption NotGeneric-Title tp-resizeme rs-parallaxlevel-0" id="slide-layer-7"
+                                <div class="tp-caption NotGeneric-Title tp-resizeme rs-parallaxlevel-0"
+                                     id="slide-layer-7"
                                      data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                                     data-y="['middle','middle','middle','middle']" data-voffset="['-110','-50','-35','-30']"
+                                     data-y="['middle','middle','middle','middle']"
+                                     data-voffset="['-110','-50','-35','-30']"
                                      data-fontsize="['18','18','18','14']"
                                      data-lineheight="['26','26','26','26']"
                                      data-height="none"
@@ -283,12 +364,15 @@
                                      data-splitout="none"
                                      data-responsive_offset="on"
                                      data-elementdelay="0.05"
-                                     style="z-index: 5; white-space: nowrap; letter-spacing: 1.5px; color:#777; font-weight: normal; font-family: 'Lato', sans-serif;">Un styliste expérimenté vous sélectionnera des pièces adéquates à votre morphologie et style et en un click vous pourriez les acheter directement du site de la marque.
+                                     style="z-index: 5; white-space: nowrap; letter-spacing: 1.5px; color:#777; font-weight: normal; font-family: 'Lato', sans-serif;">
+                                    Un styliste expérimenté vous sélectionnera des pièces adéquates à votre morphologie
+                                    et style et en un click vous pourriez les acheter directement du site de la marque.
 
                                 </div>
                                 <div class="tp-caption NotGeneric-Button rev-btn  rs-parallaxlevel-0" id="slide-layer-8"
                                      data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                                     data-y="['middle','middle','middle','middle']" data-voffset="['-30','20','40','30']"
+                                     data-y="['middle','middle','middle','middle']"
+                                     data-voffset="['-30','20','40','30']"
                                      data-fontsize="['14','14','14','12']"
                                      data-lineheight="['24','24','24','24']"
                                      data-width="none"
@@ -305,292 +389,336 @@
                                      data-actions='[{"event":"click","action":"scrollbelow","offset":"0px"}]'
                                      data-responsive_offset="on"
                                      data-responsive="off"
-                                     style="z-index: 10; padding:8px 38px; letter-spacing:0.56px; color: #b6795f; border-color: #b6795f; font-family: 'Montserrat', sans-serif; text-transform:uppercase; background-color:transparent; white-space: nowrap;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;">Shop Now
+                                     style="z-index: 10; padding:8px 38px; letter-spacing:0.56px; color: #b6795f; border-color: #b6795f; font-family: 'Montserrat', sans-serif; text-transform:uppercase; background-color:transparent; white-space: nowrap;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;">
+                                    Shop Now
                                 </div>
                             </li>
                         </ul>
-            </div><!-- END OF SLIDER WRAPPER -->
-            <div class="goto-next"><a href="#category-section"><i class="icon icon-Mouse bounce"></i></a></div>
-        </div><!-- Slider Section 1 /- -->
+                    </div><!-- END OF SLIDER WRAPPER -->
+                    <div class="goto-next"><a href="#category-section"><i class="icon icon-Mouse bounce"></i></a></div>
+                </div><!-- Slider Section 1 /- -->
 
-        <!-- Services Section -->
+                <!-- Services Section -->
 
-        <!-- Category Section -->
+                <!-- Category Section -->
 
-        <!-- Product Section -->
-        <div id="product-section" style="" class="product-section container-fluid no-padding">
-            <!-- Container -->
-            <div class="container">
-                <div class="row">
-                    <!-- Section Header -->
-                    <div style="padding-top: 20px" class="section-header">
-                        <h3>Nos Produits</h3>
-                        <img src="images/section-seprator.png" alt="section-seprator" />
-                    </div><!-- Section Header /- -->
-                    <ul id="filters" class="products-categories no-left-padding">
-                        <li><a data-filter="*" class="active" href="#">All Products</a></li>
-                        <li><a data-filter=".design" href="#">jewellery</a></li>
-                        <li><a data-filter=".video" href="#">books</a></li>
-                        <li><a data-filter=".photography" href="#">watches</a></li>
-                        <li><a data-filter=".web" href="#">shoes</a></li>
-                        <li><a data-filter=".design" href="#">electronics</a></li>
-                        <li><a data-filter=".photography" href="#">mobiles</a></li>
-                        <li><a data-filter=".video" href="#">more<i class="fa fa-angle-down"></i></a></li>
-                    </ul>
-                    <div class="input-group">
-                        <input class="form-control" placeholder="Search You Wants" type="text">
-                        <span class="input-group-btn">
-								<button class="btn btn-search" title="Search" type="button"><i class="icon icon-Search"></i></button>
-							</span>
-                    </div>
-                    <!-- Products -->
-                    <ul class="products">
-                        <!-- Product -->
-                        <li class="product design">
-                            <a href="#">
-                                <img src="images/product-1.jpg" alt="Product" />
-                                <h5>Stylish Chair</h5>
-                                <span class="price"><del>$200</del>$139</span>
-                            </a>
-                            <div class="wishlist-box">
-                                <a href="#"><i class="fa fa-arrows-alt"></i></a>
-                                <a href="#"><i class="fa fa-heart-o"></i></a>
-                                <a href="#"><i class="fa fa-search"></i></a>
+                <!-- Product Section -->
+                <div id="product-section" style="" class="product-section container-fluid no-padding">
+                    <!-- Container -->
+                    <div class="container">
+                        <div class="row">
+                            <!-- Section Header -->
+                            <div style="padding-top: 20px" class="section-header">
+                                <h3>Comment ça marche</h3>
+                            </div><!-- Section Header /- -->
+                            <ul style="padding-left: 10%;" class="products">
+                                <!-- Product -->
+                                <li style="padding-right: 20px;" class="product design">
+                                    <a href="#">
+                                        <img src="images/image1.jpg" alt="Product"/>
+                                        <h5>Passer par un Quiz</h5>
+                                        <h6>pour mieux connaitre votre style et le type de tenu que vous cherchiez </h6>
+                                    </a>
+
+                                </li><!-- Product /- -->
+
+                                <!-- Product -->
+                                <li style="padding-right: 20px;" class="product design">
+                                    <a href="#">
+                                        <img src="images/image2.jpg" alt="Product"/>
+                                        <h5>Recevez votre Style Board</h5>
+                                        <h6>pour mieux connaitre votre style et le type de tenu que vous cherchiez </h6>
+                                    </a>
+
+                                </li><!-- Product /- -->
+
+                                <!-- Product -->
+                                <li style="padding-right: 20px;" class="product photography">
+                                    <a href="#">
+
+                                        <img style="height: 120px;width: 500px;" src="images/image3.jpg" alt="Product"/>
+                                        <h5>Faites votre shopping
+                                        </h5>
+                                        <h6>Vous pouvez achetez directement les articles des sites Webs des marques.
+                                            Vous achetez ce que vous aimez </h6>
+                                    </a>
+                                </li><!-- Product /- -->
+
+                                <!-- Product -->
+
+                            </ul><!-- Products /- -->
+                        </div><!-- Row /- -->
+
+                    </div><!-- Container /- -->
+                </div><!-- Product Section /- -->
+                <div style="background-color:#f8f8f8" class="testimonial-section testimonial-section1 container-fluid">
+                    <!-- Container -->
+                    <div class="container">
+                        <!-- Section Header -->
+                        <div class="section-header">
+                            <h3>Style boards</h3>
+                            <img src="images/section-seprator.png" alt="section-seprator">
+                        </div><!-- Section Header /- -->
+                        <div class="col-md-4 col-sm-6 col-xs-6">
+                            <div class="type-post">
+                                <div class="entry-cover">
+                                    <a href="blog-post.html"><img src="images/Trendy pour le Week-end (2).png"
+                                                                  alt="blog"></a>
+
+                                </div>
                             </div>
-                            <a href="#" class="addto-cart" title="Add To Cart">Add To Cart</a>
-                        </li><!-- Product /- -->
+                        </div>
 
-                        <!-- Product -->
-                        <li class="product video">
-                            <a href="#">
-                                <img src="images/product-2.jpg" alt="Product" />
-                                <h5>men's casual shoes</h5>
-                                <span class="price"><del>$150</del>$85</span>
-                            </a>
-                            <div class="wishlist-box">
-                                <a href="#"><i class="fa fa-arrows-alt"></i></a>
-                                <a href="#"><i class="fa fa-heart-o"></i></a>
-                                <a href="#"><i class="fa fa-search"></i></a>
+                        <div class="col-md-4 col-sm-6 col-xs-6">
+                            <div class="type-post">
+                                <div class="entry-cover">
+                                    <a href="blog-post.html"><img src="images/Trendy pour le Week-end.png"
+                                                                  alt="blog"></a>
+
+                                </div>
                             </div>
-                            <a href="#" class="addto-cart" title="Add To Cart">Add To Cart</a>
-                        </li><!-- Product /- -->
+                        </div>
 
-                        <!-- Product -->
-                        <li class="product photography">
-                            <a href="#">
-                                <img src="images/product-3.jpg" alt="Product" />
-                                <h5>Sun glass</h5>
-                                <span class="price"><del>$100</del>$35</span>
-                            </a>
-                            <div class="wishlist-box">
-                                <a href="#"><i class="fa fa-arrows-alt"></i></a>
-                                <a href="#"><i class="fa fa-heart-o"></i></a>
-                                <a href="#"><i class="fa fa-search"></i></a>
+                        <div class="col-md-4 col-sm-6 col-xs-6">
+                            <div class="type-post">
+                                <div class="entry-cover">
+                                    <a href="blog-post.html"><img src="images/Trendy pour le Week-end (1).png"
+                                                                  alt="blog"></a>
+                                </div>
                             </div>
-                            <a href="#" class="addto-cart" title="Add To Cart">Add To Cart</a>
-                        </li><!-- Product /- -->
-
-                        <!-- Product -->
-                        <li class="product web">
-                            <a href="#">
-                                <img src="images/product-4.jpg" alt="Product" />
-                                <h5>tourist bags</h5>
-                                <span class="price"><del>$350</del>$279</span>
-                            </a>
-                            <div class="wishlist-box">
-                                <a href="#"><i class="fa fa-arrows-alt"></i></a>
-                                <a href="#"><i class="fa fa-heart-o"></i></a>
-                                <a href="#"><i class="fa fa-search"></i></a>
-                            </div>
-                            <a href="#" class="addto-cart" title="Add To Cart">Add To Cart</a>
-                        </li><!-- Product /- -->
-
-                        <!-- Product -->
-                        <li class="product design">
-                            <a href="#">
-                                <img src="images/product-5.jpg" alt="Product" />
-                                <h5>mobile phone</h5>
-                                <span class="price"><del>$450</del>$359</span>
-                            </a>
-                            <div class="wishlist-box">
-                                <a href="#"><i class="fa fa-arrows-alt"></i></a>
-                                <a href="#"><i class="fa fa-heart-o"></i></a>
-                                <a href="#"><i class="fa fa-search"></i></a>
-                            </div>
-                            <a href="#" class="addto-cart" title="Add To Cart">Add To Cart</a>
-                        </li><!-- Product /- -->
-
-                        <!-- Product -->
-                        <li class="product video">
-                            <a href="#">
-                                <img src="images/product-6.jpg" alt="Product" />
-                                <h5>men's winter coat</h5>
-                                <span class="price"><del>$220</del>$129</span>
-                            </a>
-                            <div class="wishlist-box">
-                                <a href="#"><i class="fa fa-arrows-alt"></i></a>
-                                <a href="#"><i class="fa fa-heart-o"></i></a>
-                                <a href="#"><i class="fa fa-search"></i></a>
-                            </div>
-                            <a href="#" class="addto-cart" title="Add To Cart">Add To Cart</a>
-                        </li><!-- Product /- -->
-
-                        <!-- Product -->
-                        <li class="product photography">
-                            <a href="#">
-                                <img src="images/product-7.jpg" alt="Product" />
-                                <h5>Model x12 computer</h5>
-                                <span class="price"><del>$850</del>$550</span>
-                            </a>
-                            <div class="wishlist-box">
-                                <a href="#"><i class="fa fa-arrows-alt"></i></a>
-                                <a href="#"><i class="fa fa-heart-o"></i></a>
-                                <a href="#"><i class="fa fa-search"></i></a>
-                            </div>
-                            <a href="#" class="addto-cart" title="Add To Cart">Add To Cart</a>
-                        </li><!-- Product /- -->
-
-                        <!-- Product -->
-                        <li class="product web">
-                            <a href="#">
-                                <img src="images/product-8.jpg" alt="Product" />
-                                <h5>Stylish headset</h5>
-                                <span class="price"><del>$50</del>$29</span>
-                            </a>
-                            <div class="wishlist-box">
-                                <a href="#"><i class="fa fa-arrows-alt"></i></a>
-                                <a href="#"><i class="fa fa-heart-o"></i></a>
-                                <a href="#"><i class="fa fa-search"></i></a>
-                            </div>
-                            <a href="#" class="addto-cart" title="Add To Cart">Add To Cart</a>
-                        </li><!-- Product /- -->
-                    </ul><!-- Products /- -->
-                </div><!-- Row /- -->
-
-            </div><!-- Container /- -->
-        </div><!-- Product Section /- -->
-
-        <!-- Collection Section1 -->
-
-        <!-- Testimonial Section -->
-        <div class="testimonial-section testimonial-section1 container-fluid">
-            <!-- Container -->
-            <div class="container">
-                <!-- Section Header -->
-                <div class="section-header">
-                    <h3>Qui sommes-nous?</h3>
-                    <p>Tout a commencé lorsque nous avons constaté que le shopping est devenu éprouvant pour la plupart des femmes: une infinité d’options, une manifestation de la contrefaçon, une qualité en baisse, etc.  Nous avons donc créé «Rise with style» pour aider les femmes à dénichez les meilleures pièces sans perdre du temps à parcourir des centaines de sites web.
-                        «On vous aide à passer moins de temps dans le shopping pour vous concentrer à passer plus de temps pour créer, aimer et briller»
-                    </p>
-                    <img src="images/section-seprator.png" alt="section-seprator" />
-                </div><!-- Section Header /- -->
-                <!-- Main Carousel -->
-            </div><!-- Container /- -->
-        </div><!-- Testimonial Section /- -->
-
-        <!-- Latest Blog -->
-            <div class="contact-us container-fluid no-padding">
-
-            <div class="form-detail">
-                <!-- Section Header -->
-                <div class="section-header">
-                    <h3>Envoyer un Message</h3>
-                    <p>Feel Free To Say Everything And Ask Questions</p>
-                </div><!-- Section Header /- -->
-                <form>
-                    <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                        <input type="text" name="contact-name" class="form-control" id="input_name" placeholder="Full Name *" required/>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                        <input type="text" name="contact-email" class="form-control" id="input_email" placeholder="Email Address *" required/>
-                    </div>
-                    <div class="col-md-12 col-sm-12 col-xs-12 form-group">
-                        <input type="text" required="" placeholder="Subject *" id="input_subject" class="form-control" name="contact-subject">
-                    </div>
-                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                        <textarea placeholder="Type Your Message . . ." id="textarea_message" name="contact-message" rows="5" class="form-control"></textarea>
-                    </div>
-                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                        <button title="Submit" type="submit" id="btn_submit" name="post">Send Message</button>
-                    </div>
-                    <div id="alert-msg" class="alert-msg"></div>
-                </form>
-            </div></div>
-        <!-- Selling -->
-
-        <!-- Clients -->
-    </main>
-{% endblock %}
-    <!-- Footer Main -->{% block footer %}
-    <footer id="footer-main" class="footer-main container-fluid">
-        <!-- Container -->
-        <div class="container">
-            <div class="row">
-                <!-- Widget About -->
-                <aside class="col-md-3 col-sm-6 col-xs-6 ftr-widget widget_about">
-                    <a href="index-2.html" title="rise with style">Rise <span>With</span>Style</a>
-                    <div class="info">
-                        <p><i class="icon icon-Pointer"></i>Max Shop, 65 Huge Street Melbourne, 2850 Australia.</p>
-                        <p><i class="icon icon-Phone2"></i><a href="tel:(11)1234567890" title="Phone" class="phone">(11) 123 456 7890</a></p>
-                        <p><i class="icon icon-Imbox"></i><a href="mailto:info@maxshop.com" title="info@maxshop.com">info@maxshop.com</a></p>
-                    </div>
-                </aside><!-- Widget About /- -->
-                <!-- Widget Links -->
-                <aside class="col-md-3 col-sm-6 col-xs-6 ftr-widget widget_links">
-                    <h3 class="widget-title">Popular Links</h3>
-                    <ul>
-                        <li><a href="#product-section" title="Popular Products">Popular Products</a></li>
-                        <li><a href="#selling" title="Best Selling">Best Selling</a></li>
-                        <li><a href="about.html" title="About Us">About Us</a></li>
-                        <li><a href="#dealing" title="Deal Of The Day">Deal Of The Day</a></li>
-                        <li><a href="#collection" title="Product Collections">Product Collections</a></li>
-                        <li><a href="contact-us.html" title="Contact Us">Contact Us</a></li>
-                    </ul>
-                </aside><!-- Widget Links /- -->
-                <!-- Widget Account -->
-                <aside class="col-md-3 col-sm-6 col-xs-6 ftr-widget widget_links widget_account">
-                    <h3 class="widget-title">my account</h3>
-                    <ul>
-                        <li><a href="#" title="My Order Details">My Order Details</a></li>
-                        <li><a href="#" title="My credit Offers">My credit Offers</a></li>
-                        <li><a href="#" title="My addresses">My addresses</a></li>
-                        <li><a href="#" title="My Personal Details">My Personal Details</a></li>
-                        <li><a href="#" title="My Account Details">My Account Details</a></li>
-                    </ul>
-                </aside><!-- Widget Account /- -->
-                <!-- Widget Newsletter -->
-                <aside class="col-md-3 col-sm-6 col-xs-6 ftr-widget widget_newsletter">
-                    <h3 class="widget-title">newsletter</h3>
-                    <div class="input-group">
-                        <input class="form-control" placeholder="email address" type="text">
-                        <span class="input-group-btn">
-								<button class="btn btn-default" type="button"><i class="fa fa-paper-plane-o"></i></button>
-							</span>
-                    </div>
-                    <h5>Get New Updates From Our Collections</h5>
-                    <h3 class="widget-title widget-title-1">Follow Us</h3>
-                    <ul class="social">
-                        <li><a href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="#" title="Tumblr"><i class="fa fa-tumblr"></i></a></li>
-                        <li><a href="#" title="Vimeo"><i class="fa fa-vimeo"></i></a></li>
-                    </ul>
-                </aside><!-- Widget Newsletter /- -->
-            </div>
-            <div class="copyright-section">
-                <div class="coyright-content">
-                    <p>&copy; Max shop. all rights reserved</p>
+                        </div>
+                    </div><!-- Container /- -->
                 </div>
-                <ul>
-                    <li><a href="#" title="Delivery Information">Delivery Information</a></li>
-                    <li><a href="#" title="Privacy Policy">Privacy Policy</a></li>
-                    <li><a href="#" title="Terms & Condition">Terms & Condition</a></li>
-                </ul>
+                <!-- Collection Section1 -->
+
+                <!-- Testimonial Section -->
+                <div style="background-color: white" class="testimonial-section testimonial-section1 container-fluid">
+                    <!-- Container -->
+                    <div class="container">
+                        <!-- Section Header -->
+                        <div class="section-header">
+                            <h3>Qui sommes-nous?</h3>
+                            <p>Tout a commencé lorsque nous avons constaté que le shopping est devenu éprouvant pour la
+                                plupart des femmes: une infinité d’options, une manifestation de la contrefaçon, une
+                                qualité en baisse, etc. Nous avons donc créé «Rise with style» pour aider les femmes à
+                                dénichez les meilleures pièces sans perdre du temps à parcourir des centaines de sites
+                                web.
+                                «On vous aide à passer moins de temps dans le shopping pour vous concentrer à passer
+                                plus de temps pour créer, aimer et briller»
+                            </p>
+                            <img src="images/section-seprator.png" alt="section-seprator"/>
+                        </div><!-- Section Header /- -->
+                        <!-- Main Carousel -->
+                    </div><!-- Container /- -->
+                </div><!-- Testimonial Section /- -->
+                <div style="background-color:#f8f8f8" class="testimonial-section testimonial-section1 container-fluid">
+                    <!-- Container -->
+                    <div class="container">
+                        <!-- Section Header -->
+                        <div class="panel-group" id="accordion7401210" role="tablist" aria-multiselectable="false">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="heading8122873">
+                                    <h5 class="panel-title">
+                                        <a role="button" data-toggle="collapse" class="accordion-plus-toggle collapsed"
+                                           data-parent="#accordion7401210" href="#collapse8122873" aria-expanded="false"
+                                           aria-controls="collapse8122873">Comment fonctionne Rise with Style</a>
+                                    </h5>
+                                </div>
+                                <div id="collapse8122873" class="panel-collapse collapse" role="tabpanel"
+                                     aria-labelledby="heading8122873">
+                                    <div class="panel-body">
+                                        <div class="about-content">
+                                            <ol class="list-group">
+                                                <li class="list-group-item">Créer un compte sur notre site
+                                                </li>
+                                                <li class="list-group-item">Choisir votre pack (1 Style boards, 2 style boards ou 4 style
+                                                    boards) et payer
+                                                </li>
+                                                <li class="list-group-item">Remplir un quiz pour mieux comprendre vos besoins
+                                                </li>
+                                                <li class="list-group-item">
+                                                    Recevoir un style board en ligne personnalisé rien que pour vous, avec les liens pour les articles
+                                                </li>
+                                                <li class="list-group-item">
+                                                    Effectuer vos achats directement à partir des liens comme les achats en ligne réguliers.
+                                                </li>
+                                            </ol>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="heading411391">
+                                    <h5 class="panel-title">
+                                        <a role="button" data-toggle="collapse" class="accordion-plus-toggle collapsed"
+                                           data-parent="#accordion7401210" href="#collapse411391" aria-expanded="false"
+                                           aria-controls="collapse411391">Comment j’achete les articles du style board ?
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div id="collapse411391" class="panel-collapse collapse" role="tabpanel"
+                                     aria-labelledby="heading411391">
+                                    <div class="panel-body">
+                                        <div class="about-content">
+                                            <ol class="list-group">
+                                                <li class="list-group-item">On vous enverrai votre style board avec les liens pour les articles choisis pour votre look, vous pouvez les acheter directement des sites de marques.
+                                                </li>
+                                            </ol>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="heading2183316">
+                                    <h5 class="panel-title">
+                                        <a role="button" data-toggle="collapse" class="accordion-plus-toggle collapsed"
+                                           data-parent="#accordion7401210" href="#collapse2183316" aria-expanded="false"
+                                           aria-controls="collapse2183316">Si Je n’aime pas un article dans le style board, puis-je le changer
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div id="collapse2183316" class="panel-collapse collapse" role="tabpanel"
+                                     aria-labelledby="heading2183316">
+                                    <div class="panel-body">Oui c’est possible, si vous souhaitez changer quelque chose dans le look, votre styliste apportera alors des modifications en fonction de vos demandes. Vous pouvez échanger directement avec votre styliste par e-mail
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="heading21833161">
+                                    <h5 class="panel-title">
+                                        <a role="button" data-toggle="collapse" class="accordion-plus-toggle collapsed"
+                                           data-parent="#accordion7401210" href="#collapse21833162" aria-expanded="false"
+                                           aria-controls="collapse2183316">Travaillez-vous avec des marques spécifiques?
+
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div id="collapse21833162" class="panel-collapse collapse" role="tabpanel"
+                                     aria-labelledby="heading21833161">
+                                    <div class="panel-body">Non, nous choisissons les tenues en fonction de leur coupe et de leur qualité. Nous ne travaillons avec aucune marque
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="heading218331612">
+                                    <h5 class="panel-title">
+                                        <a role="button" data-toggle="collapse" class="accordion-plus-toggle collapsed"
+                                           data-parent="#accordion7401210" href="#collapse218331622" aria-expanded="false"
+                                           aria-controls="collapse2183316">Comment le styliste saura ce qui convient à ma forme et à ma personnalité?
+
+
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div id="collapse218331622" class="panel-collapse collapse" role="tabpanel"
+                                     aria-labelledby="heading218331612">
+                                    <div class="panel-body">Le quiz comportera plusieurs questions, tout ce que nous devons savoir pour mieux vous servir et créer votre look parfait
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="heading2183316123">
+                                    <h5 class="panel-title">
+                                        <a role="button" data-toggle="collapse" class="accordion-plus-toggle collapsed"
+                                           data-parent="#accordion7401210" href="#collapse2183316223" aria-expanded="false"
+                                           aria-controls="collapse2183316">Est-ce que votre service concerne seulement la France
+
+
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div id="collapse2183316223" class="panel-collapse collapse" role="tabpanel"
+                                     aria-labelledby="heading2183316123">
+                                    <div class="panel-body">Oui, pour le moment, ce service est valable pour les résidents français seulement.
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="heading2183316121">
+                                    <h5 class="panel-title">
+                                        <a role="button" data-toggle="collapse" class="accordion-plus-toggle collapsed"
+                                           data-parent="#accordion7401210" href="#collapse2183316221" aria-expanded="false"
+                                           aria-controls="collapse2183316">Si le look dépasse mon budget?
+
+
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div id="collapse2183316221" class="panel-collapse collapse" role="tabpanel"
+                                     aria-labelledby="heading2183316121">
+                                    <div class="panel-body">Lorsque vous remplissez le quiz, il y a des questions spécifiques sur votre budget. Nous accordons tellement d’attention à cela, ne vous inquiétez pas.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="heading21833161214">
+                                    <h5 class="panel-title">
+                                        <a role="button" data-toggle="collapse" class="accordion-plus-toggle collapsed"
+                                           data-parent="#accordion7401210" href="#collapse21833162214" aria-expanded="false"
+                                           aria-controls="collapse2183316">Est-ce que Rise witn Style fonctionne pour les enfants et les hommes
+
+
+
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div id="collapse21833162214" class="panel-collapse collapse" role="tabpanel"
+                                     aria-labelledby="heading21833161214">
+                                    <div class="panel-body">Pour le moment nous servirons les femmes seulement
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div><!-- Container /- -->
+                </div>
+                <!-- Latest Blog -->
+                <div class="contact-us container-fluid no-padding">
+
+                    <div class="form-detail">
+                        <!-- Section Header -->
+                        <div class="section-header">
+                            <h3>Envoyer un Message</h3>
+                            <p>Feel Free To Say Everything And Ask Questions</p>
+                        </div><!-- Section Header /- -->
+                        <form>
+                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                <input type="text" name="contact-name" class="form-control" id="input_name"
+                                       placeholder="Full Name *" required/>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                                <input type="text" name="contact-email" class="form-control" id="input_email"
+                                       placeholder="Email Address *" required/>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                                <input type="text" required="" placeholder="Subject *" id="input_subject"
+                                       class="form-control" name="contact-subject">
+                            </div>
+                            <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                <textarea placeholder="Type Your Message . . ." id="textarea_message"
+                                          name="contact-message" rows="5" class="form-control"></textarea>
+                            </div>
+                            <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                <button title="Submit" type="submit" id="btn_submit" name="post">Send Message</button>
+                            </div>
+                            <div id="alert-msg" class="alert-msg"></div>
+                        </form>
+                    </div>
+                </div>
+                <!-- Selling -->
+
+                <!-- Clients -->
             </div>
-        </div><!-- Container /- -->
-    </footer><!-- Footer Main /- -->
-{% endblock %}
+        </main>
+    {% endblock %}
+    {% block footer %}
+    {% endblock %}
 </div>
 
 
@@ -606,28 +734,32 @@
 <script type="text/javascript" src="{{ asset('revolution/js/jquery.themepunch.tools.min838f.js') }}"></script>
 <script type="text/javascript" src="{{ asset('revolution/js/jquery.themepunch.revolution.min838f.js') }}"></script>
 <script type="text/javascript" src="{{ asset('revolution/js/extensions/revolution.extension.video.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('revolution/js/extensions/revolution.extension.slideanims.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('revolution/js/extensions/revolution.extension.layeranimation.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('revolution/js/extensions/revolution.extension.navigation.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('revolution/js/extensions/revolution.extension.actions.min.js') }}"></script>
+<script type="text/javascript"
+        src="{{ asset('revolution/js/extensions/revolution.extension.slideanims.min.js') }}"></script>
+<script type="text/javascript"
+        src="{{ asset('revolution/js/extensions/revolution.extension.layeranimation.min.js') }}"></script>
+<script type="text/javascript"
+        src="{{ asset('revolution/js/extensions/revolution.extension.navigation.min.js') }}"></script>
+<script type="text/javascript"
+        src="{{ asset('revolution/js/extensions/revolution.extension.actions.min.js') }}"></script>
 
 <!-- Library - Theme JS -->
 <script src="{{ asset('js/functions.js') }}"></script>
 
 </body>
 <script>
-   $(function() {
+    $(function () {
         $('[data-toggle="popover"]').popover({
-html:true
-        }).on("mouseenter", function() {
+            html: true
+        }).on("mouseenter", function () {
             var _this = this;
             $('#popover-content').html();
-            $('[data-toggle="popover"]').on("mouseleave", function() {
+            $('[data-toggle="popover"]').on("mouseleave", function () {
                 $('#popover-content').show();
             });
-        }).on("mouseleave", function() {
+        }).on("mouseleave", function () {
             var _this = this;
-            setTimeout(function() {
+            setTimeout(function () {
                 console.log($(".popover:hover").length)
                 if (!$('[data-toggle="popover"]').length) {
                     $('#popover-content').hide();
@@ -636,16 +768,16 @@ html:true
         });
     })
 
-  /*$(function() {
-      $('[data-toggle="popover"]').popover({
-          html: true,
-          content: function() {
+    /*$(function() {
+        $('[data-toggle="popover"]').popover({
+            html: true,
+            content: function() {
 
-              $('#popover-content').html();
+                $('#popover-content').html();
 
-          }
-      });
-  })*/
+            }
+        });
+    })*/
 </script>
 <!-- Mirrored from premiumlayers.net/demo/html/maxshop/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 Aug 2020 11:27:57 GMT -->
 </html>

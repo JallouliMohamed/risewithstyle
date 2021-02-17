@@ -5,6 +5,8 @@ namespace App\Form;
 use App\Entity\Product;
 use App\Entity\Produit;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\ColorType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -23,7 +25,26 @@ class ProductType extends AbstractType
             ->add('prix', TextType::class, array('attr' => array('class' => 'form-control','style' => '')))
             ->add('url', TextType::class, array('attr' => array('class' => 'form-control','style' => '')))
             ->add('marque', TextType::class, array('attr' => array('class' => 'form-control','style' => '')))
-            ->add('image', FileType::class, [
+
+            ->add('gender', ChoiceType::class, [
+                'attr' => array('class' => 'form-control','style' => ''),
+                'choices'  => [
+                    'both' => 'both',
+                    'homme' => 'homme',
+                    'femme' => 'femme',
+                ],
+            ])
+            ->add('size', ChoiceType::class, [
+                'attr' => array('class' => 'form-control','style' => ''),
+                'choices'  => [
+                    'M' => 'M',
+                    'S' => 'S',
+                    'L' => 'L',
+                    'XL' => 'XL'
+                ],
+            ])
+            ->add('color', ColorType::class,array('attr' => array('class' => 'form-control','style' => '')))
+            ->add('image', FileType::class, ['attr' => array('class' => 'form-control','style' => ''),
                 'label' => 'Image',
 // unmapped means that this field is not associated to any entity property
                 'mapped' => false,

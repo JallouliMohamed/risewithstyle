@@ -5,17 +5,16 @@ use App\Entity\Fashionboard;
 use App\Entity\Product;
 use App\Entity\Quiz;
 use App\Form\ProductType;
+use Braintree\Gateway;
+use Braintree\Transaction;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use JMS\Payment\CoreBundle\Plugin\Exception\Action\VisitUrl;
-use JMS\Payment\CoreBundle\Plugin\Exception\ActionRequiredException;
+
 use App\Entity\Fashionbundle;
 use App\Entity\Order;
-use JMS\Payment\CoreBundle\Form\ChoosePaymentMethodType;
-use JMS\Payment\CoreBundle\PluginController\PluginController;
-use JMS\Payment\CoreBundle\PluginController\Result;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,7 +22,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Yoeunes\Notify\Notifiers\Toastr;
-use function MongoDB\BSON\fromJSON;
 
 class DefaultController extends AbstractController
 {
@@ -69,8 +67,8 @@ class DefaultController extends AbstractController
             'boards' => $boards
         ));
     }
-    public function purchase(SessionInterface $session,Request $request, PluginController $ppc)
-    {        $idbundle=$request->get('idbundle');
+    public function purchase(SessionInterface $session,Request $request)
+    {    $idbundle=$request->get('idbundle');
 
         $em = $this->getDoctrine()->getManager();
         $bundle = $this->getDoctrine()->getManager()->getRepository('App:Fashionbundle')->find($idbundle);
@@ -80,31 +78,18 @@ class DefaultController extends AbstractController
             $session->set('route', 'formule');
             return $this->redirectToRoute('fos_user_security_login');
         }else{
-            $form = $this->createForm(ChoosePaymentMethodType::class, null, [
-
-                'amount'   => strval($bundle->getPrice()),
-                'currency' => 'EUR',
+            $gateway=new Gateway([
+                'environment' => 'sandbox',
+                'merchantId' => 'rfszkvmy9dny63w8',
+                'publicKey' => '6m896hfk35jdcmtr',
+                'privateKey' => 'c4c2da6f784477ef1879aa88274c2583'
             ]);
-            $form->handleRequest($request);
-            if ($form->isSubmitted() && $form->isValid()) {
-                $ppc->createPaymentInstruction($instruction = $form->getData());
-                $order = new Order($bundle->getPrice(),1);
-                $order->setBundle($bundle);
-                $order->setPaymentInstruction($instruction);
-
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($order);
-                $em->flush($order);
-
-
-                return $this->redirectToRoute('app_orders_paymentcreate', [
-                    'orderId' => $order->getId(),'bundleid' => $idbundle
-                ]);
+            return $this->render('default/purchase.html.twig',['gateway'=>$gateway->clientToken()->generate(),'bundle'=>$bundle]);
             }
-            return $this->render('default/purchase.html.twig',['form' => $form->createView(),'bundle'=>$bundle]);
+
 
         }
-    }
+
     public function updateuser(SessionInterface $session,Request $request)
     {
         $usr=$this->getUser();
@@ -122,80 +107,7 @@ class DefaultController extends AbstractController
         $this->getDoctrine()->getManager()->flush();
         return new JsonResponse('success');
     }
-    private function createPayment(Order $order, PluginController $ppc)
-    {
-        $instruction = $order->getPaymentInstruction();
-        $pendingTransaction = $instruction->getPendingTransaction();
 
-        if ($pendingTransaction !== null) {
-            return $pendingTransaction->getPayment();
-        }
-
-        $amount = $instruction->getAmount() - $instruction->getDepositedAmount();
-
-        return $ppc->createPayment($instruction->getId(), $amount);
-    }
-    /**
-     * @Route("{bundleid}/{orderId}/payment/create",name="app_orders_paymentcreate")
-     */
-    public function paymentCreateAction($orderId, $bundleid, PluginController $ppc)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $bundle = $this->getDoctrine()->getManager()->getRepository('App:Fashionbundle')->find($bundleid);
-
-        $order = $this->getDoctrine()->getManager()->getRepository(Order::class)->find($orderId);
-
-        $payment = $this->createPayment($order, $ppc);
-
-        $result = $ppc->approveAndDeposit($payment->getId(), $payment->getTargetAmount());
-
-        if ($result->getStatus() === Result::STATUS_SUCCESS) {
-            return $this->redirectToRoute('app_orders_paymentcomplete', [
-                'orderId' => $order->getId(),
-            ]);
-        }
-        if ($result->getStatus() === Result::STATUS_PENDING) {
-            $order->setState(true);
-            $order->setUser($this->getUser());
-            var_dump($order->getBundle());
-            for($i=0; $i<$bundle->getfashionbordern(); $i++)
-            {
-                $fashionboard=new Fashionboard();
-                $fashionboard->setUser($this->getUser());
-                $fashionboard->setClientActivation(0);
-                $fashionboard->setAdminValidation(0);
-                $fashionboard->setFashionbundle($order->getBundle());
-                $this->getDoctrine()->getManager()->persist($fashionboard);
-                $this->getDoctrine()->getManager()->flush();
-
-            }
-            $this->getDoctrine()->getManager()->persist($order);
-            $this->getDoctrine()->getManager()->flush();
-            $ex = $result->getPluginException();
-
-
-            if ($ex instanceof ActionRequiredException) {
-                $action = $ex->getAction();
-
-                if ($action instanceof VisitUrl) {
-                    return $this->redirect($action->getUrl());
-                }
-            }
-        }
-        throw $result->getPluginException();
-
-        // In a real-world application you wouldn't throw the exception. You would,
-        // for example, redirect to the showAction with a flash message informing
-        // the user that the payment was not successful.
-    }
-    /**
-     * @Route("/{orderId}/payment/complete",name="app_orders_paymentcomplete")
-     */
-    public function paymentCompleteAction($orderId)
-    {
-        var_dump('paymentcomplete');
-        return new Response('Payment complete');
-    }
     public function manageBundle()
     {
         return $this->render('backOffice/manageBundles.html.twig');
@@ -358,9 +270,80 @@ class DefaultController extends AbstractController
 
         return $this->render('default/singleProduct.html.twig',["product"=>$product]);
     }
+    public function checkoutBrainTree(Request $request){
+        $amount=$request->get('amount');
+        $idbundle=$request->get('bundleid');
+        $bundle = $this->getDoctrine()->getManager()->getRepository('App:Fashionbundle')->find($idbundle);
+        $order = new Order($bundle->getPrice());
+        $paymentMethod=$request->request->get('payment_method_nonce');
+        $gateway=new Gateway([
+            'environment' => 'sandbox',
+            'merchantId' => 'rfszkvmy9dny63w8',
+            'publicKey' => '6m896hfk35jdcmtr',
+            'privateKey' => 'c4c2da6f784477ef1879aa88274c2583'
+        ]);
+        $result = $gateway->transaction()->sale([
+            'amount' => $amount,
+            'paymentMethodNonce' => $paymentMethod,
+            'options' => [
+                'submitForSettlement' => true
+            ]
+        ]);
+        if ($result->success || !is_null($result->transaction)) {
+            $transaction = $result->transaction;
+            $transactionid=$transaction->id;
+            $transaction = $gateway->transaction()->find($transactionid);
+            $transactionSuccessStatuses = [
+                Transaction::AUTHORIZED,
+                Transaction::AUTHORIZING,
+                Transaction::SETTLED,
+                Transaction::SETTLING,
+                Transaction::SETTLEMENT_CONFIRMED,
+                Transaction::SETTLEMENT_PENDING,
+                Transaction::SUBMITTED_FOR_SETTLEMENT
+
+            ];
+            if (in_array($transaction->status, $transactionSuccessStatuses)) {
+                $header = "Sweet Success!";
+                $icon = "success";
+                $message = "Le paiement a étè effecté avec succes veuillez consulter votre wardrobe";
+                $order->setState(true);
+                $order->setUser($this->getUser());
+                $order->setBundle($bundle);
+                for($i=0; $i<$bundle->getfashionbordern(); $i++)
+                {
+                    $fashionboard=new Fashionboard();
+                    $fashionboard->setUser($this->getUser());
+                    $fashionboard->setClientActivation(0);
+                    $fashionboard->setAdminValidation(0);
+                    $fashionboard->setFashionbundle($bundle);
+                    $this->getDoctrine()->getManager()->persist($fashionboard);
+                    $this->getDoctrine()->getManager()->flush();
+
+                }
+                $this->getDoctrine()->getManager()->persist($order);
+                $this->getDoctrine()->getManager()->flush();
+                return $this->render('default/purchaseConfirmed.html.twig',['header'=>$header,'icon'=>$icon,'message'=>$message]);
+            } else {
+                $header = "Transaction Failed";
+                $icon = "fail";
+                $message = "Your test transaction has a status of " . $transaction->status . ". See the Braintree API response and try again.";
+                return $this->render('default/purchaseConfirmed.html.twig',['header'=>$header,'icon'=>$icon,'message'=>$message]);
+
+            }
+        } else {
+            $errorString = "";
+            $header = "Transaction Failed";
+            $icon = "fail";
+            $message="problème de paiement";
 
 
+            return $this->render('default/purchaseConfirmed.html.twig',['message'=>$message,'header'=>$header]);
 
 
+        }
 
+        return null;
+
+}
 }

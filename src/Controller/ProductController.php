@@ -11,6 +11,7 @@ use App\Form\ProductType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class ProductController extends AbstractController
@@ -125,5 +126,35 @@ class ProductController extends AbstractController
         $entityManager->remove($product);
         $entityManager->flush();
         return $this->redirectToRoute("manageProduct");
+    }
+    public function selectUniqueColorsFromProducts(){
+        $entityManager = $this->getDoctrine()->getManager();
+        $colors = $entityManager->getRepository(Product::class)->findUniqueColors();
+        return new JsonResponse($colors);
+
+    }
+    public function selectProductsByColors(Request $request){
+        if ($request->get('id2')){
+            $entityManager = $this->getDoctrine()->getManager();
+            $products = $entityManager->getRepository(Product::class)->findby(array('color'=>$request->get('id'),'gender'=>$request->get('id2')));
+            return new JsonResponse($products);
+        }else{
+            $entityManager = $this->getDoctrine()->getManager();
+            $products = $entityManager->getRepository(Product::class)->findby(array('color'=>$request->get('id')));
+            return new JsonResponse($products);
+        }
+    }
+    public function selectProductsByGenre(Request $request){
+        if ($request->get('id2')){
+            $entityManager = $this->getDoctrine()->getManager();
+            $products = $entityManager->getRepository(Product::class)->findby(array('gender'=>$request->get('id'),'color'=>$request->get('id2')));
+            return new JsonResponse($products);
+        }
+        else{
+            $entityManager = $this->getDoctrine()->getManager();
+            $products = $entityManager->getRepository(Product::class)->findby(array('gender'=>$request->get('id')));
+            return new JsonResponse($products);
+        }
+
     }
 }

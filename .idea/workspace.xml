@@ -20,7 +20,56 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aab2ea77-e05f-4e2e-8cc2-3c1bf4c0e093" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/images/casual.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/chic.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/glamour.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/sexy.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/sport.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/trendy.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/Symfony_05_08_2020_03_43.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/commandlinetools/Symfony_05_08_2020_03_43.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/25a1d058-9a57-40c5-b25e-acab0d49f0c2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/25a1d058-9a57-40c5-b25e-acab0d49f0c2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/untitled.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/untitled.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/knpu_oauth2_client.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/knpu_oauth2_client.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/payment.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/shortcode.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/shortcode.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/FacebookController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/FacebookController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/FashionBoardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/FashionBoardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Quiz.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Quiz.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ProductType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ProductType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/FashionboardRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/FashionboardRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/ProductRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ProductRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Security/MyFacebookAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/MyFacebookAuthenticator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backOffice/addProduct.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/backOffice/addProduct.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backOffice/listFashionBoard.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/backOffice/listFashionBoard.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backOffice/manageFashionBoard.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/backOffice/manageFashionBoard.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backOffice/manageOrders.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/backOffice/manageOrders.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/baseAdmin.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/baseAdmin.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/bundles/FOSUserBundle/Registration/register_content.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bundles/FOSUserBundle/Registration/register_content.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/bundles/FOSUserBundle/Security/login_content.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bundles/FOSUserBundle/Security/login_content.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/fashionboard.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/fashionboard.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/fashionboardproduct.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/fashionboardproduct.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/formule.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/formule.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/purchase.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/purchase.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/quiz.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/quiz.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/singleProduct.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/singleProduct.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,13 +79,14 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution>
-      <phar pharPath="$PROJECT_DIR$/composer.phar" interpreterId="a22a451b-9b6e-4f73-9cce-e543cfb1c6f5" />
+      <phar pharPath="$PROJECT_DIR$/composer.phar" interpreterId="fcf3a167-c307-49e4-8f9e-d8399b89e7a1" />
     </execution>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="composer.json" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -121,11 +171,6 @@
       <path value="$PROJECT_DIR$/vendor/twig/extensions" />
       <path value="$PROJECT_DIR$/vendor/twig/intl-extra" />
       <path value="$PROJECT_DIR$/vendor/craue/twigextensions-bundle" />
-      <path value="$PROJECT_DIR$/vendor/jms/payment-core-bundle" />
-      <path value="$PROJECT_DIR$/vendor/jms/payment-paypal-bundle" />
-      <path value="$PROJECT_DIR$/vendor/defuse/php-encryption" />
-      <path value="$PROJECT_DIR$/vendor/symfony/dom-crawler" />
-      <path value="$PROJECT_DIR$/vendor/symfony/browser-kit" />
       <path value="$PROJECT_DIR$/vendor/symfony/security-core" />
       <path value="$PROJECT_DIR$/vendor/symfony/security-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/security-guard" />
@@ -149,6 +194,7 @@
       <path value="$PROJECT_DIR$/vendor/illuminate/contracts" />
       <path value="$PROJECT_DIR$/vendor/illuminate/filesystem" />
       <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/vendor/braintree/braintree_php" />
     </include_path>
   </component>
   <component name="ProjectId" id="1fewAPyM8OMay3L9A0NYVTpHPdg" />
@@ -159,26 +205,40 @@
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/images" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="Symfony2.SettingsForm" />
+    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\freelance\rise with style\untitled\public\images" />
       <recent name="C:\Users\Mohamedahmed\PhpstormProjects\untitled\templates\backOffice" />
       <recent name="C:\Users\Mohamedahmed\PhpstormProjects\untitled\src\Controller" />
       <recent name="C:\Users\Mohamedahmed\PhpstormProjects\untitled\templates" />
       <recent name="C:\Users\Mohamedahmed\PhpstormProjects\untitled\src\Repository" />
-      <recent name="C:\Users\Mohamedahmed\PhpstormProjects\untitled\src\Form" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\freelance\rise with style\untitled\public\images" />
       <recent name="C:\Users\Mohamedahmed\PhpstormProjects\untitled\public\alertify" />
       <recent name="C:\Users\Mohamedahmed\PhpstormProjects\untitled\public" />
       <recent name="C:\Users\Mohamedahmed\PhpstormProjects\untitled\templates\bundles\FOSUserBundle" />
     </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="c install braintree" />
+    </option>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -222,7 +282,43 @@
       <workItem from="1599639879595" duration="1882000" />
       <workItem from="1599762191835" duration="49000" />
       <workItem from="1599762740545" duration="611000" />
-      <workItem from="1602274001487" duration="2545000" />
+      <workItem from="1602274001487" duration="7537000" />
+      <workItem from="1602341940022" duration="649000" />
+      <workItem from="1602967760709" duration="8306000" />
+      <workItem from="1603049428459" duration="623000" />
+      <workItem from="1603232451898" duration="12000" />
+      <workItem from="1603232487856" duration="12119000" />
+      <workItem from="1603650969757" duration="10814000" />
+      <workItem from="1604839220793" duration="4365000" />
+      <workItem from="1605196820803" duration="1349000" />
+      <workItem from="1605286303700" duration="4421000" />
+      <workItem from="1605306062855" duration="9948000" />
+      <workItem from="1605377021139" duration="35403000" />
+      <workItem from="1605474098905" duration="849000" />
+      <workItem from="1605475125536" duration="11739000" />
+      <workItem from="1605573143876" duration="1774000" />
+      <workItem from="1605916172932" duration="1402000" />
+      <workItem from="1606395639012" duration="7149000" />
+      <workItem from="1606570150131" duration="4304000" />
+      <workItem from="1606612554275" duration="1593000" />
+      <workItem from="1606678341173" duration="1629000" />
+      <workItem from="1606766919780" duration="2000" />
+      <workItem from="1606936767004" duration="8000" />
+      <workItem from="1606954397263" duration="4000" />
+      <workItem from="1607026426937" duration="605000" />
+      <workItem from="1607102341948" duration="717000" />
+      <workItem from="1607815837976" duration="4251000" />
+      <workItem from="1608196267535" duration="21000" />
+      <workItem from="1608943861023" duration="791000" />
+      <workItem from="1610106512540" duration="1107000" />
+      <workItem from="1610118881870" duration="683000" />
+      <workItem from="1610293661698" duration="630000" />
+      <workItem from="1610566395122" duration="603000" />
+      <workItem from="1610621072599" duration="1811000" />
+      <workItem from="1610802767503" duration="604000" />
+      <workItem from="1610815875618" duration="2987000" />
+      <workItem from="1610892542242" duration="4517000" />
+      <workItem from="1610970020922" duration="32672000" />
     </task>
     <servers />
   </component>
@@ -241,54 +337,6 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="275" y="27" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596622590017">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="275" y="27" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738@0.0.1366.738" timestamp="1596622590017" />
-    <state x="487" y="122" key="#com.intellij.ide.util.MemberChooser" timestamp="1598676008267">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="-927" y="144" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738/-1440.0.1440.870@-1440.0.1440.870" timestamp="1596676520542" />
-    <state x="487" y="122" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738@0.0.1366.738" timestamp="1598676008267" />
-    <state x="427" y="161" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1598278640470">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="-990" y="190" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738/-1440.0.1440.870@-1440.0.1440.870" timestamp="1596676603903" />
-    <state x="427" y="161" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738@0.0.1366.738" timestamp="1598278640470" />
-    <state x="430" y="213" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1597977815503">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="430" y="213" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.738@0.0.1366.738" timestamp="1597977815503" />
-    <state x="463" y="124" key="FileChooserDialogImpl" timestamp="1599762238371">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="463" y="124" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1599762238371" />
-    <state x="420" y="92" key="NewPhpClassDialog" timestamp="1598060075764">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="420" y="92" key="NewPhpClassDialog/0.0.1366.738@0.0.1366.738" timestamp="1598060075764" />
-    <state x="184" y="14" key="SettingsEditor" timestamp="1597168548247">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="184" y="14" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1597168548247" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1597160162829">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="498" height="446" key="SwitcherDM/0.0.1366.738@0.0.1366.738" timestamp="1597160162829" />
-    <state x="-903" y="349" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1596670371437">
-      <screen x="-1440" y="0" width="1440" height="870" />
-    </state>
-    <state x="-903" y="349" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738/-1440.0.1440.870@-1440.0.1440.870" timestamp="1596670371437" />
-    <state x="0" y="0" width="585" height="738" key="find.popup" timestamp="1598593124971">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="0" y="0" width="585" height="738" key="find.popup/0.0.1366.738@0.0.1366.738" timestamp="1598593124971" />
-    <state x="339" y="165" width="672" height="677" key="run.anything.popup" timestamp="1599392935589">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="339" y="165" width="672" height="677" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1599392935589" />
-  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -298,21 +346,29 @@
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/templates/default/purchase.html.twig</url>
-          <line>287</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/templates/default/purchase.html.twig</url>
-          <line>222</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/src/Controller/DefaultController.php</url>
-          <line>312</line>
+          <line>224</line>
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php-line-method">
+          <url>file://$PROJECT_DIR$/src/Controller/OrderController.php</url>
+          <line>11</line>
+          <properties>
+            <option name="className" value="\App\Controller\OrderController" />
+            <option name="methodName" value="listPaymentOrder" />
+          </properties>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand>
+      <path>
+        <item name="untitled" type="b2602c69:ProjectViewProjectNode" />
+        <item name="untitled" type="462c0819:PsiDirectoryNode" />
+      </path>
+    </expand>
+    <select />
   </component>
 </project>

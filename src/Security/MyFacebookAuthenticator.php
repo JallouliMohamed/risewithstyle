@@ -94,7 +94,7 @@ class MyFacebookAuthenticator extends SocialAuthenticator
     {
         return $this->clientRegistry
             // "facebook_main" is the key used in config/packages/knpu_oauth2_client.yaml
-            ->getClient('facebook_main');
+            ->getClient('facebook');
     }
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)

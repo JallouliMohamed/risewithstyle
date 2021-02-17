@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
  */
-class Product
+class Product implements \JsonSerializable
 {
     /**
      * @ORM\Id()
@@ -41,6 +41,21 @@ class Product
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
+    private $gender;
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $size;
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $color;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+
+
     private $brochureFilename;
 
     public function getId(): ?int
@@ -111,4 +126,56 @@ class Product
         $this->marque = $marque;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getGender()
+    {
+        return $this->gender;
+    }
+
+    /**
+     * @param mixed $gender
+     */
+    public function setGender($gender): void
+    {
+        $this->gender = $gender;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSize()
+    {
+        return $this->size;
+    }
+
+    /**
+     * @param mixed $size
+     */
+    public function setSize($size): void
+    {
+        $this->size = $size;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getColor()
+    {
+        return $this->color;
+    }
+
+    /**
+     * @param mixed $color
+     */
+    public function setColor($color): void
+    {
+        $this->color = $color;
+    }
+
+    public function jsonSerialize()
+    {
+        return (object) get_object_vars($this);
+    }
 }

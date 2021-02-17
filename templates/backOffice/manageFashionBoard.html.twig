@@ -5,22 +5,26 @@
         .privew {
             margin-bottom: 20px;
         }
+
         .questionsBox {
             display: block;
             border: solid 1px #e3e3e3;
             padding: 10px 20px 0px;
-            box-shadow: inset 0 0 30px rgba(000,000,000,0.1), inset 0 0 4px rgba(255,255,255,1);
+            box-shadow: inset 0 0 30px rgba(000, 000, 000, 0.1), inset 0 0 4px rgba(255, 255, 255, 1);
             border-radius: 3px;
             margin: 0 10px;
-        }.questions {
-             background: #007fbe;
-             color: #FFF;
-             font-size: 22px;
-             padding: 8px 30px;
-             font-weight: 300;
-             margin: 0 -30px 10px;
-             position: relative;
-         }
+        }
+
+        .questions {
+            background: #007fbe;
+            color: #FFF;
+            font-size: 22px;
+            padding: 8px 30px;
+            font-weight: 300;
+            margin: 0 -30px 10px;
+            position: relative;
+        }
+
         .questions:after {
             background: url(../img/icon.png) no-repeat left 0;
             display: block;
@@ -33,11 +37,13 @@
             text-align: left;
             font-size: 0;
         }
+
         .questions:after {
             left: auto;
             right: 0;
             background-position: -10px 0;
         }
+
         .questions:before, .questions:after {
             background: black;
             display: block;
@@ -50,6 +56,7 @@
             text-align: left;
             font-size: 0;
         }
+
         .answerList {
             margin-bottom: 15px;
         }
@@ -58,6 +65,7 @@
         ol, ul {
             list-style: none;
         }
+
         .answerList li:first-child {
             border-top-width: 0;
         }
@@ -65,6 +73,7 @@
         .answerList li {
             padding: 3px 0;
         }
+
         .answerList label {
             display: block;
             padding: 6px;
@@ -75,17 +84,20 @@
             cursor: pointer;
             font-family: Arial, sans-serif;
         }
+
         input[type=checkbox], input[type=radio] {
             margin: 4px 0 0;
             margin-top: 1px;
             line-height: normal;
         }
+
         .questionsRow {
             background: #dee3e6;
             margin: 0 -20px;
             padding: 10px 20px;
             border-radius: 0 0 3px 3px;
         }
+
         .button, .greyButton {
             background-color: #f2f2f2;
             color: #888888;
@@ -101,6 +113,7 @@
             border-radius: 0px;
             text-transform: capitalize;
         }
+
         .questionsRow span {
             float: right;
             display: inline-block;
@@ -112,10 +125,28 @@
         }
 
 
-
     </style>
 
     <style>
+        .selectpickermodified {
+            width: 200px;
+            height: 30px;
+            background-color: #141414 !important;
+            border-style: solid;
+            border-left-width: 3px;
+            border-left-color: #00DDDD;
+            border-top: none;
+            border-bottom: none;
+            border-right: none;
+            color: white;
+            font-size: 18px;
+            font-weight: 200;
+            padding-left: 6px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
         .question {
             font-style: italic;
             margin-bottom: 0.5em;
@@ -169,15 +200,36 @@
 
         <div>
             <select id="test" class="selectpicker" data-live-search="true"
-                    title="Selectionner un client" >
+                    title="Selectionner un client">
                 {% for fashionBoard in fashionBoards %}
                     <option data-tokens="Moez ben chrifia" value={{ fashionBoard.user.id }}>
-                        {{ fashionBoard.user.firstname }}{{ " " }}{{ fashionBoard.user.lastname }}
+                        {{ fashionBoard.user.username }}{{ " " }}
                     </option>
                 {% endfor %}
             </select>
+
         </div>
-        <div style="margin-left: 600px">
+        <div><select id="scripts" onchange="changecolor()" class="selectpicker"
+                     title="filtre par couleur">
+                {% for color in colors %}
+                    <option value="{{ color.color }}" data-tokens="Moez ben chrifia"
+                            style="background-color: {{ color.color }}">
+                    </option>
+                {% endfor %}
+            </select></div>
+        <div><select id="scripts2" onchange="changegenre()" class="selectpicker"
+                     title="filtre par genre">
+                    <option value="both" data-tokens="Moez ben chrifia"
+                        >both
+                    </option>
+                <option value="homme" data-tokens="Moez ben chrifia"
+                >homme
+                </option>
+                <option value="femme" data-tokens="Moez ben chrifia"
+                >femme
+                </option>
+            </select></div>
+        <div style="margin-left: 200px">
             <button type="submit" class="btn btn-light" onclick="cancel()">Annuler</button>
             <button type="submit" class="btn btn-primary" onclick="update()">Valider</button>
 
@@ -186,12 +238,13 @@
     <br><br>
     <div id="main-wrapper">
         <div class="row">
-            <div style="display: flex">
-                <div class="col-lg-6 ScrollStyle">
+            <div  style="display: flex">
+                <div id="productlist" class="col-lg-6 ScrollStyle">
                     {% for i,product in products %}
                         {% set i = i + 1 %}
-                        {% set div = product.id%}
+                        {% set div = product.id %}
                         {% set clasname='col-lg-6 '~div %}
+                        {% set backgroundcolor= 'background-color:'~product.color %}
                         <div class="{{ clasname }}" draggable="true"
                              ondragstart="handleDragStart(this)">
                             <div class="panel mb-30" style="height: 260px">
@@ -201,6 +254,11 @@
                                         Marque: {{ product.marque|e }} {{ i+1 }}
                                         <br>
                                         prix: {{ product.prix|e }}
+                                        <br>
+                                        color:
+                                    <div style="{{ backgroundcolor }};width:10px"><br></div>
+                                    <br>
+                                    size: {{ product.size }}
                                     </p>
                                     <img src="{{ asset('uploads/brochures/'~product.brochureFilename) }}" alt=""
                                          style="width:100%;height:120px"></a>
@@ -229,6 +287,7 @@
 
     <script src="{{ asset('backOffice/js/jquery.min.js') }}"></script>
     <script>
+
         $(document).ready(function () {
             var fashionBoard = {
                 products: [],
@@ -240,11 +299,12 @@
                 showPopup: true
             };
             var id = "";
-            var products =[];
-            var quizs=[];
-            $("select.selectpicker").change(function(){
-                var selectedClient = $(this).children("option:selected").val();
-                fashionBoard.user=selectedClient;
+            var products = [];
+            var quizs = [];
+
+            jQuery("#test").change(function () {
+                var selectedClient = jQuery("#test").children("option:selected").val();
+                fashionBoard.user = selectedClient;
                 $('#modal-title').html("Modifier profile");
 
                 //path de l'action editer de fos user : formulaire de modification
@@ -253,27 +313,27 @@
                 $.ajax({
                     type: 'get',
                     url: url,
-                    data:fashionBoard,
+                    data: fashionBoard,
                     success: function (data) {
                         // résultat de action edit : formulaire inclure dans popup
                         //$('#modal_detail').html(data);
-                        quizs=data;
-                        console.log("res2",quizs)
-                        var inputs='<div class="modal-dialog"><div class="panel mb-30"> <div class="panel-body"><p class=" header-title" style="font-size: 15px;">Quiz</p><div class="container" style="width: 100%">';
+                        quizs = data;
+                        console.log("res2", quizs)
+                        var inputs = '<div class="modal-dialog"><div class="panel mb-30"> <div class="panel-body"><p class=" header-title" style="font-size: 15px;">Quiz</p><div class="container" style="width: 100%">';
                         for (var i = 0; i < quizs.length; i++) {
-                            inputs+='<div class="questionsBox">';
-                            if(i%2 ==0){
-                                inputs+='<div class="questions form-group">'+quizs[i]+'</div>'
-                            }else{
-                                inputs += '<ul class="answerList"><li>'+quizs[i]+'</li></ul>';
+                            inputs += '<div class="questionsBox">';
+                            if (i % 2 == 0) {
+                                inputs += '<div class="questions form-group">' + quizs[i] + '</div>'
+                            } else {
+                                inputs += '<ul class="answerList"><li>' + quizs[i] + '</li></ul>';
                             }
-                            inputs+='</div>'
+                            inputs += '</div>'
                         }
-                        inputs+='</div></div></div></div>'
+                        inputs += '</div></div></div></div>'
 
                         document.getElementById('dataModal').insertAdjacentHTML('afterbegin', inputs);
 
-                        quizByUser.quizs=quizs
+                        quizByUser.quizs = quizs
                         $('#dataModal').modal("show");
                     }
                 });
@@ -289,7 +349,7 @@
             }
             colorize = (element) => {
                 element.classList.add('dragging-over');
-                var res = "."+id.substring(9, 15);
+                var res = "." + id.substring(9, 15);
                 $(res).appendTo('.dragzone');
             }
             uncolorize = (element) => {
@@ -299,25 +359,25 @@
                 products.push(id.substring(9, 15))
                 console.log("handle");
             }
-            update = ()=>{
-                fashionBoard.products=products;
+            update = () => {
+                console.log(fashionBoard)
+                fashionBoard.products = products;
                 var url = '{{ path('updateFashionBoard') }}';
                 $.ajax({
                     type: 'put',
                     url: url,
-                    data:fashionBoard,
+                    data: fashionBoard,
                     success: function (data) {
+                        console.log(data)
                         // résultat de action edit : formulaire inclure dans popup
-                        location.reload();
 
                     }
                 });
             }
-            cancel = ()=>{
+            cancel = () => {
                 location.reload();
             }
             $('#editFashionBundle').click(function () {
-
 
 
                 //path de l'action editer de fos user : formulaire de modification
@@ -328,13 +388,141 @@
                     //url: url,
                     success: function (data) {
                         // résultat de action edit : formulaire inclure dans popup
-                        fashionBoard.products=products;
-                        console.log("fashionBoard",fashionBoard)
+                        fashionBoard.products = products;
+                        console.log("fashionBoard", fashionBoard)
                     }
                 });
 
             });
         });
+
+        function changecolor() {
+            var sel = document.getElementById('scripts');
+            var opt = sel.options[sel.selectedIndex];
+            var sel1 = document.getElementById('scripts2');
+            var opt1 = sel1.options[sel1.selectedIndex];
+            if(opt1){
+                jQuery.ajax({
+                    url: "{{ (path('selectProductsByColors')) }}",
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        'id': opt.value,
+                        'id2':opt1.value,
+                        'state': true
+                    },
+                    async: true,
+                    success: function (data) {
+                        var d="";
+                        var k=""
+                        var i =0;
+                        jQuery('#productlist').html('');
+
+                        var path="uploads/brochures/"
+                        data.forEach(function (element){
+                            i=i+1;
+                            k="col-lg-6 "+element.id;
+                            d=d+'<div class="'+k+'" draggable="true"  ondragstart="handleDragStart(this)"><div class="panel mb-30" style="height: 260px"><div class="panel-body"><p class=" header-title" style="font-size: 15px;">'+ element.nom+'</p><p>Marque:'+element.marque+' '+i+'<br>color<div style="background-color: '+element.color +';width:10px"><br></div><br>size: '+element.size+'<img src="'+path+element.brochureFilename+'" style="width:100%;height:120px"></a></div></div>'
+                        })
+                        var fully=d;
+                        jQuery('#productlist').append(fully);
+                        console.log(data);
+                    }
+                });
+            }
+            else{
+                jQuery.ajax({
+                    url: "{{ (path('selectProductsByColors')) }}",
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        'id': opt.value,
+                        'state':false
+                    },
+                    async: true,
+                    success: function (data) {
+                        var d="";
+                        var k=""
+                        var i =0;
+                        jQuery('#productlist').html('');
+
+                        var path="uploads/brochures/"
+                        data.forEach(function (element){
+                            i=i+1;
+                            k="col-lg-6 "+element.id;
+                            d=d+'<div class="'+k+'" draggable="true"  ondragstart="handleDragStart(this)"><div class="panel mb-30" style="height: 260px"><div class="panel-body"><p class=" header-title" style="font-size: 15px;">'+ element.nom+'</p><p>Marque:'+element.marque+' '+i+'<br>color<div style="background-color: '+element.color +';width:10px"><br></div><br>size: '+element.size+'<img src="'+path+element.brochureFilename+'" style="width:100%;height:120px"></a></div></div>'
+                        })
+                        var fully=d;
+                        jQuery('#productlist').append(fully);
+                        console.log(data);
+                    }
+                });
+            }
+        }
+        function changegenre() {
+            var sel = document.getElementById('scripts2');
+            var opt = sel.options[sel.selectedIndex];
+            var sel1 = document.getElementById('scripts');
+            var opt1 = sel1.options[sel1.selectedIndex];
+            if (opt1){
+                jQuery.ajax({
+                    url: "{{ (path('selectProductsByGenre')) }}",
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        'id': opt.value,
+                        'id2': opt1.value,
+                        'state':true
+                    },
+                    async: true,
+                    success: function (data) {
+                        var d="";
+                        var k=""
+                        var i =0;
+                        jQuery('#productlist').html('');
+
+                        var path="uploads/brochures/"
+                        data.forEach(function (element){
+                            i=i+1;
+                            k="col-lg-6 "+element.id;
+                            d=d+'<div class="'+k+'" draggable="true"  ondragstart="handleDragStart(this)"><div class="panel mb-30" style="height: 260px"><div class="panel-body"><p class=" header-title" style="font-size: 15px;">'+ element.nom+'</p><p>Marque:'+element.marque+' '+i+'<br>color<div style="background-color: '+element.color +';width:10px"><br></div><br>size: '+element.size+'<img src="'+path+element.brochureFilename+'" style="width:100%;height:120px"></a></div></div>'
+                        })
+                        var fully=d;
+                        jQuery('#productlist').append(fully);
+                        console.log(data);
+                    }
+                });
+            }
+            else{
+                jQuery.ajax({
+                    url: "{{ (path('selectProductsByGenre')) }}",
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        'id': opt.value,
+                    },
+                    async: true,
+                    success: function (data) {
+                        var d="";
+                        var k=""
+                        var i =0;
+                        jQuery('#productlist').html('');
+
+                        var path="uploads/brochures/"
+                        data.forEach(function (element){
+                            i=i+1;
+                            k="col-lg-6 "+element.id;
+                            d=d+'<div class="'+k+'" draggable="true"  ondragstart="handleDragStart(this)"><div class="panel mb-30" style="height: 260px"><div class="panel-body"><p class=" header-title" style="font-size: 15px;">'+ element.nom+'</p><p>Marque:'+element.marque+' '+i+'<br>color<div style="background-color: '+element.color +';width:10px"><br></div><br>size: '+element.size+'<img src="'+path+element.brochureFilename+'" style="width:100%;height:120px"></a></div></div>'
+                        })
+                        var fully=d;
+                        jQuery('#productlist').append(fully);
+                        console.log(data);
+                    }
+                });
+            }
+
+
+        }
     </script>
 
 

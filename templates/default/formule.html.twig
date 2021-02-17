@@ -1,25 +1,24 @@
 {% extends "base.html.twig" %}
 {% block body %}
-<div class="blog-section latest-blog container-fluid">
+<div style="background-color: #f2f2f2" class="blog-section latest-blog container-fluid">
     <!-- Container -->
     <div class="container">
         <!-- Section Header -->
         <div class="section-header">
-            <h3>Our bundle</h3>
+            <h3 style="color: white;padding-top: 60px">Our bundle</h3>
         </div><!-- Section Header /- -->
         {% for bundle in fashionbundle %}
 
         <div class="col-md-4 col-sm-6 col-xs-6">
-            <div class="type-post">
-                <div class="entry-cover">
-                    <img height="255px" width="388px" src="images/bundle.jpg" alt="blog">
-                </div>
+            <div style="background-color: white" class="type-post">
                 <div class="blog-content">
-                    <h3 class="entry-title"><a href="blog-post.html" title="new Collectios are imported In Our shop.">This bundle contains<span> {{ bundle.fashionbordern| craue_spellout  }} </span>fashion board</a></h3>
-                    <div class="entry-meta">
+                    <h3 style="padding-top: 15px;" class="entry-title">{{ bundle.nom }}</h3>
+
+                    <h3 style="padding-top: 15px;" class="entry-title"><a href="blog-post.html" title="new Collectios are imported In Our shop.">{{ bundle.description }}</a></h3>
+                    <div style="padding-top: 15px;" class="entry-meta">
                         <span class="post-like"><a href="#" title="224 Likes">price : {{ bundle.price }} euro  <i class="fas fa-euro-sign"></i></a></span>
                     </div>
-                    <div class="entry-content">
+                    <div style="padding-top: 15px;" class="entry-content">
                         <p></p>
                         <a href="{{ path('purchase',{'idbundle': bundle.id}) }}" title="Read More" class="read-more">Purchase</a>
                     </div>

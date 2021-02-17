@@ -11,7 +11,7 @@ class OrderController extends AbstractController
 {
     public function listPaymentOrder()
     {
-        $orders = $this->getDoctrine()->getRepository(Order::class)->findPaymentOrder();
+        $orders = $this->getDoctrine()->getRepository(Order::class)->findAll();
         return $this->render('backOffice/manageOrders.html.twig', [
             "orders" => $orders,
         ]);

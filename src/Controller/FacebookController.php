@@ -16,6 +16,8 @@ class FacebookController extends AbstractController
      * Link to this controller to start the "connect" process
      *
      * @Route("/connect/facebook", name="connect_facebook_start")
+     *@param ClientRegistry $clientRegistry
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function connectAction(ClientRegistry $clientRegistry)
     {
@@ -23,7 +25,7 @@ class FacebookController extends AbstractController
 
         // will redirect to Facebook!
         return $clientRegistry
-            ->getClient('facebook_main') // key used in config/packages/knpu_oauth2_client.yaml
+            ->getClient('facebook') // key used in config/packages/knpu_oauth2_client.yaml
             ->redirect([
                 'public_profile', 'email' // the scopes you want to access
             ])
@@ -44,7 +46,7 @@ class FacebookController extends AbstractController
         // (read below)
 
         /** @var FacebookClient $client */
-        $client = $clientRegistry->getClient('facebook_main');
+        $client = $clientRegistry->getClient('facebook');
 
         try {
             // the exact class depends on which provider you're using

@@ -4,7 +4,6 @@ namespace App\Entity;
 
 use App\Repository\OrderRepository;
 use Doctrine\ORM\Mapping as ORM;
-use JMS\Payment\CoreBundle\Entity\PaymentInstruction;
 
 
 /**
@@ -37,12 +36,9 @@ class Order
      * @ORM\Column(name="state", type="boolean", length=256, nullable=true)
      */
     private $state;
-    /**
-     * @ORM\OneToOne(targetEntity="JMS\Payment\CoreBundle\Entity\PaymentInstruction")
-     */
-    private $paymentInstruction;
 
-    /** @ORM\Column(type="string") */
+
+    /** @ORM\Column(type="string",nullable=true) */
     private $orderNumber;
 
     /** @ORM\Column(type="decimal", precision = 2) */
@@ -80,21 +76,7 @@ class Order
         $this->bundle = $bundle;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getPaymentInstruction()
-    {
-        return $this->paymentInstruction;
-    }
 
-    /**
-     * @param mixed $paymentInstruction
-     */
-    public function setPaymentInstruction($paymentInstruction): void
-    {
-        $this->paymentInstruction = $paymentInstruction;
-    }
 
     /**
      * @return mixed
@@ -128,10 +110,9 @@ class Order
         $this->amount = $amount;
     }
 
-    public function __construct($amount, $orderNumber)
+    public function __construct($amount)
     {
         $this->amount = $amount;
-        $this->orderNumber = $orderNumber;
     }
 
     /**

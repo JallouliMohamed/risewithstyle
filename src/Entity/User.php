@@ -64,7 +64,7 @@ class User extends BaseUser implements UserInterface
     /**
      * @return string|null
      */
-    public function getAddress(): string
+    public function getAddress()
     {
         return $this->address;
     }
@@ -78,9 +78,9 @@ class User extends BaseUser implements UserInterface
     }
 
     /**
-     * @return string|null
+     * @return string| null
      */
-    public function getFirstname(): string
+    public function getFirstname()
     {
         return $this->firstname;
     }
@@ -96,7 +96,7 @@ class User extends BaseUser implements UserInterface
     /**
      * @return string|null
      */
-    public function getLastname(): string
+    public function getLastname()
     {
         return $this->lastname;
     }
@@ -112,7 +112,7 @@ class User extends BaseUser implements UserInterface
     /**
      * @return int|null
      */
-    public function getPhonenumber(): int
+    public function getPhonenumber()
     {
         return $this->phonenumber;
     }
@@ -128,7 +128,7 @@ class User extends BaseUser implements UserInterface
     /**
      * @return bool|null
      */
-    public function isState(): bool
+    public function isState()
     {
         return $this->state;
     }

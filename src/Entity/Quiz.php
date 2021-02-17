@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=QuizRepository::class)
  */
-class Quiz
+class Quiz implements \JsonSerializable
 {
     /**
      * @ORM\Id()
@@ -100,6 +100,10 @@ class Quiz
     public function setFashionboardid($fashionboardid): void
     {
         $this->fashionboardid = $fashionboardid;
+    }
+    public function jsonSerialize()
+    {
+        return (object) get_object_vars($this);
     }
 
 }
