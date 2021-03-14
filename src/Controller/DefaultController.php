@@ -258,6 +258,111 @@ class DefaultController extends AbstractController
         return $this->render('default/quiz.html.twig');
 
     }
+    public function addQuizVersion(Request $request){
+        $s = $request->get('flexRadioDefault',0)[0];
+        $k = $request->get('flexRadioDefault1',0)[0];
+        $look = $request->get('flexRadioDefault2',0)[0];
+        $sexy = $request->get('sexy');
+        $glamour = $request->get('glamour');
+        $casual = $request->get('casual');
+        $chic = $request->get('chic');
+        $trendy = $request->get('trendy');
+        $sport = $request->get('sport');
+        $questions=['how do you identify','pointure chaussures','les hauts','les bas','Quel est votre type de morphologie ?',
+            $request->get('flexRadioDefault2',0)[0],'Laquelles de ces marques vous préférez pour faire votre shopping?'
+        ];
+        $activatedboards=$this->getDoctrine()->getRepository(Fashionboard::class)->findOneBy(['user'=>$this->getUser(),'clientActivation'=>0]);
+        $chaussure = $request->get('chaussure');
+        $haut = $request->get('haut');
+        $bas = $request->get('bas');
+        $marques=['adidas','bershka','boohoo','calvinklein','chloe','coach','fendi','forever21','gap','gucci','hermes','jennyfer','mango','maxmara','tommy','zara'];
+        $look=['casual', 'chic', 'sport', 'trendy','sexy','glamour'];
+
+        $quiz = new Quiz();
+        $quiz->setUser($this->getUser());
+        $quiz->setFashionboardid($activatedboards);
+        $quiz->setQuestionid($questions[0]);
+        $quiz->setResponseid($s);
+        $this->getDoctrine()->getManager()->persist($quiz);
+        $this->getDoctrine()->getManager()->flush();
+
+        $quiz = new Quiz();
+        $quiz->setUser($this->getUser());
+        $quiz->setFashionboardid($activatedboards);
+        $quiz->setQuestionid($questions[1]);
+        $quiz->setResponseid($chaussure);
+        $this->getDoctrine()->getManager()->persist($quiz);
+        $this->getDoctrine()->getManager()->flush();
+
+        $quiz = new Quiz();
+        $quiz->setUser($this->getUser());
+        $quiz->setFashionboardid($activatedboards);
+        $quiz->setQuestionid($questions[2]);
+        $quiz->setResponseid($haut);
+        $this->getDoctrine()->getManager()->persist($quiz);
+        $this->getDoctrine()->getManager()->flush();
+
+        $quiz = new Quiz();
+        $quiz->setUser($this->getUser());
+        $quiz->setFashionboardid($activatedboards);
+        $quiz->setQuestionid($questions[3]);
+        $quiz->setResponseid($bas);
+        $this->getDoctrine()->getManager()->persist($quiz);
+        $this->getDoctrine()->getManager()->flush();
+
+        $quiz = new Quiz();
+        $quiz->setUser($this->getUser());
+        $quiz->setFashionboardid($activatedboards);
+        $quiz->setQuestionid($questions[4]);
+        $quiz->setResponseid($k);
+        $this->getDoctrine()->getManager()->persist($quiz);
+        $this->getDoctrine()->getManager()->flush();
+
+        $quiz = new Quiz();
+        $quiz->setUser($this->getUser());
+        $quiz->setFashionboardid($activatedboards);
+        $quiz->setQuestionid($questions[5]);
+        $tmp="";
+        foreach($look as $i){
+            $tb=$request->get($i);
+            if ($tb != null){
+                $tmp= $tmp . $tb .";";
+            }
+        }
+        $quiz->setResponseid($tmp);
+        $this->getDoctrine()->getManager()->persist($quiz);
+        $this->getDoctrine()->getManager()->flush();
+
+
+        $quiz = new Quiz();
+        $quiz->setUser($this->getUser());
+        $quiz->setFashionboardid($activatedboards);
+        $quiz->setQuestionid($questions[5]);
+        $tmp="";
+        foreach($marques as $i){
+            $tb=$request->get($i);
+            if ($tb != null){
+                $tmp= $tmp . $tb .";";
+            }
+        }
+        $quiz->setResponseid($tmp);
+        $this->getDoctrine()->getManager()->persist($quiz);
+        $this->getDoctrine()->getManager()->flush();
+        $activatedboards->setClientActivation(1);
+        $this->getDoctrine()->getManager()->persist($activatedboards);
+
+        $this->getDoctrine()->getManager()->flush();
+
+
+        $activatedboards=$this->getDoctrine()->getRepository(Fashionboard::class)->findBy(['user'=>$this->getUser(),'clientActivation'=>1]);
+
+        $boards=$this->getDoctrine()->getRepository(Fashionboard::class)->findBy(['user'=>$this->getUser()]);
+        return $this->render('default/fashionboard.html.twig',array(
+            'boards' => $boards,
+            'nbboards'=>sizeof($boards),
+            'nbactivatedboards'=>sizeof($activatedboards)
+        ));
+    }
     public function viewActivatedFashionBoard(Request $request){
         $activatedboards=new Fashionboard();
         $activatedboards=$this->getDoctrine()->getRepository(Fashionboard::class)->find($request->get('id'));

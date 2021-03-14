@@ -1,578 +1,645 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-	<style class="cp-pen-styles">
-		.nopad {
-			padding-left: 0 !important;
-			padding-right: 0 !important;
-		}
-		html {
-			overflow-y: scroll;
-		}
-		/*image gallery*/
-		.image-checkbox {
-			cursor: pointer;
-			box-sizing: border-box;
-			-moz-box-sizing: border-box;
-			-webkit-box-sizing: border-box;
-			border: 4px solid transparent;
-			margin-bottom: 0;
-			outline: 0;
-		}
+    <style class="cp-pen-styles">
+        .nopad {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+
+        html {
+            overflow-y: scroll;
+        }
+
+        /*image gallery*/
+        .image-checkbox {
+            cursor: pointer;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            border: 4px solid transparent;
+            margin-bottom: 0;
+            outline: 0;
+        }
 
 
-		.image-checkbox-checked {
-			border-color: #4783B0;
-		}
+        .image-checkbox-checked {
+            border-color: #4783B0;
+        }
 
-		.image-checkbox .fa {
-			position: absolute;
-			color: #4A79A3;
-			background-color: #fff;
-			padding: 10px;
-			top: 0;
-			right: 0;
-		}
+        .image-checkbox .fa {
+            position: absolute;
+            color: #4A79A3;
+            background-color: #fff;
+            padding: 10px;
+            top: 0;
+            right: 0;
+        }
 
-		.image-checkbox-checked .fa {
-			display: block !important;
-		}
+        .image-checkbox-checked .fa {
+            display: block !important;
+        }
 
-		.custom-control.image-checkbox {
-			position: relative;
-			padding-left: 0;
-		}
+        .custom-control.image-checkbox {
+            position: relative;
+            padding-left: 0;
+        }
 
-		.custom-control.image-checkbox .custom-control-input:checked ~ .custom-control-label:after,
-		.custom-control.image-checkbox .custom-control-input:checked ~ .custom-control-label:before {
-			opacity: 1;
-		}
+        .custom-control.image-checkbox .custom-control-input:checked ~ .custom-control-label:after,
+        .custom-control.image-checkbox .custom-control-input:checked ~ .custom-control-label:before {
+            opacity: 1;
+        }
 
-		.custom-control.image-checkbox label {
-			cursor: pointer;
-		}
+        .custom-control.image-checkbox label {
+            cursor: pointer;
+        }
 
-		.custom-control.image-checkbox label:before {
-			border-color: #007bff;
-			background-color: #007bff;
-		}
+        .custom-control.image-checkbox label:before {
+            border-color: #007bff;
+            background-color: #007bff;
+        }
 
-		.custom-control.image-checkbox label:after,
-		.custom-control.image-checkbox label:before {
-			transition: opacity 0.3s ease;
-			opacity: 0;
-			left: 0.25rem;
-		}
+        .custom-control.image-checkbox label:after,
+        .custom-control.image-checkbox label:before {
+            transition: opacity 0.3s ease;
+            opacity: 0;
+            left: 0.25rem;
+        }
 
-		.custom-control.image-checkbox label:focus,
-		.custom-control.image-checkbox label:hover {
-			opacity: .8;
-		}
+        .custom-control.image-checkbox label:focus,
+        .custom-control.image-checkbox label:hover {
+            opacity: .8;
+        }
 
-		.custom-control.image-checkbox label img {
-			border-radius: 2.5px;
-		}
+        .custom-control.image-checkbox label img {
+            border-radius: 2.5px;
+        }
 
-		.form-group-image-checkbox.is-invalid label {
-			color: #dc3545;
-		}
+        .form-group-image-checkbox.is-invalid label {
+            color: #dc3545;
+        }
 
-		.form-group-image-checkbox.is-invalid .invalid-feedback {
-			display: block;
-		}
+        .form-group-image-checkbox.is-invalid .invalid-feedback {
+            display: block;
+        }
 
-		h1 {
-			margin-top: 80px;
-		}
+        h1 {
+            margin-top: 80px;
+        }
 
-		h2,
-		h3 {
-			margin-top: 40px;
-		}
+        h2,
+        h3 {
+            margin-top: 40px;
+        }
 
-		.example {
-			border: 4px solid #eee;
-			margin-bottom: 30px;
-		}
+        .example {
+            border: 4px solid #eee;
+            margin-bottom: 30px;
+        }
 
-		.example-preview {
-			padding: 1.5rem;
-		}
+        .example-preview {
+            padding: 1.5rem;
+        }
 
-		.example > pre {
-			border-top: 4px solid #eee;
-			margin: 0;
-		}
+        .example > pre {
+            border-top: 4px solid #eee;
+            margin: 0;
+        }
 
-		.no-html {
-			display: none;
-		}
+        .no-html {
+            display: none;
+        }
 
-		.highlihgt-grid .row + .row {
-			margin-top: 1rem;
-		}
+        .highlihgt-grid .row + .row {
+            margin-top: 1rem;
+        }
 
-		.highlihgt-grid [class^="col-"] {
-			padding-top: 0.75rem;
-			padding-bottom: 0.75rem;
-			background-color: rgba(86, 61, 124, 0.15);
-			border: 1px solid rgba(86, 61, 124, 0.2);
-		}
+        .highlihgt-grid [class^="col-"] {
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+            background-color: rgba(86, 61, 124, 0.15);
+            border: 1px solid rgba(86, 61, 124, 0.2);
+        }
 
-		/*# sourceMappingURL=bootstrap-image-checkbox.css.map */
-	</style>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/themes/prism.min.css">
+        /*# sourceMappingURL=bootstrap-image-checkbox.css.map */
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/themes/prism.min.css">
 
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bs-stepper/dist/css/bs-stepper.min.css">
-	<script src="{{ asset('js/bs-stepper.min.js') }}"></script>
-	<div
-		style="background-color: #ffffff;margin-bottom: unset" class="page-banner container-fluid no-padding">
-		<!-- Container -->
-		<div class="container">
-			<div class="banner-content">
-				<h3>Wishi</h3>
-				<p>our vision is to be Earth's most customer centric company</p>
-			</div>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+          integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bs-stepper/dist/css/bs-stepper.min.css">
+    <script src="{{ asset('js/bs-stepper.min.js') }}"></script>
+    <div
+            style="background-color: #ffffff;margin-bottom: unset" class="page-banner container-fluid no-padding">
+        <!-- Container -->
+        <div class="container">
+            <div class="banner-content">
+                <h3>Wishi</h3>
+                <p>our vision is to be Earth's most customer centric company</p>
+            </div>
 
-		</div>
-		<!-- Container /- -->
-	</div>
-	<div class="container">
-		<div id="stepper2" class="bs-stepper">
-			<div class="bs-stepper-header" role="tablist">
-				<div class="step" data-target="#test-nl-1">
-					<button type="button" class="step-trigger" role="tab" id="stepper2trigger1" aria-controls="test-nl-1">
+        </div>
+        <!-- Container /- -->
+    </div>
+    <div class="container">
+        <div id="stepper2" class="bs-stepper">
+            <div class="bs-stepper-header" role="tablist">
+                <div class="step" data-target="#test-nl-1">
+                    <button type="button" class="step-trigger" role="tab" id="stepper2trigger1"
+                            aria-controls="test-nl-1">
 						<span class="bs-stepper-circle">
 							<span class="fas fa-user" aria-hidden="true"></span>
 						</span>
-						<span class="bs-stepper-label">Gender</span>
-					</button>
-				</div>
-				<div class="bs-stepper-line"></div>
-				<div class="step" data-target="#test-nl-2">
-					<button type="button" class="step-trigger" role="tab" id="stepper2trigger2" aria-controls="test-nl-2">
+                        <span class="bs-stepper-label">Gender</span>
+                    </button>
+                </div>
+                <div class="bs-stepper-line"></div>
+                <div class="step" data-target="#test-nl-2">
+                    <button type="button" class="step-trigger" role="tab" id="stepper2trigger2"
+                            aria-controls="test-nl-2">
 						<span class="bs-stepper-circle">
 							<span class="fas fa-map-marked" aria-hidden="true"></span>
 						</span>
-						<span class="bs-stepper-label">Body type</span>
-					</button>
-				</div>
-				<div class="bs-stepper-line"></div>
-				<div class="step" data-target="#test-nl-3">
-					<button type="button" class="step-trigger" role="tab" id="stepper2trigger3" aria-controls="test-nl-3">
+                        <span class="bs-stepper-label">Body type</span>
+                    </button>
+                </div>
+                <div class="bs-stepper-line"></div>
+                <div class="step" data-target="#test-nl-3">
+                    <button type="button" class="step-trigger" role="tab" id="stepper2trigger3"
+                            aria-controls="test-nl-3">
 						<span class="bs-stepper-circle">
 							<span class="fas fa-save" aria-hidden="true"></span>
 						</span>
-						<span class="bs-stepper-label">Style</span>
-					</button>
-				</div>
-				<div class="bs-stepper-line"></div>
-				<div class="step" data-target="#test-nl-4">
-					<button type="button" class="step-trigger" role="tab" id="stepper2trigger3" aria-controls="test-nl-4">
+                        <span class="bs-stepper-label">Style</span>
+                    </button>
+                </div>
+                <div class="bs-stepper-line"></div>
+                <div class="step" data-target="#test-nl-4">
+                    <button type="button" class="step-trigger" role="tab" id="stepper2trigger3"
+                            aria-controls="test-nl-4">
 						<span class="bs-stepper-circle">
 							<span class="fas fa-save" aria-hidden="true"></span>
 						</span>
-						<span class="bs-stepper-label">Brands</span>
-					</button>
-				</div>
-				<div class="bs-stepper-line"></div>
-				<div class="step" data-target="#test-nl-5">
-					<button type="button" class="step-trigger" role="tab" id="stepper2trigger3" aria-controls="test-nl-5">
+                        <span class="bs-stepper-label">Brands</span>
+                    </button>
+                </div>
+                <div class="bs-stepper-line"></div>
+                <div class="step" data-target="#test-nl-5">
+                    <button type="button" class="step-trigger" role="tab" id="stepper2trigger3"
+                            aria-controls="test-nl-5">
 						<span class="bs-stepper-circle">
 							<span class="fas fa-save" aria-hidden="true"></span>
 						</span>
-						<span class="bs-stepper-label">Marques</span>
-					</button>
-				</div>
+                        <span class="bs-stepper-label">Marques</span>
+                    </button>
+                </div>
 
-			</div>
-			<div class="bs-stepper-content">
-				<form onsubmit="return false">
-					<div style="text-align:center" id="test-nl-1" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper2trigger1">
-						<label for="exampleInpuAddress1">
-							<h4>How do you identify?</h4>
-						</label>
-						<div class="row">
-							<div class="form-group">
-								<input required class="form-control" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-								<label class="form-check-label" for="flexRadioDefault1">
-									<h5>FEMALE</h5>
-								</label>
-							</div>
-						</div>
-						<div class="row">
+            </div>
+            <div class="bs-stepper-content">
+                <form method="post" action="{{ path('addQuizVersion') }}">
+                    <div style="text-align:center" id="test-nl-1" role="tabpanel" class="bs-stepper-pane"
+                         aria-labelledby="stepper2trigger1">
+                        <label for="exampleInpuAddress1">
+                            <h4>How do you identify?</h4>
+                        </label>
+                        <div class="row">
+                            <div class="form-group">
+                                <input required class="form-control" Value="FEMALE" type="radio"
+                                       name="flexRadioDefault[]" id="flexRadioDefault1">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    <h5>FEMALE</h5>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
 
-							<div class="form-group">
-								<input required class="form-control" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-								<label class="form-check-label" for="flexRadioDefault2">
-									<h5>MALE</h5>
-								</label>
-							</div>
-						</div>
-						<div class="row">
-							<div class="form-group">
-								<input required class="form-control" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-								<label class="form-check-label" for="flexRadioDefault2">
-									<h5>NON BINARY</h5>
+                            <div class="form-group">
+                                <input required class="form-control" Value="MALE" type="radio" name="flexRadioDefault[]"
+                                       id="flexRadioDefault2" checked>
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    <h5>MALE</h5>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <input required class="form-control" Value="NON BINARY" type="radio"
+                                       name="flexRadioDefault[]" id="flexRadioDefault2" checked>
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    <h5>NON BINARY</h5>
 
-								</label>
-							</div>
-						</div>
-						<button class="btn btn-primary" onclick="stepper2.next()">Next</button>
-					</div>
-					<div id="test-nl-2" align="center" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper2trigger2">
-						<div class="form-group">
-							<label class="form-check-label" for="flexRadioDefault2">
-								<h5>les chaussures</h5>
+                                </label>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="stepper2.next()">Next</button>
+                    </div>
+                    <div id="test-nl-2" align="center" role="tabpanel" class="bs-stepper-pane"
+                         aria-labelledby="stepper2trigger2">
+                        <div class="form-group">
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                <h5>les chaussures</h5>
 
-							</label>
-							<select style="width: unset" class="form-control" aria-label="Default select example">
-								<option selected value="36">36</option>
-								<option value="37">37</option>
-								<option value="37.5">37.5</option>
-								<option value="38">38</option>
-								<option value="38.5">38.5</option>
-								<option value="39">39</option>
-								<option value="39.5">39.5</option>
-								<option value="40">40</option>
-								<option value="41">41</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<label class="form-check-label" for="flexRadioDefault2">
-								<h5>les hauts</h5>
+                            </label>
+                            <select name="chaussure" style="width: unset" class="form-control"
+                                    aria-label="Default select example">
+                                <option selected value="36">36</option>
+                                <option value="37">37</option>
+                                <option value="37.5">37.5</option>
+                                <option value="38">38</option>
+                                <option value="38.5">38.5</option>
+                                <option value="39">39</option>
+                                <option value="39.5">39.5</option>
+                                <option value="40">40</option>
+                                <option value="41">41</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                <h5>les hauts</h5>
 
-							</label>
-							<select style="width: unset" class="form-control" aria-label="Default select example">
-								<option selected value="XS">XS</option>
-								<option value="S">S</option>
-								<option value="M">M</option>
-								<option value="L">L</option>
-								<option value="XL">XL</option>
-								<option value="XXL">XXL</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<label class="form-check-label" for="flexRadioDefault2">
-								<h5>les bas</h5>
+                            </label>
+                            <select name="haut" style="width: unset" class="form-control"
+                                    aria-label="Default select example">
+                                <option selected value="XS">XS</option>
+                                <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                                <option value="XXL">XXL</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                <h5>les bas</h5>
 
-							</label>
-							<select style="width: unset" class="form-control" aria-label="Default select example">
-								<option selected value="32">32</option>
-								<option value="34">34</option>
-								<option value="36">36</option>
-								<option value="40">40</option>
-								<option value="42">42</option>
-								<option value="44">44</option>
-								<option value="46">46</option>
+                            </label>
+                            <select name="bas" style="width: unset" class="form-control"
+                                    aria-label="Default select example">
+                                <option selected value="32">32</option>
+                                <option value="34">34</option>
+                                <option value="36">36</option>
+                                <option value="40">40</option>
+                                <option value="42">42</option>
+                                <option value="44">44</option>
+                                <option value="46">46</option>
 
-							</select>
-						</div>
-						<button class="btn btn-primary" onclick="stepper2.next()">Next</button>
-					</div>
-					<div id="test-nl-3" align="center" role="tabpanel" class="bs-stepper-pane text-center" aria-labelledby="stepper2trigger3">
-						<label for="exampleInpuAddress1">
-							<h4>Quel est votre type de morphologie
-																								                                ?</h4>
-						</label>
-						<div class="row">
-							<div class="form-group">
-								<input class="form-control" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-								<label class="form-check-label" for="flexRadioDefault1">
-									<h5>Petite</h5>
-								</label>
-							</div>
-						</div>
-						<div class="row">
+                            </select>
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="stepper2.next()">Next</button>
+                    </div>
+                    <div id="test-nl-3" align="center" role="tabpanel" class="bs-stepper-pane text-center"
+                         aria-labelledby="stepper2trigger3">
+                        <label for="exampleInpuAddress1">
+                            <h4>Quel est votre type de morphologie
+                                ?</h4>
+                        </label>
+                        <div class="row">
+                            <div class="form-group">
+                                <input class="form-control" value="petite" type="radio" name="flexRadioDefault1[]"
+                                       id="flexRadioDefault1">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    <h5>Petite</h5>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
 
-							<div class="form-group">
-								<input class="form-control" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-								<label class="form-check-label" for="flexRadioDefault2">
-									<h5>Tall</h5>
-								</label>
-							</div>
-						</div>
-						<div class="row">
-							<div class="form-group">
-								<input class="form-control" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-								<label class="form-check-label" for="flexRadioDefault2">
-									<h5>Mince</h5>
+                            <div class="form-group">
+                                <input class="form-control" value="Tall" type="radio" name="flexRadioDefault1[]"
+                                       id="flexRadioDefault2" checked>
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    <h5>Tall</h5>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <input class="form-control" value="Mince" type="radio" name="flexRadioDefault1[]"
+                                       id="flexRadioDefault2" checked>
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    <h5>Mince</h5>
 
-								</label>
-							</div>
-						</div>
-						<div class="row">
-							<div class="form-group">
-								<input class="form-control" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-								<label class="form-check-label" for="flexRadioDefault2">
-									<h5>Curvy</h5>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <input class="form-control" value="Curvy" type="radio" name="flexRadioDefault1[]"
+                                       id="flexRadioDefault2" checked>
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    <h5>Curvy</h5>
 
-								</label>
-							</div>
-						</div>
-						<div class="row">
-							<div class="form-group">
-								<input class="form-control" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-								<label class="form-check-label" for="flexRadioDefault2">
-									<h5>Fit
-									</h5>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <input class="form-control" value="Fit" type="radio" name="flexRadioDefault1[]"
+                                       id="flexRadioDefault2" checked>
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    <h5>Fit
+                                    </h5>
 
-								</label>
-							</div>
-						</div>
-						<div class="row">
-							<div class="form-group">
-								<input class="form-control" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-								<label class="form-check-label" for="flexRadioDefault2">
-									<h5>Normal</h5>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <input class="form-control" value="Normal" type="radio" name="flexRadioDefault1[]"
+                                       id="flexRadioDefault2" checked>
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    <h5>Normal</h5>
 
-								</label>
-							</div>
-						</div>
-						<button class="btn btn-primary" onclick="stepper2.next()">Next</button>
-					</div>
-					<div id="test-nl-4" align="center" role="tabpanel" class="bs-stepper-pane text-center">
-						<label for="exampleInpuAddress1">
-							<h4>Qu’est ce que vous cherchiez comme look
-																								                                ?</h4>
-						</label>
-						<div class="row">
-							<div class="form-group">
-								<input onclick="lookJour()" class="form-control" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-								<label class="form-check-label" for="flexRadioDefault2">
-									<h5>Un look pour tous les jours</h5>
+                                </label>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="stepper2.next()">Next</button>
+                    </div>
+                    <div id="test-nl-4" align="center" role="tabpanel" class="bs-stepper-pane text-center">
+                        <label for="exampleInpuAddress1">
+                            <h4>Qu’est ce que vous cherchiez comme look
+                                ?</h4>
+                        </label>
+                        <div class="row">
+                            <div class="form-group">
+                                <input onclick="lookJour()" class="form-control" type="radio"
+                                       value="Un look pour tous les jours" name="flexRadioDefault2[]"
+                                       id="flexRadioDefault2" checked>
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    <h5>Un look pour tous les jours</h5>
 
-								</label>
-							</div>
-						</div>
-						<div class="row">
-							<div class="form-group">
-								<input onclick="lookSoirée()" class="form-control" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-								<label class="form-check-label" for="flexRadioDefault2">
-									<h5>Un look pour une soirée</h5>
-								</label>
-							</div>
-						</div>
-						<div id="look"></div>
-						<button class="btn btn-primary" onclick="stepper2.next()">Next</button>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <input onclick="lookSoirée()" class="form-control" type="radio"
+                                       value="Un look pour une soirée" name="flexRadioDefault2[]" id="flexRadioDefault2"
+                                       >
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    <h5>Un look pour une soirée</h5>
+                                </label>
+                            </div>
+                        </div>
+                        <div id="look">
+                            <div class='row'>
+                                <div class='col-md-3'>
+                                    <div class='custom-control custom-checkbox image-checkbox'><input value="casual" name="casual" type='checkbox'
+                                                                                                      class='custom-control-input'
+                                                                                                      id='casual'> <label
+                                                class='custom-control-label' for='casual'> <img
+                                                    style='height:343px;width:252px' src='images/casual.png' alt='#'
+                                                    class='img-fluid'> </label></div>
+                                </div>
+                                <div class='col-md-3'>
+                                    <div class='custom-control custom-checkbox image-checkbox'><input value="chic" name="chic" type='checkbox'
+                                                                                                      class='custom-control-input'
+                                                                                                      id='chic'> <label
+                                                class='custom-control-label' for='chic'> <img
+                                                    style='height:343px;width:252px' src='images/chic.png' alt='#'
+                                                    class='img-fluid'> </label></div>
+                                </div>
+                                <div class='col-md-3'>
+                                    <div class='custom-control custom-checkbox image-checkbox'><input value="sport" name="sport" type='checkbox'
+                                                                                                      class='custom-control-input'
+                                                                                                      id='sport'> <label
+                                                class='custom-control-label' for='sport'> <img
+                                                    style='height:343px;width:252px' src='images/sport.png' alt='#'
+                                                    class='img-fluid'> </label></div>
+                                </div>
+                                <div class='col-md-3'>
+                                    <div class='custom-control custom-checkbox image-checkbox'><input value="trendy" name="trendy" type='checkbox'
+                                                                                                      class='custom-control-input'
+                                                                                                      id='trendy'> <label
+                                                class='custom-control-label' for='trendy'> <img
+                                                    style='height:343px;width:252px' src='images/trendy.png' alt='#'
+                                                    class='img-fluid'> </label></div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="stepper2.next()">Next</button>
 
-					</div>
-					<div id="test-nl-5" align="center" role="tabpanel" class="bs-stepper-pane text-center">
-						<label for="exampleInpuAddress1">
-							<h4>Laquelles de ces marques vous préférez pour faire votre shopping</h4>
-						</label>
-						<div class='row'>
-							<div class='col-md-3'>
-								<div class='custom-control custom-checkbox image-checkbox'>
-									<input type='checkbox' class='custom-control-input' id='adidas'>
-									<label class='custom-control-label' for='adidas'>
-										<img  src='images/logo/adidaslogo.png' alt='#' class='img-fluid'>
-									</label>
-								</div>
-							</div>
-							<div class='col-md-3'>
-								<div class='custom-control custom-checkbox image-checkbox'>
-									<input type='checkbox' class='custom-control-input' id='bershka'>
-									<label class='custom-control-label' for='bershka'>
-										<img  src='images/logo/bershka.png' alt='#' class='img-fluid'>
-									</label>
-								</div>
-							</div>
-							<div class='col-md-3'>
-								<div class='custom-control custom-checkbox image-checkbox'>
-									<input type='checkbox' class='custom-control-input' id='boohoo'>
-									<label class='custom-control-label' for='boohoo'>
-										<img  src='images/logo/boohoo.png' alt='#' class='img-fluid'>
-									</label>
-								</div>
-							</div>
-							<div class='col-md-3'>
-								<div class='custom-control custom-checkbox image-checkbox'>
-									<input type='checkbox' class='custom-control-input' id='calvinklein'>
-									<label class='custom-control-label' for='calvinklein'>
-										<img  src='images/logo/calvinklein.png' alt='#' class='img-fluid'>
-									</label>
-								</div>
-							</div>
-						</div>
-						<div class='row'>
-							<div class='col-md-3'>
-								<div class='custom-control custom-checkbox image-checkbox'>
-									<input type='checkbox' class='custom-control-input' id='chloe'>
-									<label class='custom-control-label' for='chloe'>
-										<img  src='images/logo/chloe.png' alt='#' class='img-fluid'>
-									</label>
-								</div>
-							</div>
-							<div class='col-md-3'>
-								<div class='custom-control custom-checkbox image-checkbox'>
-									<input type='checkbox' class='custom-control-input' id='coach'>
-									<label class='custom-control-label' for='coach'>
-										<img  src='images/logo/coach.png' alt='#' class='img-fluid'>
-									</label>
-								</div>
-							</div>
-							<div class='col-md-3'>
-								<div class='custom-control custom-checkbox image-checkbox'>
-									<input type='checkbox' class='custom-control-input' id='fendi'>
-									<label class='custom-control-label' for='fendi'>
-										<img  src='images/logo/fendi.png' alt='#' class='img-fluid'>
-									</label>
-								</div>
-							</div>
-							<div class='col-md-3'>
-								<div class='custom-control custom-checkbox image-checkbox'>
-									<input type='checkbox' class='custom-control-input' id='forever21'>
-									<label class='custom-control-label' for='forever21'>
-										<img  src='images/logo/forever21.png' alt='#' class='img-fluid'>
-									</label>
-								</div>
-							</div>
-						</div>
-						<div class='row'>
-							<div class='col-md-3'>
-								<div class='custom-control custom-checkbox image-checkbox'>
-									<input type='checkbox' class='custom-control-input' id='gap'>
-									<label class='custom-control-label' for='gap'>
-										<img  src='images/logo/gap.png' alt='#' class='img-fluid'>
-									</label>
-								</div>
-							</div>
-							<div class='col-md-3'>
-								<div class='custom-control custom-checkbox image-checkbox'>
-									<input type='checkbox' class='custom-control-input' id='gucci'>
-									<label class='custom-control-label' for='gucci'>
-										<img  src='images/logo/gucci.png' alt='#' class='img-fluid'>
-									</label>
-								</div>
-							</div>
-							<div class='col-md-3'>
-								<div class='custom-control custom-checkbox image-checkbox'>
-									<input type='checkbox' class='custom-control-input' id='hermes'>
-									<label class='custom-control-label' for='hermes'>
-										<img  src='images/logo/hermes.png' alt='#' class='img-fluid'>
-									</label>
-								</div>
-							</div>
-							<div class='col-md-3'>
-								<div class='custom-control custom-checkbox image-checkbox'>
-									<input type='checkbox' class='custom-control-input' id='jennyfer'>
-									<label class='custom-control-label' for='jennyfer'>
-										<img  src='images/logo/jennyfer.png' alt='#' class='img-fluid'>
-									</label>
-								</div>
-							</div>
-						</div>
-						<div class='row'>
-							<div class='col-md-3'>
-								<div class='custom-control custom-checkbox image-checkbox'>
-									<input type='checkbox' class='custom-control-input' id='mango'>
-									<label class='custom-control-label' for='mango'>
-										<img  src='images/logo/mangologo.png' alt='#' class='img-fluid'>
-									</label>
-								</div>
-							</div>
-							<div class='col-md-3'>
-								<div class='custom-control custom-checkbox image-checkbox'>
-									<input type='checkbox' class='custom-control-input' id='maxmara'>
-									<label class='custom-control-label' for='maxmara'>
-										<img  src='images/logo/maxmara.png' alt='#' class='img-fluid'>
-									</label>
-								</div>
-							</div>
-							<div class='col-md-3'>
-								<div class='custom-control custom-checkbox image-checkbox'>
-									<input type='checkbox' class='custom-control-input' id='tommy'>
-									<label class='custom-control-label' for='tommy'>
-										<img  src='images/logo/tommy.png' alt='#' class='img-fluid'>
-									</label>
-								</div>
-							</div>
-							<div class='col-md-3'>
-								<div class='custom-control custom-checkbox image-checkbox'>
-									<input type='checkbox' class='custom-control-input' id='zara'>
-									<label class='custom-control-label' for='zara'>
-										<img  src='images/logo/zara.png' alt='#' class='img-fluid'>
-									</label>
-								</div>
-							</div>
-						</div>
+                    </div>
+                    <div id="test-nl-5" align="center" role="tabpanel" class="bs-stepper-pane text-center">
+                        <label for="exampleInpuAddress1">
+                            <h4>Laquelles de ces marques vous préférez pour faire votre shopping</h4>
+                        </label>
+                        <div class='row'>
+                            <div class='col-md-3'>
+                                <div class='custom-control custom-checkbox image-checkbox'>
+                                    <input value="adidas" name="adidas" type='checkbox' class='custom-control-input' id='adidas'>
+                                    <label class='custom-control-label' for='adidas'>
+                                        <img src='images/logo/adidaslogo.png' alt='#' class='img-fluid'>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class='col-md-3'>
+                                <div class='custom-control custom-checkbox image-checkbox'>
+                                    <input value="bershka" name="bershka" type='checkbox' class='custom-control-input' id='bershka'>
+                                    <label class='custom-control-label' for='bershka'>
+                                        <img src='images/logo/bershka.png' alt='#' class='img-fluid'>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class='col-md-3'>
+                                <div class='custom-control custom-checkbox image-checkbox'>
+                                    <input value="boohoo" name="boohoo" type='checkbox' class='custom-control-input' id='boohoo'>
+                                    <label class='custom-control-label' for='boohoo'>
+                                        <img src='images/logo/boohoo.png' alt='#' class='img-fluid'>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class='col-md-3'>
+                                <div class='custom-control custom-checkbox image-checkbox'>
+                                    <input value="calvinklein" name="calvinklein" type='checkbox' class='custom-control-input' id='calvinklein'>
+                                    <label class='custom-control-label' for='calvinklein'>
+                                        <img src='images/logo/calvinklein.png' alt='#' class='img-fluid'>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-md-3'>
+                                <div class='custom-control custom-checkbox image-checkbox'>
+                                    <input value="chloe" name="chloe" type='checkbox' class='custom-control-input' id='chloe'>
+                                    <label class='custom-control-label' for='chloe'>
+                                        <img src='images/logo/chloe.png' alt='#' class='img-fluid'>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class='col-md-3'>
+                                <div class='custom-control custom-checkbox image-checkbox'>
+                                    <input value="coach" name="coach" type='checkbox' class='custom-control-input' id='coach'>
+                                    <label class='custom-control-label' for='coach'>
+                                        <img src='images/logo/coach.png' alt='#' class='img-fluid'>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class='col-md-3'>
+                                <div class='custom-control custom-checkbox image-checkbox'>
+                                    <input value="fendi" name="fendi" type='checkbox' class='custom-control-input' id='fendi'>
+                                    <label class='custom-control-label' for='fendi'>
+                                        <img src='images/logo/fendi.png' alt='#' class='img-fluid'>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class='col-md-3'>
+                                <div class='custom-control custom-checkbox image-checkbox'>
+                                    <input value="forever21" name="forever21" type='checkbox' class='custom-control-input' id='forever21'>
+                                    <label class='custom-control-label' for='forever21'>
+                                        <img src='images/logo/forever21.png' alt='#' class='img-fluid'>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-md-3'>
+                                <div class='custom-control custom-checkbox image-checkbox'>
+                                    <input value="gap" name="gap" type='checkbox' class='custom-control-input' id='gap'>
+                                    <label class='custom-control-label' for='gap'>
+                                        <img src='images/logo/gap.png' alt='#' class='img-fluid'>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class='col-md-3'>
+                                <div class='custom-control custom-checkbox image-checkbox'>
+                                    <input value="gucci" name="gucci" type='checkbox' class='custom-control-input' id='gucci'>
+                                    <label class='custom-control-label' for='gucci'>
+                                        <img src='images/logo/gucci.png' alt='#' class='img-fluid'>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class='col-md-3'>
+                                <div class='custom-control custom-checkbox image-checkbox'>
+                                    <input value="hermes" name="hermes" type='checkbox' class='custom-control-input' id='hermes'>
+                                    <label class='custom-control-label' for='hermes'>
+                                        <img src='images/logo/hermes.png' alt='#' class='img-fluid'>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class='col-md-3'>
+                                <div class='custom-control custom-checkbox image-checkbox'>
+                                    <input value="jennyfer" name="jennyfer" type='checkbox' class='custom-control-input' id='jennyfer'>
+                                    <label class='custom-control-label' for='jennyfer'>
+                                        <img src='images/logo/jennyfer.png' alt='#' class='img-fluid'>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-md-3'>
+                                <div class='custom-control custom-checkbox image-checkbox'>
+                                    <input type='checkbox' class='custom-control-input' id='mango'>
+                                    <label class='custom-control-label' for='mango'>
+                                        <img src='images/logo/mangologo.png' alt='#' class='img-fluid'>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class='col-md-3'>
+                                <div class='custom-control custom-checkbox image-checkbox'>
+                                    <input value="maxmara" name="maxmara" type='checkbox' class='custom-control-input' id='maxmara'>
+                                    <label class='custom-control-label' for='maxmara'>
+                                        <img src='images/logo/maxmara.png' alt='#' class='img-fluid'>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class='col-md-3'>
+                                <div class='custom-control custom-checkbox image-checkbox'>
+                                    <input value="tommy" name="tommy"  type='checkbox' class='custom-control-input' id='tommy'>
+                                    <label class='custom-control-label' for='tommy'>
+                                        <img src='images/logo/tommy.png' alt='#' class='img-fluid'>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class='col-md-3'>
+                                <div class='custom-control custom-checkbox image-checkbox'>
+                                    <input value="zara" name="zara" type='checkbox' class='custom-control-input' id='zara'>
+                                    <label class='custom-control-label' for='zara'>
+                                        <img src='images/logo/zara.png' alt='#' class='img-fluid'>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
 
 
-						<button class="btn btn-primary" onclick="stepper2.next()">Next</button>
+                        <button class="btn btn-primary" type="submit">Submit</button>
 
-					</div>
+                    </div>
 
-				</form>
-			</div>
-		</div>
-	</div>
-	<script>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
 
-		var stepper2 = new Stepper(document.querySelector('.bs-stepper'))
+        var stepper2 = new Stepper(document.querySelector('.bs-stepper'))
 
-function handleForm(event) {
-event.preventDefault();
-}
+        function handleForm(event) {
+            stepper2.next()
+            event.preventDefault();
+        }
 
-function submitquiz() {
-var values = [];
-var item1;
-var questions = [
-"Quel est votre age?",
-"Quel est votre taille?",
-"Qu’est ce vous cherchiez comme tenue pour cette session ?",
-"Quel est votre budget?",
-"Quelle est ta forme corporelle?",
-"Votre look est plutôt ?"
-]
-var f = document.getElementsByTagName('form')[0];
-f.addEventListener('submit', handleForm);
-if (f.checkValidity()) {
-for (var i = 1; i <= 6; i++) {
-var radios = document.getElementsByName('answerGroup' + i);
+        function submitquiz() {
+            var values = [];
+            var item1;
+            var questions = [
+                "Quel est votre age?",
+                "Quel est votre taille?",
+                "Qu’est ce vous cherchiez comme tenue pour cette session ?",
+                "Quel est votre budget?",
+                "Quelle est ta forme corporelle?",
+                "Votre look est plutôt ?"
+            ]
+            var f = document.getElementsByTagName('form')[0];
+            f.addEventListener('submit', handleForm);
+            if (f.checkValidity()) {
+                for (var i = 1; i <= 6; i++) {
+                    var radios = document.getElementsByName('answerGroup' + i);
 
-for (var j = 0; j < radios.length; j++) {
-var radio = radios[j];
-if (radio.checked) {
-item1 = {
-"question": questions[i - 1],
-"answer": radio.value
-}
-}
-}
-values.push(item1);
-}
-console.log(JSON.stringify(values));
-$.ajax({
-url: "{{ path('quizsubmit') }}",
-type: "POST",
-data: {
-'values': JSON.stringify(values)
-},
+                    for (var j = 0; j < radios.length; j++) {
+                        var radio = radios[j];
+                        if (radio.checked) {
+                            item1 = {
+                                "question": questions[i - 1],
+                                "answer": radio.value
+                            }
+                        }
+                    }
+                    values.push(item1);
+                }
+                console.log(JSON.stringify(values));
+                $.ajax({
+                    url: "{{ path('quizsubmit') }}",
+                    type: "POST",
+                    data: {
+                        'values': JSON.stringify(values)
+                    },
 
-success: function (result) {
-$('#exampleModalLong').modal('show');
-window.location.href = 'http://localhost:8000/userprofile';
+                    success: function (result) {
+                        $('#exampleModalLong').modal('show');
+                        window.location.href = 'http://localhost:8000/userprofile';
 
-}
-});
-}
+                    }
+                });
+            }
 
-}
+        }
 
-function lookJour() {
-jQuery('#look').html('');
-jQuery('#look').html("<div class='row'> <div class='col-md-3'> <div class='custom-control custom-checkbox image-checkbox'> <input type='checkbox' class='custom-control-input' id='ck1a'> <label class='custom-control-label' for='ck1a'> <img style='height:343px;width:252px' src='images/casual.png' alt='#' class='img-fluid'> </label> </div> </div> <div class='col-md-3'> <div class='custom-control custom-checkbox image-checkbox'> <input type='checkbox' class='custom-control-input' id='ck1b'> <label class='custom-control-label' for='ck1b'> <img style='height:343px;width:252px' src='images/chic.png' alt='#' class='img-fluid'> </label> </div> </div> <div class='col-md-3'> <div class='custom-control custom-checkbox image-checkbox'> <input type='checkbox' class='custom-control-input' id='ck1c'> <label class='custom-control-label' for='ck1c'> <img style='height:343px;width:252px' src='images/sport.png' alt='#' class='img-fluid'> </label> </div> </div> <div class='col-md-3'> <div class='custom-control custom-checkbox image-checkbox'> <input type='checkbox' class='custom-control-input' id='ck1d'> <label class='custom-control-label' for='ck1d'> <img style='height:343px;width:252px' src='images/trendy.png' alt='#' class='img-fluid'> </label> </div> </div> </div>");
+        function lookJour() {
+            jQuery('#look').html('');
+            jQuery('#look').html("<div class='row'> <div class='col-md-3'> <div class='custom-control custom-checkbox image-checkbox'> <input type='checkbox' value='casual' class='custom-control-input' name='casual' id='ck1a'> <label class='custom-control-label' for='ck1a'> <img style='height:343px;width:252px' src='images/casual.png' alt='#' class='img-fluid'> </label> </div> </div> <div class='col-md-3'> <div class='custom-control custom-checkbox image-checkbox'> <input type='checkbox' value='chic' name='chic' class='custom-control-input' id='ck1b'> <label class='custom-control-label' for='ck1b'> <img style='height:343px;width:252px' src='images/chic.png' alt='#' class='img-fluid'> </label> </div> </div> <div class='col-md-3'> <div class='custom-control custom-checkbox image-checkbox'> <input name='sport' value='sport' type='checkbox' class='custom-control-input' id='ck1c'> <label class='custom-control-label' for='ck1c'> <img style='height:343px;width:252px' src='images/sport.png' alt='#' class='img-fluid'> </label> </div> </div> <div class='col-md-3'> <div class='custom-control custom-checkbox image-checkbox'> <input value='trendy' name='trendy' type='checkbox' class='custom-control-input' id='ck1d'> <label class='custom-control-label' for='ck1d'> <img style='height:343px;width:252px' src='images/trendy.png' alt='#' class='img-fluid'> </label> </div> </div> </div>");
 
-}
+        }
 
-function lookSoirée() {
-jQuery('#look').html('');
-jQuery('#look').html("<div class='row'> <div class='col-md-6'> <div class='custom-control custom-checkbox image-checkbox'> <input type='checkbox' class='custom-control-input' id='ck2b'> <label class='custom-control-label' for='ck2b'> <img style='height:343px;width:252px' src='images/sexy.png' alt='#' class='img-fluid'> </label></div>  </div> <div class='col-md-6'> <div class='custom-control custom-checkbox image-checkbox'> <input type='checkbox' class='custom-control-input' id='ck1b'> <label class='custom-control-label' for='ck1b'> <img style='height:343px;width:252px' src='images/glamour.jpg' alt='#' class='img-fluid'> </label></div> </div> </div>");
-}
-	</script>
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+        function lookSoirée() {
+            jQuery('#look').html('');
+            jQuery('#look').html("<div class='row'> <div class='col-md-6'> <div class='custom-control custom-checkbox image-checkbox'> <input type='checkbox' class='custom-control-input' value='sexy' name='sexy' id='ck2b'> <label class='custom-control-label' for='ck2b'> <img style='height:343px;width:252px' src='images/sexy.png' alt='#' class='img-fluid'> </label></div>  </div> <div class='col-md-6'> <div class='custom-control custom-checkbox image-checkbox'> <input type='checkbox' class='custom-control-input' value='glamour' name='glamour' id='ck1b'> <label class='custom-control-label' for='ck1b'> <img style='height:343px;width:252px' src='images/glamour.jpg' alt='#' class='img-fluid'> </label></div> </div> </div>");
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+            integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
+            crossorigin="anonymous"></script>
 
 {% endblock %}
