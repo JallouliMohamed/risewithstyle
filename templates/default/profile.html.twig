@@ -1,196 +1,190 @@
 {% extends 'base.html.twig' %}
-{% block scripts %}
-    <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}" />
 
-    <!-- For iPhone 4 Retina display: -->
-    <link rel="apple-touch-icon-precomposed" href="{{ asset('images/apple-touch-icon-114x114-precomposed.png') }}">
-
-    <!-- For iPad: -->
-    <link rel="apple-touch-icon-precomposed" href="{{ asset('images/apple-touch-icon-72x72-precomposed.html') }}">
-
-    <!-- For iPhone: -->
-    <link rel="apple-touch-icon-precomposed" href="{{ asset('images/apple-touch-icon-57x57-precomposed.png') }}">
-
-    <!-- Library - Google Font Familys -->
-    <link href="https://fonts.googleapis.com/css?family=Arizonia|Crimson+Text:400,400i,600,600i,700,700i|Lato:100,100i,300,300i,400,400i,700,700i,900,900i|Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
-
-    <link rel="stylesheet" type="text/css" href="{{ asset('revolution/css/settings.css') }}">
-
-    <!-- RS5.0 Layers and Navigation Styles -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('revolution/css/layers.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('revolution/css/navigation.css') }}">
-
-    <!-- Library - Bootstrap v3.3.5 -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('libraries/lib.css') }}">
-
-    <!-- Custom - Common CSS -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/plugins.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/navigation-menu.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/shortcode.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('style.css') }}">
-
-    <script>
-        $(document).ready(function() {
-
-
-            var readURL = function(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-
-                    reader.onload = function (e) {
-                        $('.avatar').attr('src', e.target.result);
-                    }
-
-                    reader.readAsDataURL(input.files[0]);
-                }
-            }
-
-
-            $(".file-upload").on('change', function(){
-                readURL(this);
-            });
-        });
-    </script>
-
-{% endblock %}
 {% block body %}
-<main>
-<!------ Include the above in your HEAD tag ---------->
-
-<!--
-User Profile Sidebar by @keenthemes
-A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
-Licensed under MIT
--->
-
-    <div class="container" style="
-    margin-right: unset;
-    margin-left: unset;
-    width: 1500px;
-">
-        <div class="row">
-            <div class="col-sm-10"></div>
-            <div class="col-sm-2"><a href="/users" class="pull-right"></a></div>
-        </div>
-        <div class="row">
-            <div class="col-sm-2"><!--left col-->
-
-
-                <div class="text-center">
-                    <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" width="100px" class="avatar img-circle img-thumbnail" alt="avatar">
-                    <h5>{{ app.user.username }}</h5>
-                </div><br>
-
-
-
-
-
-                <ul class="list-group">
-                    <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>Shares</strong></span> 125</li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>Likes</strong></span> 13</li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> 78</li>
-                </ul>
-
-                <div class="panel panel-default">
-                    <div class="panel-heading">Social Media</div>
-                    <div class="panel-body">
-                        <i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i> <i class="fa fa-google-plus fa-2x"></i>
-                    </div>
-                </div>
-
-            </div><!--/col-3-->
-            <div class="col-sm-10">
-
-
-
-                <div class="tab-content">
-                    <div class="tab-pane active" id="home">
-                        <div class="contact-us container-fluid no-padding">
-
-                            <div class="form-detail" style="background-color: #ffffff;padding: unset;width: 1000px">
-                        <form class="form" action="##" method="post" id="registrationForm">
-                            <div class="form-group">
-
-                                <div class="col-xs-6">
-                                    <label for="first_name"><h4>First name</h4></label>
-                                    <input type="text" class="form-control" name="first_name" id="firstname" placeholder="first name"
-                                            value="{{ app.user.firstname }}" title="enter your first name if any.">
-                                </div>
-                            </div>
-                            <div class="form-group">
-
-                                <div class="col-xs-6">
-                                    <label for="last_name"><h4>Last name</h4></label>
-                                    <input type="text" class="form-control" value="{{ app.user.lastname }}" name="last_name" id="lastname" placeholder="last name" title="enter your last name if any.">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-
-                                <div class="col-xs-6">
-                                    <label for="phone"><h4>Phone</h4></label>
-                                    <input type="text" class="form-control" value="{{ app.user.phonenumber }}" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
-                                </div>
-                            </div>
-
-
-                            <div class="form-group">
-
-                                <div class="col-xs-6">
-                                    <label for="email"><h4>Email</h4></label>
-                                    <input type="email" class="form-control" value="{{ app.user.email }}" name="email" id="email" placeholder="you@email.com" title="enter your email.">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-xs-6">
-
-                                    <label for="city"><h4>City</h4></label>
-                                    <input type="email" class="form-control" value="{{ app.user.address }}" name="city" id="city" placeholder="you@email.com" title="enter your email.">
-                                </div>
-                                </div>
-
-
-                            <div class="form-group">
-                                <div class="col-xs-12">
-                                    <br>
-                                    <button class="btn btn-lg btn-success" onclick="parseuserdata()" type="button"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                                </div>
-                            </div>
-                        </form>
-
-                            </div>
-                        </div>
-                    </div><!--/tab-pane-->
-            </div><!--/tab-content-->
-
-        </div><!--/col-9-->
-    </div><!--/row-->
-
-    </div> <!-- JQuery v1.12.4 -->
-
-</main>
-    <script>
-        function handleForm(event) { event.preventDefault(); }
-
-        function parseuserdata(){
-            var firstname=document.getElementById('firstname').value;
-            var lastname=document.getElementById('lastname').value;
-            var phone=document.getElementById('phone').value;
-            var email=document.getElementById('email').value;
-            var city=document.getElementById('city').value;
-
-            console.log(phone)
-                $.ajax({
-                    url: "{{ path('updateuser') }}",
-                    type: "POST",
-                    data: {'firstname':firstname,'lastname':lastname,'city':city,'phone':phone,'email':email},
-                    success: function (result) {
-                        console.log(result.data)
-                    }
-                });
-
+    <style>
+        body {
+            background: #F1F3FA;
         }
-    </script>
+
+        /* Profile container */
+        .profile {
+            margin: 20px 0;
+        }
+
+        /* Profile sidebar */
+        .profile-sidebar {
+            padding: 20px 0 10px 0;
+            background: #fff;
+        }
+
+        .profile-userpic img {
+            float: none;
+            margin: 0 auto;
+            width: 50%;
+            height: 50%;
+            -webkit-border-radius: 50% !important;
+            -moz-border-radius: 50% !important;
+            border-radius: 50% !important;
+        }
+
+        .profile-usertitle {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .profile-usertitle-name {
+            color: #5a7391;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 7px;
+        }
+
+        .profile-usertitle-job {
+            text-transform: uppercase;
+            color: #FF8661;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .profile-userbuttons {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .profile-userbuttons .btn {
+            text-transform: uppercase;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 6px 15px;
+            margin-right: 5px;
+        }
+
+        .profile-userbuttons .btn:last-child {
+            margin-right: 0px;
+        }
+
+        .profile-usermenu {
+            margin-top: 30px;
+        }
+
+        .profile-usermenu ul li {
+            border-bottom: 1px solid #f0f4f7;
+        }
+
+        .profile-usermenu ul li:last-child {
+            border-bottom: none;
+        }
+
+        .profile-usermenu ul li a {
+            color: #93a3b5;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .profile-usermenu ul li a i {
+            margin-right: 8px;
+            font-size: 14px;
+        }
+
+        .profile-usermenu ul li a:hover {
+            background-color: #fafcfd;
+            color: #FF8661;
+        }
+
+        .profile-usermenu ul li.active {
+            border-bottom: none;
+        }
+
+        .profile-usermenu ul li.active a {
+            color: #FF8661;
+            background-color: #f6f9fb;
+            border-left: 2px solid #FF8661;
+            margin-left: -2px;
+        }
+
+        /* Profile Content */
+        .profile-content {
+            padding: 20px;
+            background: #fff;
+            min-height: 460px;
+        }
+
+    </style>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+
+    <!--
+    User Profile Sidebar by @keenthemes
+    A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
+    Licensed under MIT
+    -->
+
+    <div class="container">
+        <div class="row profile">
+            <div class="col-md-3">
+                <div class="profile-sidebar">
+                    <!-- SIDEBAR USERPIC -->
+                    <div class="profile-userpic">
+                        <img src="http://keenthemes.com/preview/metronic/theme/assets/admin/pages/media/profile/profile_user.jpg" class="img-responsive" alt="">
+                    </div>
+                    <!-- END SIDEBAR USERPIC -->
+                    <!-- SIDEBAR USER TITLE -->
+                    <div class="profile-usertitle">
+                        <div class="profile-usertitle-name">
+                            Marcus Doe
+                        </div>
+                        <div class="profile-usertitle-job">
+                            Developer
+                        </div>
+                    </div>
+                    <!-- END SIDEBAR USER TITLE -->
+                    <!-- SIDEBAR BUTTONS -->
+                    <div class="profile-userbuttons">
+                        <button type="button" class="btn btn-success btn-sm">Follow</button>
+                        <button type="button" class="btn btn-danger btn-sm">Message</button>
+                    </div>
+                    <!-- END SIDEBAR BUTTONS -->
+                    <!-- SIDEBAR MENU -->
+                    <div class="profile-usermenu">
+                        <ul class="nav">
+                            <li class="active">
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-home"></i>
+                                    Overview </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                    Account Settings </a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank">
+                                    <i class="glyphicon glyphicon-ok"></i>
+                                    Tasks </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-flag"></i>
+                                    Help </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- END MENU -->
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="profile-content">
+                    Some user related content goes here...
+                </div>
+            </div>
+        </div>
+    </div>
+    <center>
+        <strong>Powered by <a href="http://j.mp/metronictheme" target="_blank">KeenThemes</a></strong>
+    </center>
+    <br>
+    <br>
 {% endblock %}

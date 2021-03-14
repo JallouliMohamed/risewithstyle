@@ -103,4 +103,7 @@ selectProductsByGenre:
 getQuizPerFashionBoard:
   path: /getquizPerFashionBoard
   controller: App\Controller\FashionBoardController::getQuizByfashionBoard
+addQuizVersion:
+  path: /addQuizVersion
+  controller: App\Controller\DefaultController::addQuizVersion
 

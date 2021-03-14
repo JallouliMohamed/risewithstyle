@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="rise@localhost">
-  <database-model serializer="dbm" dbms="MARIADB" family-id="MARIADB" format-version="4.19">
+  <database-model serializer="dbm" dbms="MARIADB" family-id="MARIADB" format-version="4.20">
     <root id="1">
-      <ServerVersion>10.4.14</ServerVersion>
+      <ServerVersion>10.4.17</ServerVersion>
       <DefaultEngine>InnoDB</DefaultEngine>
       <DefaultCasing>exact</DefaultCasing>
     </root>
@@ -1375,60 +1375,68 @@ product_id</ColNames>
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="409" parent="340" name="brochure_filename">
+    <column id="409" parent="340" name="gender">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="410" parent="340" name="gender">
+    <column id="410" parent="340" name="size">
       <Position>7</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <key id="411" parent="340" name="PRIMARY">
+    <column id="411" parent="340" name="color">
+      <Position>8</Position>
+      <DataType>varchar(255)|0s</DataType>
+    </column>
+    <column id="412" parent="340" name="brochure_filename">
+      <Position>9</Position>
+      <DataType>varchar(255)|0s</DataType>
+    </column>
+    <key id="413" parent="340" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="412" parent="341" name="id">
+    <column id="414" parent="341" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="413" parent="341" name="user_id">
+    <column id="415" parent="341" name="user_id">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="414" parent="341" name="fashionboardid_id">
+    <column id="416" parent="341" name="fashionboardid_id">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="415" parent="341" name="questionid">
+    <column id="417" parent="341" name="questionid">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="416" parent="341" name="responseid">
+    <column id="418" parent="341" name="responseid">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <index id="417" parent="341" name="IDX_A412FA92A76ED395">
+    <index id="419" parent="341" name="IDX_A412FA92A76ED395">
       <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="418" parent="341" name="IDX_A412FA92E8CD6D8F">
+    <index id="420" parent="341" name="IDX_A412FA92E8CD6D8F">
       <ColNames>fashionboardid_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="419" parent="341" name="PRIMARY">
+    <key id="421" parent="341" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="420" parent="341" name="FK_A412FA92A76ED395">
+    <foreign-key id="422" parent="341" name="FK_A412FA92A76ED395">
       <ColNames>user_id</ColNames>
       <RefTableName>fos_user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="421" parent="341" name="FK_A412FA92E8CD6D8F">
+    <foreign-key id="423" parent="341" name="FK_A412FA92E8CD6D8F">
       <ColNames>fashionboardid_id</ColNames>
       <RefTableName>fashionboard</RefTableName>
       <RefColNames>id</RefColNames>
