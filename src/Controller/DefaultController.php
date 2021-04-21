@@ -210,11 +210,8 @@ class DefaultController extends AbstractController
         $activatedboards=$this->getDoctrine()->getRepository(Fashionboard::class)->findBy(['user'=>$this->getUser(),'clientActivation'=>1]);
 
         $boards=$this->getDoctrine()->getRepository(Fashionboard::class)->findBy(['user'=>$this->getUser()]);
-        return $this->render('default/fashionboard.html.twig',array(
-            'boards' => $boards,
-            'nbboards'=>sizeof($boards),
-            'nbactivatedboards'=>sizeof($activatedboards)
-        ));
+        $res=["boards"=>$boards,"nbboards"=>sizeof($boards),"nbactivatedboards"=>sizeof($activatedboards)];
+        return new JsonResponse($res);
     }
     public function activationfasionboard(){
 
@@ -364,16 +361,29 @@ class DefaultController extends AbstractController
         ));
     }
     public function viewActivatedFashionBoard(Request $request){
-        $activatedboards=new Fashionboard();
-        $activatedboards=$this->getDoctrine()->getRepository(Fashionboard::class)->find($request->get('id'));
+        $activatedboards=$this->getDoctrine()->getRepository(Fashionboard::class)->find($request->request->get('id'));
+        $response = new JsonResponse($activatedboards);
+            $response->setEncodingOptions( $response->getEncodingOptions() | JSON_PRETTY_PRINT );
+        $productArray = array();
 
-        return $this->render('default/fashionboardproduct.html.twig',["fashionboard"=>$activatedboards]);
+        foreach ($activatedboards->getProducts() as $p){
+                array_push($productArray,$p);
+            }
+        $json=json_encode($productArray);
+        return new Response($json, 200, [
+            'content-type' => 'application/json'
+        ]);
     }
     public function viewSingleProduct(Request $request){
         $product=new Product();
         $product=$this->getDoctrine()->getRepository(Product::class)->find($request->get('id'));
 
         return $this->render('default/singleProduct.html.twig',["product"=>$product]);
+    }
+    public function viewOrderForUser(Request $request){
+        $user=$this->getUser();
+        $orders=$this->getDoctrine()->getRepository(Order::class)->findByuser($user);
+        return new JsonResponse($orders);
     }
     public function checkoutBrainTree(Request $request){
         $amount=$request->get('amount');

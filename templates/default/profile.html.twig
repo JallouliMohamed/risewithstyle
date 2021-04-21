@@ -60,6 +60,35 @@
             margin-right: 5px;
         }
 
+        .checked {
+            color: #ffb19f;
+        }
+
+        .fa-star {
+            display: inline-block;
+            font: normal normal normal 14px/1 FontAwesome;
+            font-size: inherit;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            color: white;
+            color-scheme: #ffb19f;
+            text-shadow: -1px 0 #ffb19f, 0 1px #ffb19f, 1px 0 #ffb19f, 0 -1px #ffb19f;
+        }
+
+        .container-img {
+            position: relative;
+            text-align: center;
+            color: white;
+        }
+
+        .centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
         .profile-userbuttons .btn:last-child {
             margin-right: 0px;
         }
@@ -110,6 +139,21 @@
             min-height: 460px;
         }
 
+        .profile-header-container {
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .profile-header-img {
+            padding: unset;
+        }
+
+        .profile-header-img > img.img-circle {
+            width: 120px;
+            height: 120px;
+            border: 2px solid #51D2B7;
+        }
+
     </style>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
@@ -122,30 +166,30 @@
     Licensed under MIT
     -->
 
-    <div class="container">
+    <div class="contact-us container-fluid no-padding">
         <div class="row profile">
             <div class="col-md-3">
                 <div class="profile-sidebar">
                     <!-- SIDEBAR USERPIC -->
-                    <div class="profile-userpic">
-                        <img src="http://keenthemes.com/preview/metronic/theme/assets/admin/pages/media/profile/profile_user.jpg" class="img-responsive" alt="">
+                    <div class="profile-header-container">
+                        <div class="profile-header-img">
+                            <img class="img-circle" src="{{ asset('uploads/brochures/'~app.user.brochureFilename) }}"/>
+                            <!-- badge -->
+
+                        </div>
                     </div>
+
                     <!-- END SIDEBAR USERPIC -->
                     <!-- SIDEBAR USER TITLE -->
                     <div class="profile-usertitle">
                         <div class="profile-usertitle-name">
-                            Marcus Doe
+                            {{ app.user.username }}
                         </div>
-                        <div class="profile-usertitle-job">
-                            Developer
-                        </div>
+
                     </div>
                     <!-- END SIDEBAR USER TITLE -->
                     <!-- SIDEBAR BUTTONS -->
-                    <div class="profile-userbuttons">
-                        <button type="button" class="btn btn-success btn-sm">Follow</button>
-                        <button type="button" class="btn btn-danger btn-sm">Message</button>
-                    </div>
+
                     <!-- END SIDEBAR BUTTONS -->
                     <!-- SIDEBAR MENU -->
                     <div class="profile-usermenu">
@@ -153,22 +197,39 @@
                             <li class="active">
                                 <a href="#">
                                     <i class="glyphicon glyphicon-home"></i>
-                                    Overview </a>
+                                    Mon profile </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a onclick="changeContent()" href="#">
                                     <i class="glyphicon glyphicon-user"></i>
-                                    Account Settings </a>
+                                    Mes style boards
+                                </a>
                             </li>
                             <li>
-                                <a href="#" target="_blank">
-                                    <i class="glyphicon glyphicon-ok"></i>
-                                    Tasks </a>
+                                <a onclick="paymentList()" href="#">
+                                    <i class="glyphicon glyphicon-shopping-cart"></i>
+                                    Mes payments
+                                </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <i class="glyphicon glyphicon-flag"></i>
-                                    Help </a>
+                                    <i class="glyphicon glyphicon-headphones"></i>
+                                    Support
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-cog"></i>
+                                    Paramétres
+
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-cog"></i>
+                                    Paramétres
+
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -176,15 +237,360 @@
                 </div>
             </div>
             <div class="col-md-9">
+
                 <div class="profile-content">
-                    Some user related content goes here...
+                    <div id="content" class="tab-content">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="tab-pane active" id="home">
+                                    <div class="contact-us container-fluid no-padding">
+
+                                        <h3>
+                                            <div style="color:#FF8661"> Informations générales</div>
+                                        </h3>
+                                        <br>
+                                        <form class="form" action="##" method="post" id="registrationForm">
+                                            <div class="form-group">
+
+                                                <input type="text" class="form-control" name="first_name"
+                                                       id="firstname"
+                                                       placeholder="first name"
+                                                       value="{{ app.user.firstname }}"
+                                                       title="enter your first name if any.">
+                                            </div>
+                                            <div class="form-group">
+
+                                                <input type="text" class="form-control"
+                                                       value="{{ app.user.lastname }}"
+                                                       name="last_name" id="lastname" placeholder="last name"
+                                                       title="enter your last name if any.">
+                                            </div>
+
+                                            <div class="form-group">
+
+                                                <input type="text" class="form-control"
+                                                       value="{{ app.user.phonenumber }}" name="phone"
+                                                       id="phone"
+                                                       placeholder="enter phone"
+                                                       title="enter your phone number if any.">
+                                            </div>
+
+
+                                            <div class="form-group">
+
+                                                <input type="email" class="form-control"
+                                                       value="{{ app.user.email }}"
+                                                       name="email" id="email" placeholder="you@email.com"
+                                                       title="enter your email.">
+                                            </div>
+                                            <div class="form-group">
+
+                                                <input type="email" class="form-control"
+                                                       value="{{ app.user.address }}"
+                                                       name="city" id="city" placeholder="you@email.com"
+                                                       title="enter your email.">
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <div class="col-xs-12">
+                                                    <br>
+                                                    <button style="color: #FF8661;border: 1px solid #FF8661"
+                                                            class="btn btn-lg btn-success" onclick="parseuserdata()"
+                                                            type="button"><i
+                                                                class="glyphicon glyphicon-ok-sign"></i> Enregistrer
+
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="tab-pane active" id="home">
+                                    <div class="contact-us container-fluid no-padding">
+                                        <h4>
+                                            <div style="color:#FF8661">Informations supplémentaires
+                                            </div>
+                                        </h4>
+                                        <br>
+                                        <div class="form-group">
+                                            <label for="last_name" style="font-size: 11px">Est ce qu’il y a un article
+                                                qui vous va parfaitement? (lien de l’article)
+                                            </label>
+                                            <input type="text" class="form-control"
+                                                   name="reponse"
+                                                   id="reponse"
+                                                   placeholder="Tapez votre réponse .."
+                                                   title="enter your phone number if any.">
+                                            <div class="form-group">
+                                                <div class="col-xs-12">
+                                                    <br>
+                                                    <button style="color: #FF8661;border: 1px solid #FF8661"
+                                                            class="btn btn-lg btn-success" onclick="parseuserdata()"
+                                                            type="button"><i
+                                                                class="glyphicon glyphicon-ok-sign"></i> Ajouter
+
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane active" id="home">
+                                    <div class="contact-us container-fluid no-padding">
+                                        <h4>
+                                            <div style="color:#FF8661"> Médias sociaux
+
+                                            </div>
+                                        </h4>
+                                        <br>
+                                        <div class="form-group">
+
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <img src="images/logo/instagram.png">
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <img src="images/logo/facebook.png">
+
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <img src="images/logo/twitter.png">
+
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <img src="images/logo/pinterest.png">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-xs-12">
+                                                    <br>
+                                                    <button style="color: #FF8661;border: 1px solid #FF8661"
+                                                            class="btn btn-lg btn-success" onclick="parseuserdata()"
+                                                            type="button"><i
+                                                                class="glyphicon glyphicon-ok-sign"></i> Se connecter
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/tab-pane-->
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <center>
-        <strong>Powered by <a href="http://j.mp/metronictheme" target="_blank">KeenThemes</a></strong>
-    </center>
     <br>
     <br>
+    <script>
+        function handleForm(event) {
+            event.preventDefault();
+        }
+
+        function parseuserdata() {
+            var firstname = document.getElementById('firstname').value;
+            var lastname = document.getElementById('lastname').value;
+            var phone = document.getElementById('phone').value;
+            var email = document.getElementById('email').value;
+            var city = document.getElementById('city').value;
+
+            console.log(phone)
+            $.ajax({
+                url: "{{ path('updateuser') }}",
+                type: "POST",
+                data: {'firstname': firstname, 'lastname': lastname, 'city': city, 'phone': phone, 'email': email},
+                success: function (result) {
+                    console.log(result.data)
+                }
+            });
+
+        }
+
+        function changeContent() {
+            $.ajax({
+                url: "{{ path('wardrobe') }}",
+                type: "POST",
+                success: function (result) {
+                    var tmp;
+                    if ((parseInt(result.nbboards) - parseInt(result.nbactivatedboards)) < 10) {
+                        tmp = "0" + (parseInt(result.nbboards) - parseInt(result.nbactivatedboards));
+                    } else {
+                        tmp = (parseInt(result.nbboards) - parseInt(result.nbactivatedboards));
+                    }
+                    console.log(result)
+                    var begin = "<div class='row'>" +
+                        "<div class='col-md-9'>" +
+                        "<div class='tab-pane active' id='home'>" +
+                        "<div class='contact-us container-fluid no-padding'>" +
+                        "<h3>" +
+                        "<div style='color:#ffb19f'>Mes style boards" +
+                        "</div>" +
+                        "</h3><br><table class='table'>" +
+                        "<thead>" +
+                        "<tr>" +
+                        "<th style='color: #cebe97;' scope='col'>Photo</th>" +
+                        "<th style='color: #cebe97;' scope='col'>Date</th>" +
+                        "<th style='color: #cebe97;' scope='col'>Essayé? </th>" +
+                        "<th style='color: #cebe97;' scope='col'>Note</th>" +
+                        "<th style='color: #cebe97;' scope='col'>view</th>" +
+                        "</tr>" +
+                        "</thead>" +
+                        "<tbody>";
+                    var end = "</tbody>" +
+                        "</table></div></div></div><div class='col-md-3'>" +
+                        "<br>" +
+                        "<div class='row'>" +
+                        "<div class='col'>" +
+                        "<div align='center'>" +
+                        "<div class='container-img'> " +
+                        "<img width='100px' src='images/shape.png'>" +
+                        "<div style='color: #aeabab' class='centered'>" +
+                        "<b><h5>" + (parseInt(result.nbboards) - parseInt(result.nbactivatedboards)) + "</h5></b>" +
+                        "</div> " +
+                        "</div>" +
+                        "</div>" +
+                        "</div>" +
+                        "<div style='padding-top: 20px' class='col'>" +
+                        "<div style='color: #aeabab'> <strong><h5>Vous avez " + tmp + " style boards à activer dans votre armoire</h5></strong></div>" +
+                        "</div>" +
+                        "<div align='center' style='padding-top: 20px' class='col'>" +
+                        "<button style='width: 200px;border: unset;height: 40px;background-image: linear-gradient(#ffb19f, #a9bee4);' type='submit'><div style='color: white'> Activer</div></button>" +
+                        "</div>" +
+                        "<div align='center' style='padding-top: 20px' class='col'>" +
+                        "<button style='width: 200px;border: unset;height: 40px;background-image: linear-gradient(#ffb19f, #a9bee4);' type='submit'><div style='color: white'> Acheter</div></button>" +
+                        "</div>" +
+                        "</div>" +
+                        "</div>";
+                    var middle = "";
+                    result.boards.forEach(function (element) {
+                        var tmp = "<tr>" +
+                            "<th scope='row'> <img width='100px' src='images/products/image1.png'></th>" +
+                            "<td>01.12.2020</td>" +
+                            "<td>  <input class='form-check-input' type='checkbox' id='flexCheckChecked' checked> </td>" +
+                            "<td><span class='fa fa-star checked'></span>" +
+                            "<span class='fa fa-star checked'></span>" +
+                            "<span class='fa fa-star checked'></span>" +
+                            "<span class='fa fa-star'></span>" +
+                            "<span class='fa fa-star'></span></td>" +
+                            '<td><i onclick="viewproducts(' + element.id + ')" style="color: #ffb19f;" class="fa fa-angle-right" aria-hidden="true"></i></td>'
+                        "</tr>";
+                        middle = middle + tmp
+                    })
+
+                    $('#content').html(begin + middle + end)
+
+                }
+            });
+        }
+
+        function viewproducts(v) {
+            console.log(v);
+            $.ajax({
+                url: "{{ path('viewActivatedFashionBoard') }}",
+                type: "POST",
+                data: {'id': parseInt(v)},
+                success: function (result) {
+                    var path= 'uploads/brochures/';
+
+                    console.log(result)
+                    $('#content').html(
+                        '<div class="row">' +
+                        '<div class="col-md-8">' +
+                        '<div class="row">' +
+                        '<div style="padding:unset;border-style: solid;border-color: #ffa5a5" class="col-md-4">'+
+                            '<img style="width: fit-content" src="'+path+result[0].brochureFilename+'">'+
+                        '</div>'+
+                        '<div style="height: 195px;background-color: #ffa5a5;margin-left: 10px" class="col-md-4">'+
+                        '</div>'+
+                        '<div style="height: 195px;padding:unset;border-style: solid;border-color: #ffa5a5;margin-left: 10px" class="col-md-3">'+
+                        '<img style="width: fit-content" src="'+path+result[1].brochureFilename+'">'+
+                        '</div>'+
+                        '</div>'+
+                        '<div class="row">' +
+                        '<div style="margin-top:10px;padding:unset;" class="col-md-6">'+
+                        '<p style="border-style: solid;border-color: #ffa5a5"> <img style="width: -webkit-fill-available;border-style: solid;border-color: #ffa5a5" src="'+path+result[2].brochureFilename+'"></p>'+
+                        '</div>'+
+                        '<div style="margin-top:10px;padding:unset;" class="col-md-6">'+
+                        '<p style="border-style: solid;border-color: #ffa5a5"> <img style="width: -webkit-fill-available;border-style: solid;border-color: #ffa5a5" src="'+path+result[2].brochureFilename+'"></p>'+
+                        '</div>'+
+                        '</div>'+
+                        '<div class="row">' +
+                        '<div style="height: 195px;background-color: #ffa5a5;margin-left: 10px" class="col-md-4">'+
+                        '</div>'+
+                        '<div style="height: 195px;background-color: #ffa5a5;margin-left: 10px" class="col-md-4">'+
+                        '</div>'+
+                        '<div style="height: 195px;background-color: #ffa5a5;margin-left: 10px" class="col-md-3">'+
+                        '</div>'+
+                        '</div>'+
+                        '</div>' +
+                        '<div class="col-md-4">' +
+                        '<div class="row">'+
+                        '<div class="col">'+
+                        'goodbye'+
+                        '</div>'+
+                        '</div>'+
+                        '<div class="row">'+
+                        '<div class="col">'+
+                        'hello'+
+                        '</div>'+
+                        '</div>'+
+                        '</div>' +
+                        '</div>'
+                    )
+                }
+            });
+        }
+        function paymentList(){
+            $.ajax({
+                url: "{{ path('orderbyuser') }}",
+                type: "POST",
+                success: function (result) {
+                    var tmp;
+
+                    console.log(result)
+                    var begin ="<div class='tab-pane active' id='home'>" +
+                        "<div class='contact-us container-fluid no-padding'>" +
+                        "<h3>" +
+
+                        "</h3><br><table class='table'>" +
+                        "<thead>" +
+                        "<tr>" +
+                        "<th style='color: #cebe97;' scope='col'>Date</th>" +
+                        "<th style='color: #cebe97;' scope='col'>Méthod</th>" +
+                        "<th style='color: #cebe97;' scope='col'>Montant </th>" +
+                        "<th style='color: #cebe97;' scope='col'>Status</th>" +
+                        "<th style='color: #cebe97;' scope='col'>Facture</th>" +
+                        "</tr>" +
+                        "</thead>" +
+                        "<tbody>";
+                    var end = "</tbody>" +
+                        "</table></div></div>";
+                    var middle = "";
+                    result.forEach(function (element) {
+                        var tmp = "<tr>" +
+                            "<td scope='row'> 01.12.2020</td>" +
+                            "<td> Carte </td>" +
+                            "<td>"+element.amount+"</td>" +
+                            '<td>payé</td>'+
+                        '<td><i class="fa fa-download" aria-hidden="true"></i> Telecharger PDF</td>'+
+
+                        "</tr>";
+                        middle = middle + tmp
+                    })
+
+                    $('#content').html(begin + middle + end)
+
+                }
+            });
+        }
+    </script>
 {% endblock %}
