@@ -21,15 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="aab2ea77-e05f-4e2e-8cc2-3c1bf4c0e093" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/fos_user.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/fos_user.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Fashionboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Fashionboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Fashionbundle.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Fashionbundle.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/bundles/FOSUserBundle/Registration/register_content.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bundles/FOSUserBundle/Registration/register_content.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/default/profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/profile.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -307,7 +300,7 @@
       <workItem from="1617622020107" duration="21859000" />
       <workItem from="1617960495017" duration="18522000" />
       <workItem from="1618612712674" duration="1251000" />
-      <workItem from="1618863318056" duration="12548000" />
+      <workItem from="1618863318056" duration="19890000" />
     </task>
     <servers />
   </component>
@@ -331,12 +324,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/templates/default/profile.html.twig</url>
-          <line>181</line>
+          <line>197</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/src/Controller/DefaultController.php</url>
-          <line>221</line>
+          <line>239</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">

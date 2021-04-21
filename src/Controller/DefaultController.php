@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Controller;
+
 use App\Entity\Fashionboard;
 use App\Entity\Product;
 use App\Entity\Quiz;
+use App\Entity\SupportMessage;
 use App\Form\ProductType;
 use Braintree\Gateway;
 use Braintree\Transaction;
@@ -31,12 +33,12 @@ class DefaultController extends AbstractController
      */
     public function index(SessionInterface $session)
     {
-        if ($session->has('route')){
-            if ($session->get('route')=='formule'){
+        if ($session->has('route')) {
+            if ($session->get('route') == 'formule') {
                 $session->remove('route');
                 return $this->redirectToRoute('formule');
 
-            }else {
+            } else {
                 //redirecti lehne lel admin bel role
 
                 return $this->render('default/baseAdmin.html.twig', [
@@ -44,57 +46,61 @@ class DefaultController extends AbstractController
                 ]);
             }
         }
-        $user=$this->container->get('security.authorization_checker');
-        if (($user->isGranted('ROLE_ADMIN'))){
+        $user = $this->container->get('security.authorization_checker');
+        if (($user->isGranted('ROLE_ADMIN'))) {
             return $this->render('backOffice/dashboard.html.twig');
         }
         return $this->render('default/index.html.twig', [
             'controller_name' => 'DefaultController',
         ]);
     }
+
     public function formule()
     {
         $fashionbundle = $this->getDoctrine()->getRepository(Fashionbundle::class)->findAll();
-        return $this->render('default/formule.html.twig',array(
+        return $this->render('default/formule.html.twig', array(
                 'fashionbundle' => $fashionbundle
             )
         );
     }
+
     public function userProfile()
     {
-        $boards=$this->getDoctrine()->getRepository(Fashionboard::class)->findBy(['user'=>$this->getUser()]);
-        return $this->render('default/profile.html.twig',array(
+        $boards = $this->getDoctrine()->getRepository(Fashionboard::class)->findBy(['user' => $this->getUser()]);
+        return $this->render('default/profile.html.twig', array(
             'boards' => $boards
         ));
     }
-    public function purchase(SessionInterface $session,Request $request)
-    {    $idbundle=$request->get('idbundle');
+
+    public function purchase(SessionInterface $session, Request $request)
+    {
+        $idbundle = $request->get('idbundle');
 
         $em = $this->getDoctrine()->getManager();
         $bundle = $this->getDoctrine()->getManager()->getRepository('App:Fashionbundle')->find($idbundle);
-        $usr=$this->getUser();
+        $usr = $this->getUser();
 
-        if ($usr==null){
+        if ($usr == null) {
             $session->set('route', 'formule');
             return $this->redirectToRoute('fos_user_security_login');
-        }else{
-            $gateway=new Gateway([
+        } else {
+            $gateway = new Gateway([
                 'environment' => 'sandbox',
                 'merchantId' => 'rfszkvmy9dny63w8',
                 'publicKey' => '6m896hfk35jdcmtr',
                 'privateKey' => 'c4c2da6f784477ef1879aa88274c2583'
             ]);
-            return $this->render('default/purchase.html.twig',['gateway'=>$gateway->clientToken()->generate(),'bundle'=>$bundle]);
-            }
-
-
+            return $this->render('default/purchase.html.twig', ['gateway' => $gateway->clientToken()->generate(), 'bundle' => $bundle]);
         }
 
-    public function updateuser(SessionInterface $session,Request $request)
+
+    }
+
+    public function updateuser(SessionInterface $session, Request $request)
     {
-        $usr=$this->getUser();
+        $usr = $this->getUser();
         var_dump($request->request->get('firstname'));
-        if ($request->request->get('email')!=null){
+        if ($request->request->get('email') != null) {
             $usr->setEmail($request->request->get('email'));
 
         }
@@ -120,47 +126,56 @@ class DefaultController extends AbstractController
         );
 
     }
+
     public function manageProducts()
     {
         return $this->render('backOffice/manageBundles.html.twig');
 
     }
+
     public function addProduct()
     {
         return $this->render('backOffice/addProduct.html.twig');
     }
+
     public function listFashionBoard()
     {
         return $this->render('backOffice/manageBundles.html.twig');
 
     }
+
     public function manageFashionBoard()
     {
         return $this->render('backOffice/manageFashionBoard.html.twig'
         );
 
     }
+
     public function manageOrders()
     {
         return $this->render('backOffice/manageBundles.html.twig');
 
     }
+
     public function manageQuiz()
     {
         return $this->render('backOffice/manageBundles.html.twig'
         );
 
     }
+
     public function addQuiz()
     {
         return $this->render('backOffice/addBundle.html.twig');
 
     }
+
     public function viewDashboard()
     {
         return $this->render('backOffice/dashboard.html.twig');
 
     }
+
     public function newProduct(Request $request)
     {
         $product = new Product();
@@ -179,7 +194,7 @@ class DefaultController extends AbstractController
                 //$safeFilename = $slugger->slug($originalFilename);
                 // SluggerInterface $slugger
                 $safeFilename = "test";
-                $newFilename = $safeFilename.'-'.uniqid().'.'.$brochureFile->guessExtension();
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $brochureFile->guessExtension();
 
                 // Move the file to the directory where brochures are stored
                 try {
@@ -205,38 +220,45 @@ class DefaultController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
     public function wardropfashionboard()
     {
-        $activatedboards=$this->getDoctrine()->getRepository(Fashionboard::class)->findBy(['user'=>$this->getUser(),'clientActivation'=>1]);
+        $activatedboards = $this->getDoctrine()->getRepository(Fashionboard::class)->findBy(['user' => $this->getUser(), 'clientActivation' => 1]);
 
-        $boards=$this->getDoctrine()->getRepository(Fashionboard::class)->findBy(['user'=>$this->getUser()]);
-        $res=["boards"=>$boards,"nbboards"=>sizeof($boards),"nbactivatedboards"=>sizeof($activatedboards)];
+        $boards = $this->getDoctrine()->getRepository(Fashionboard::class)->findBy(['user' => $this->getUser()]);
+        $res = ["boards" => $boards, "nbboards" => sizeof($boards), "nbactivatedboards" => sizeof($activatedboards)];
         return new JsonResponse($res);
     }
-    public function activationfasionboard(){
+
+    public function activationfasionboard()
+    {
 
 
-            $response = JsonResponse::fromJsonString('{ "message": "https://localhost:8000/quiz" }');
-            return $response;
+        $response = JsonResponse::fromJsonString('{ "message": "https://localhost:8000/quiz" }');
+        return $response;
 
     }
-    public function quizAnswer(Request $request){
+
+    public function quizAnswer(Request $request)
+    {
         return $this->render('default/quiz.html.twig');
     }
-    public function submitquiz(Request $request){
-        $result=json_decode($request->request->get('values'), true);
-        $activatedboards=$this->getDoctrine()->getRepository(Fashionboard::class)->findOneBy(['user'=>$this->getUser(),'clientActivation'=>0]);
 
-        if($activatedboards!=null){
+    public function submitquiz(Request $request)
+    {
+        $result = json_decode($request->request->get('values'), true);
+        $activatedboards = $this->getDoctrine()->getRepository(Fashionboard::class)->findOneBy(['user' => $this->getUser(), 'clientActivation' => 0]);
+
+        if ($activatedboards != null) {
 
             $activatedboards->setClientActivation(1);
             $this->getDoctrine()->getManager()->persist($activatedboards);
 
-            foreach ($result as $key => $value){
+            foreach ($result as $key => $value) {
                 var_dump($value);
 
                 $quiz = new Quiz();
-            $quiz->setUser($this->getUser());
+                $quiz->setUser($this->getUser());
                 $quiz->setFashionboardid($activatedboards);
                 $quiz->setQuestionid($value['question']);
                 $quiz->setResponseid($value['answer']);
@@ -247,33 +269,34 @@ class DefaultController extends AbstractController
                 $this->getDoctrine()->getManager()->flush();
 
 
-
             }
 
         }
-        $arr=['message'=>'success'];
+        $arr = ['message' => 'success'];
         return $this->render('default/quiz.html.twig');
 
     }
-    public function addQuizVersion(Request $request){
-        $s = $request->get('flexRadioDefault',0)[0];
-        $k = $request->get('flexRadioDefault1',0)[0];
-        $look = $request->get('flexRadioDefault2',0)[0];
+
+    public function addQuizVersion(Request $request)
+    {
+        $s = $request->get('flexRadioDefault', 0)[0];
+        $k = $request->get('flexRadioDefault1', 0)[0];
+        $look = $request->get('flexRadioDefault2', 0)[0];
         $sexy = $request->get('sexy');
         $glamour = $request->get('glamour');
         $casual = $request->get('casual');
         $chic = $request->get('chic');
         $trendy = $request->get('trendy');
         $sport = $request->get('sport');
-        $questions=['how do you identify','pointure chaussures','les hauts','les bas','Quel est votre type de morphologie ?',
-            $request->get('flexRadioDefault2',0)[0],'Laquelles de ces marques vous préférez pour faire votre shopping?'
+        $questions = ['how do you identify', 'pointure chaussures', 'les hauts', 'les bas', 'Quel est votre type de morphologie ?',
+            $request->get('flexRadioDefault2', 0)[0], 'Laquelles de ces marques vous préférez pour faire votre shopping?'
         ];
-        $activatedboards=$this->getDoctrine()->getRepository(Fashionboard::class)->findOneBy(['user'=>$this->getUser(),'clientActivation'=>0]);
+        $activatedboards = $this->getDoctrine()->getRepository(Fashionboard::class)->findOneBy(['user' => $this->getUser(), 'clientActivation' => 0]);
         $chaussure = $request->get('chaussure');
         $haut = $request->get('haut');
         $bas = $request->get('bas');
-        $marques=['adidas','bershka','boohoo','calvinklein','chloe','coach','fendi','forever21','gap','gucci','hermes','jennyfer','mango','maxmara','tommy','zara'];
-        $look=['casual', 'chic', 'sport', 'trendy','sexy','glamour'];
+        $marques = ['adidas', 'bershka', 'boohoo', 'calvinklein', 'chloe', 'coach', 'fendi', 'forever21', 'gap', 'gucci', 'hermes', 'jennyfer', 'mango', 'maxmara', 'tommy', 'zara'];
+        $look = ['casual', 'chic', 'sport', 'trendy', 'sexy', 'glamour'];
 
         $quiz = new Quiz();
         $quiz->setUser($this->getUser());
@@ -319,11 +342,11 @@ class DefaultController extends AbstractController
         $quiz->setUser($this->getUser());
         $quiz->setFashionboardid($activatedboards);
         $quiz->setQuestionid($questions[5]);
-        $tmp="";
-        foreach($look as $i){
-            $tb=$request->get($i);
-            if ($tb != null){
-                $tmp= $tmp . $tb .";";
+        $tmp = "";
+        foreach ($look as $i) {
+            $tb = $request->get($i);
+            if ($tb != null) {
+                $tmp = $tmp . $tb . ";";
             }
         }
         $quiz->setResponseid($tmp);
@@ -335,11 +358,11 @@ class DefaultController extends AbstractController
         $quiz->setUser($this->getUser());
         $quiz->setFashionboardid($activatedboards);
         $quiz->setQuestionid($questions[5]);
-        $tmp="";
-        foreach($marques as $i){
-            $tb=$request->get($i);
-            if ($tb != null){
-                $tmp= $tmp . $tb .";";
+        $tmp = "";
+        foreach ($marques as $i) {
+            $tb = $request->get($i);
+            if ($tb != null) {
+                $tmp = $tmp . $tb . ";";
             }
         }
         $quiz->setResponseid($tmp);
@@ -351,47 +374,55 @@ class DefaultController extends AbstractController
         $this->getDoctrine()->getManager()->flush();
 
 
-        $activatedboards=$this->getDoctrine()->getRepository(Fashionboard::class)->findBy(['user'=>$this->getUser(),'clientActivation'=>1]);
+        $activatedboards = $this->getDoctrine()->getRepository(Fashionboard::class)->findBy(['user' => $this->getUser(), 'clientActivation' => 1]);
 
-        $boards=$this->getDoctrine()->getRepository(Fashionboard::class)->findBy(['user'=>$this->getUser()]);
-        return $this->render('default/fashionboard.html.twig',array(
+        $boards = $this->getDoctrine()->getRepository(Fashionboard::class)->findBy(['user' => $this->getUser()]);
+        return $this->render('default/fashionboard.html.twig', array(
             'boards' => $boards,
-            'nbboards'=>sizeof($boards),
-            'nbactivatedboards'=>sizeof($activatedboards)
+            'nbboards' => sizeof($boards),
+            'nbactivatedboards' => sizeof($activatedboards)
         ));
     }
-    public function viewActivatedFashionBoard(Request $request){
-        $activatedboards=$this->getDoctrine()->getRepository(Fashionboard::class)->find($request->request->get('id'));
+
+    public function viewActivatedFashionBoard(Request $request)
+    {
+        $activatedboards = $this->getDoctrine()->getRepository(Fashionboard::class)->find($request->request->get('id'));
         $response = new JsonResponse($activatedboards);
-            $response->setEncodingOptions( $response->getEncodingOptions() | JSON_PRETTY_PRINT );
+        $response->setEncodingOptions($response->getEncodingOptions() | JSON_PRETTY_PRINT);
         $productArray = array();
 
-        foreach ($activatedboards->getProducts() as $p){
-                array_push($productArray,$p);
-            }
-        $json=json_encode($productArray);
+        foreach ($activatedboards->getProducts() as $p) {
+            array_push($productArray, $p);
+        }
+        $json = json_encode($productArray);
         return new Response($json, 200, [
             'content-type' => 'application/json'
         ]);
     }
-    public function viewSingleProduct(Request $request){
-        $product=new Product();
-        $product=$this->getDoctrine()->getRepository(Product::class)->find($request->get('id'));
 
-        return $this->render('default/singleProduct.html.twig',["product"=>$product]);
+    public function viewSingleProduct(Request $request)
+    {
+        $product = new Product();
+        $product = $this->getDoctrine()->getRepository(Product::class)->find($request->get('id'));
+
+        return $this->render('default/singleProduct.html.twig', ["product" => $product]);
     }
-    public function viewOrderForUser(Request $request){
-        $user=$this->getUser();
-        $orders=$this->getDoctrine()->getRepository(Order::class)->findByuser($user);
+
+    public function viewOrderForUser(Request $request)
+    {
+        $user = $this->getUser();
+        $orders = $this->getDoctrine()->getRepository(Order::class)->findByuser($user);
         return new JsonResponse($orders);
     }
-    public function checkoutBrainTree(Request $request){
-        $amount=$request->get('amount');
-        $idbundle=$request->get('bundleid');
+
+    public function checkoutBrainTree(Request $request)
+    {
+        $amount = $request->get('amount');
+        $idbundle = $request->get('bundleid');
         $bundle = $this->getDoctrine()->getManager()->getRepository('App:Fashionbundle')->find($idbundle);
         $order = new Order($bundle->getPrice());
-        $paymentMethod=$request->request->get('payment_method_nonce');
-        $gateway=new Gateway([
+        $paymentMethod = $request->request->get('payment_method_nonce');
+        $gateway = new Gateway([
             'environment' => 'sandbox',
             'merchantId' => 'rfszkvmy9dny63w8',
             'publicKey' => '6m896hfk35jdcmtr',
@@ -406,7 +437,7 @@ class DefaultController extends AbstractController
         ]);
         if ($result->success || !is_null($result->transaction)) {
             $transaction = $result->transaction;
-            $transactionid=$transaction->id;
+            $transactionid = $transaction->id;
             $transaction = $gateway->transaction()->find($transactionid);
             $transactionSuccessStatuses = [
                 Transaction::AUTHORIZED,
@@ -425,9 +456,8 @@ class DefaultController extends AbstractController
                 $order->setState(true);
                 $order->setUser($this->getUser());
                 $order->setBundle($bundle);
-                for($i=0; $i<$bundle->getfashionbordern(); $i++)
-                {
-                    $fashionboard=new Fashionboard();
+                for ($i = 0; $i < $bundle->getfashionbordern(); $i++) {
+                    $fashionboard = new Fashionboard();
                     $fashionboard->setUser($this->getUser());
                     $fashionboard->setClientActivation(0);
                     $fashionboard->setAdminValidation(0);
@@ -438,27 +468,40 @@ class DefaultController extends AbstractController
                 }
                 $this->getDoctrine()->getManager()->persist($order);
                 $this->getDoctrine()->getManager()->flush();
-                return $this->render('default/purchaseConfirmed.html.twig',['header'=>$header,'icon'=>$icon,'message'=>$message]);
+                return $this->render('default/purchaseConfirmed.html.twig', ['header' => $header, 'icon' => $icon, 'message' => $message]);
             } else {
                 $header = "Transaction Failed";
                 $icon = "fail";
                 $message = "Your test transaction has a status of " . $transaction->status . ". See the Braintree API response and try again.";
-                return $this->render('default/purchaseConfirmed.html.twig',['header'=>$header,'icon'=>$icon,'message'=>$message]);
+                return $this->render('default/purchaseConfirmed.html.twig', ['header' => $header, 'icon' => $icon, 'message' => $message]);
 
             }
         } else {
             $errorString = "";
             $header = "Transaction Failed";
             $icon = "fail";
-            $message="problème de paiement";
+            $message = "problème de paiement";
 
 
-            return $this->render('default/purchaseConfirmed.html.twig',['message'=>$message,'header'=>$header]);
+            return $this->render('default/purchaseConfirmed.html.twig', ['message' => $message, 'header' => $header]);
 
 
         }
 
         return null;
 
-}
+    }
+
+    public function sendSupportMessage(Request $request)
+    {
+        $subject = $request->get("subject");
+        $message = $request->get("message");
+        $supportmessage = new SupportMessage();
+        $supportmessage->setMessage($message);
+        $supportmessage->setSubject($subject);
+        $supportmessage->setUser($this->getUser());
+        $this->getDoctrine()->getManager()->persist($supportmessage);
+        $this->getDoctrine()->getManager()->flush();
+        return  JsonResponse::fromJsonString('{ "message": "merci, votre message a été envoyé" }');
+    }
 }
