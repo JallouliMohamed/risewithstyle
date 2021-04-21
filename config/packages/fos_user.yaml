@@ -5,6 +5,9 @@ fos_user:
   from_email:
     address: "a@a.com"
     sender_name: "a@a.com"
+  registration:
+    form:
+      type: App\Form\ProfileFormType
 services:
   userbundle_service:
     class:        App\Controller\DefaultController

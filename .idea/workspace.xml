@@ -20,15 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aab2ea77-e05f-4e2e-8cc2-3c1bf4c0e093" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/25a1d058-9a57-40c5-b25e-acab0d49f0c2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/25a1d058-9a57-40c5-b25e-acab0d49f0c2/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/25a1d058-9a57-40c5-b25e-acab0d49f0c2/storage_v2/_src_/schema/mysql___root__127.0.0.1_3306_rise.tccACg.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/fos_user.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/fos_user.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Fashionboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Fashionboard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Fashionbundle.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Fashionbundle.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Product.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/bundles/FOSUserBundle/Registration/register_content.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bundles/FOSUserBundle/Registration/register_content.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/default/profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/profile.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/quiz.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/quiz.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +53,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="GithubPullRequestsUISettings">
     <option name="hiddenUrls">
@@ -291,7 +301,13 @@
       <workItem from="1614087330857" duration="7646000" />
       <workItem from="1614380288817" duration="5904000" />
       <workItem from="1614885893381" duration="9902000" />
-      <workItem from="1615727874844" duration="3434000" />
+      <workItem from="1615727874844" duration="21546000" />
+      <workItem from="1616185288102" duration="9518000" />
+      <workItem from="1616878919381" duration="4618000" />
+      <workItem from="1617622020107" duration="21859000" />
+      <workItem from="1617960495017" duration="18522000" />
+      <workItem from="1618612712674" duration="1251000" />
+      <workItem from="1618863318056" duration="12548000" />
     </task>
     <servers />
   </component>
@@ -315,12 +331,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/templates/default/profile.html.twig</url>
-          <line>132</line>
+          <line>181</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/src/Controller/DefaultController.php</url>
-          <line>224</line>
+          <line>221</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">

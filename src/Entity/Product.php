@@ -58,6 +58,14 @@ class Product implements \JsonSerializable
 
     private $brochureFilename;
 
+    /**
+     * Product constructor.
+     */
+    public function __construct()
+    {
+    }
+
+
     public function getId(): ?int
     {
         return $this->id;

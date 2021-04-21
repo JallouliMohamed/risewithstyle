@@ -9,43 +9,42 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=FashionboardRepository::class)
  */
-class Fashionboard
+class Fashionboard implements \JsonSerializable
 {
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    protected $id;
     /**
-     * @ORM\ManyToMany (targetEntity="App\Entity\Product",inversedBy="fashionboard")
+     * @ORM\ManyToMany (targetEntity="App\Entity\Product",inversedBy="fashionboard",fetch="EAGER")
      */
-    private $products;
+    protected $products;
     /**
      * @ORM\ManyToOne (targetEntity="App\Entity\User")
      */
-    private $user;
+    protected $user;
     /**
      * @ORM\ManyToOne  (targetEntity="App\Entity\Fashionbundle")
      */
-    private $fashionbundle;
+    protected $fashionbundle;
     /**
      * @var boolean
      * @ORM\Column(name="clientactivation", type="boolean", length=256, nullable=true)
      */
-    private $clientActivation;
+    protected $clientActivation;
     /**
      * @var boolean
      * @ORM\Column(name="adminvalidation", type="boolean", length=256, nullable=true)
      */
-    private $adminValidation;
+    protected $adminValidation;
 
     /**
      * Fashionboard constructor.
      */
     public function __construct()
     {
-        $this->products=new ArrayCollection();
     }
 
     /**
@@ -132,5 +131,8 @@ class Fashionboard
     {
         $this->user = $user;
     }
-
+    public function jsonSerialize(): array
+    {
+        return  get_object_vars($this);
+    }
 }

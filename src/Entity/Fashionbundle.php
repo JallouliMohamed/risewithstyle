@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=FashionbundleRepository::class)
  */
-class Fashionbundle
+class Fashionbundle implements \JsonSerializable
 {
     /**
      * @ORM\Id()
@@ -165,5 +165,8 @@ class Fashionbundle
     {
         $this->price = $price;
     }
-
+    public function jsonSerialize()
+    {
+        return (object) get_object_vars($this);
+    }
 }

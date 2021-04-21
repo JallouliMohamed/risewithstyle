@@ -33,6 +33,12 @@
                 {{ form_errors(form.plainPassword.second) }}
             </div>
         </div>
+            <div class="form-row">
+                <div class="form-group">
+                    {{ form_widget(form.brochureFilename,{'attr':{'class':'form-control form-control-lg','placeholder':'password'}}) }}
+                    {{ form_errors(form.brochureFilename) }}
+                </div>
+            </div>
         <div class="form-row">
             <div class="form-group">
                 <button  style="align-content:center;border:1px solid #FF8661;color: #FF8661" type="submit" id="_submit" name="_submit"+ name="post">register</button>

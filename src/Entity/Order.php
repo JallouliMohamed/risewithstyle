@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass=OrderRepository::class)
  * @ORM\Table(name="`order`")
  */
-class Order
+class Order implements \JsonSerializable
 {
     /**
      * @ORM\Id()
@@ -129,6 +129,11 @@ class Order
     public function setState(bool $state): void
     {
         $this->state = $state;
+    }
+
+    public function jsonSerialize()
+    {
+        return (object) get_object_vars($this);
     }
 
 }
