@@ -165,7 +165,23 @@
     A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
     Licensed under MIT
     -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Message</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    merci, votre message a été envoyé
+                </div>
 
+            </div>
+        </div>
+    </div>
     <div class="contact-us container-fluid no-padding">
         <div class="row profile">
             <div class="col-md-3">
@@ -212,22 +228,23 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a onclick="support()" href="#">
                                     <i class="glyphicon glyphicon-headphones"></i>
                                     Support
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a onclick="parameters()" href="#">
                                     <i class="glyphicon glyphicon-cog"></i>
                                     Paramétres
 
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    <i class="glyphicon glyphicon-cog"></i>
-                                    Paramétres
+                                <a href="{{ path('fos_user_security_logout') }}" href="#">
+                                    <i class="glyphicon glyphicon-log-out"></i>
+                                    Se déconnecter
+
 
                                 </a>
                             </li>
@@ -391,6 +408,7 @@
     </div>
     <br>
     <br>
+
     <script>
         function handleForm(event) {
             event.preventDefault();
@@ -499,57 +517,58 @@
                 type: "POST",
                 data: {'id': parseInt(v)},
                 success: function (result) {
-                    var path= 'uploads/brochures/';
+                    var path = 'uploads/brochures/';
 
                     console.log(result)
                     $('#content').html(
                         '<div class="row">' +
                         '<div class="col-md-8">' +
                         '<div class="row">' +
-                        '<div style="padding:unset;border-style: solid;border-color: #ffa5a5" class="col-md-4">'+
-                            '<img style="width: fit-content" src="'+path+result[0].brochureFilename+'">'+
-                        '</div>'+
-                        '<div style="height: 195px;background-color: #ffa5a5;margin-left: 10px" class="col-md-4">'+
-                        '</div>'+
-                        '<div style="height: 195px;padding:unset;border-style: solid;border-color: #ffa5a5;margin-left: 10px" class="col-md-3">'+
-                        '<img style="width: fit-content" src="'+path+result[1].brochureFilename+'">'+
-                        '</div>'+
-                        '</div>'+
+                        '<div style="padding:unset;border-style: solid;border-color: #ffa5a5" class="col-md-4">' +
+                        '<img style="width: fit-content" src="' + path + result[0].brochureFilename + '">' +
+                        '</div>' +
+                        '<div style="height: 195px;background-color: #ffa5a5;margin-left: 10px" class="col-md-4">' +
+                        '</div>' +
+                        '<div style="height: 195px;padding:unset;border-style: solid;border-color: #ffa5a5;margin-left: 10px" class="col-md-3">' +
+                        '<img style="width: fit-content" src="' + path + result[1].brochureFilename + '">' +
+                        '</div>' +
+                        '</div>' +
                         '<div class="row">' +
-                        '<div style="margin-top:10px;padding:unset;" class="col-md-6">'+
-                        '<p style="border-style: solid;border-color: #ffa5a5"> <img style="width: -webkit-fill-available;border-style: solid;border-color: #ffa5a5" src="'+path+result[2].brochureFilename+'"></p>'+
-                        '</div>'+
-                        '<div style="margin-top:10px;padding:unset;" class="col-md-6">'+
-                        '<p style="border-style: solid;border-color: #ffa5a5"> <img style="width: -webkit-fill-available;border-style: solid;border-color: #ffa5a5" src="'+path+result[2].brochureFilename+'"></p>'+
-                        '</div>'+
-                        '</div>'+
+                        '<div style="margin-top:10px;padding:unset;" class="col-md-6">' +
+                        '<p style="border-style: solid;border-color: #ffa5a5"> <img style="width: -webkit-fill-available;border-style: solid;border-color: #ffa5a5" src="' + path + result[2].brochureFilename + '"></p>' +
+                        '</div>' +
+                        '<div style="margin-top:10px;padding:unset;" class="col-md-6">' +
+                        '<p style="border-style: solid;border-color: #ffa5a5"> <img style="width: -webkit-fill-available;border-style: solid;border-color: #ffa5a5" src="' + path + result[2].brochureFilename + '"></p>' +
+                        '</div>' +
+                        '</div>' +
                         '<div class="row">' +
-                        '<div style="height: 195px;background-color: #ffa5a5;margin-left: 10px" class="col-md-4">'+
-                        '</div>'+
-                        '<div style="height: 195px;background-color: #ffa5a5;margin-left: 10px" class="col-md-4">'+
-                        '</div>'+
-                        '<div style="height: 195px;background-color: #ffa5a5;margin-left: 10px" class="col-md-3">'+
-                        '</div>'+
-                        '</div>'+
+                        '<div style="height: 195px;background-color: #ffa5a5;margin-left: 10px" class="col-md-4">' +
+                        '</div>' +
+                        '<div style="height: 195px;background-color: #ffa5a5;margin-left: 10px" class="col-md-4">' +
+                        '</div>' +
+                        '<div style="height: 195px;background-color: #ffa5a5;margin-left: 10px" class="col-md-3">' +
+                        '</div>' +
+                        '</div>' +
                         '</div>' +
                         '<div class="col-md-4">' +
-                        '<div class="row">'+
-                        '<div class="col">'+
-                        'goodbye'+
-                        '</div>'+
-                        '</div>'+
-                        '<div class="row">'+
-                        '<div class="col">'+
-                        'hello'+
-                        '</div>'+
-                        '</div>'+
+                        '<div class="row">' +
+                        '<div class="col">' +
+                        'goodbye' +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="row">' +
+                        '<div class="col">' +
+                        'hello' +
+                        '</div>' +
+                        '</div>' +
                         '</div>' +
                         '</div>'
                     )
                 }
             });
         }
-        function paymentList(){
+
+        function paymentList() {
             $.ajax({
                 url: "{{ path('orderbyuser') }}",
                 type: "POST",
@@ -557,7 +576,7 @@
                     var tmp;
 
                     console.log(result)
-                    var begin ="<div class='tab-pane active' id='home'>" +
+                    var begin = "<div class='tab-pane active' id='home'>" +
                         "<div class='contact-us container-fluid no-padding'>" +
                         "<h3>" +
 
@@ -579,11 +598,11 @@
                         var tmp = "<tr>" +
                             "<td scope='row'> 01.12.2020</td>" +
                             "<td> Carte </td>" +
-                            "<td>"+element.amount+"</td>" +
-                            '<td>payé</td>'+
-                        '<td><i class="fa fa-download" aria-hidden="true"></i> Telecharger PDF</td>'+
+                            "<td>" + element.amount + "</td>" +
+                            '<td>payé</td>' +
+                            '<td><i class="fa fa-download" aria-hidden="true"></i> Telecharger PDF</td>' +
 
-                        "</tr>";
+                            "</tr>";
                         middle = middle + tmp
                     })
 
@@ -591,6 +610,85 @@
 
                 }
             });
+        }
+
+        function support() {
+            $('#content').html("<div class='tab-pane active' id='home'>" +
+                "<div class='contact-us container-fluid no-padding'>" +
+
+                "<div class='form-group'>" +
+                "<label>Object</label>" +
+                "<input type='email' class='form-control' value='' name='subject' id='subject'  >" +
+                "</div>" +
+                "<div class='form-group'>" +
+                "<label>Message</label>" +
+                "<textarea name='message' id='message' class='form-control'></textarea>" +
+                "</div>" +
+                "<button style='width: 200px;border: unset;height: 40px;background-image: linear-gradient(#ffb19f, #a9bee4);' onclick='parseSupportData()' type='button'> <div style='color: white'> Envoyer</div></button>" +
+                "</div>" +
+                "</div>")
+
+        }
+
+        function parseSupportData() {
+            var message = document.getElementById('subject').value;
+            var subject = document.getElementById('message').value;
+            $.ajax({
+                url: "{{ path('sendsupportmessage') }}",
+                type: "POST",
+                data: {'message': message, 'subject': subject},
+                success: function (result) {
+                    $('#exampleModal').modal('show');
+                    $('#exampleModal').modal('hide');
+
+                }
+            });
+        }
+
+        function parameters() {
+            $('#content').html("<div align='center'>" +
+                "<div class='card'>" +
+                "<ul class='list-group list-group-flush'>" +
+                "<li class='list-group-item'>"+
+                "<div class='row'>"+
+               "<div class='col-md-3'>"+
+                "Master Card"+
+                "</div>"+
+                "<div class='col-md-3'>"+
+                    "<img width='50px' src='images/logo/mastercard.png'>"+
+                "</div>"+
+                "<div class='col-md-3'>"+
+                "se termine par 4362"+
+                "</div>"+
+                "<div class='col-md-3'>"+
+                "<i class='fa fa-close'></i>"+
+                "</div>"+
+                "</div>"+
+                "</li>" +
+                "<li class='list-group-item'><i class='fa fa-plus-circle'></i>Ajouter une methode de paiement</li>" +
+                "</ul>" +
+                "</div>"+
+                "<div class='row'>"+
+                "<div class='col'>"+
+                "<button style='width: 100%;border: unset;height: 40px;background-image: linear-gradient(#ffb19f, #a9bee4);' onclick='parseSupportData()' type='button'> <div style='color: white'> Supprimer l'historique de quiz</div></button>" +
+
+                "</div>"+
+                "</div>"+
+                "<div class='row'>"+
+                "<div style='padding-top: 10px' class='col'>"+
+                "<button style='width: 100%;border: unset;height: 40px;background-image: linear-gradient(#ffb19f, #a9bee4);' onclick='parseSupportData()' type='button'> <div style='color: white'> Consulter les termes et conditions</div></button>" +
+
+                "</div>"+
+                "</div>"+
+                "<div class='row'>"+
+                "<div style='padding-top: 10px' class='col'>"+
+                "<button style='width: 100%;border: unset;height: 40px;background-image: linear-gradient(#ffb19f, #a9bee4);' onclick='parseSupportData()' type='button'> <div style='color: white'> Supprimer votre compte</div></button>" +
+
+                "</div>"+
+                "</div>"+
+
+                "</div>")
+
         }
     </script>
 {% endblock %}

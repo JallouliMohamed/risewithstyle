@@ -109,3 +109,6 @@ addQuizVersion:
 orderbyuser:
   path: /orderbyuser
   controller: App\Controller\DefaultController::viewOrderForUser
+sendsupportmessage:
+  path: /sendsupportmessage
+  controller: App\Controller\DefaultController::sendSupportMessage
