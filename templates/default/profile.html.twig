@@ -165,6 +165,7 @@
     A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
     Licensed under MIT
     -->
+
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -406,6 +407,7 @@
             </div>
         </div>
     </div>
+
     <br>
     <br>
 
@@ -477,11 +479,29 @@
                         "</div>" +
                         "</div>" +
                         "</div>" +
+                        "<div class='modal fade' id='exampleModalLong' tabindex='-1' role='dialog' aria-labelledby='exampleModalLongTitle' aria-hidden='true'>"+
+                        "     <div class='modal-dialog' role='document'>"+
+                        "          <div class='modal-content'>"+
+                        "             <div class='modal-header'>"+
+                        "                <h5 class='modal-title' id='exampleModalLongTitle'>Confirmation</h5>"+
+                        "              <button type='button' class='close' data-dismiss='modal' aria-label='Close'>"+
+                        "                  <span aria-hidden='true'>&times;</span>"+
+                        "            </button>"+
+                        "        </div>"+
+                        "       <div class='modal-body'>"+
+                        "          do you really want to activate the fashion board                                    </div>"+
+                        "     <div class='modal-footer'>"+
+                        "        <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>"+
+                        "      <button type='button' onclick='purchasedirection()' class='btn btn-primary'>confirm</button>"+
+                        "   </div>"+
+                        "</div>"+
+                        " </div>"+
+                        "</div>"+
                         "<div style='padding-top: 20px' class='col'>" +
                         "<div style='color: #aeabab'> <strong><h5>Vous avez " + tmp + " style boards à activer dans votre armoire</h5></strong></div>" +
                         "</div>" +
                         "<div align='center' style='padding-top: 20px' class='col'>" +
-                        "<button style='width: 200px;border: unset;height: 40px;background-image: linear-gradient(#ffb19f, #a9bee4);' type='submit'><div style='color: white'> Activer</div></button>" +
+                        "<button data-confirm='Etes-vous certain de vouloir supprimer? ' data-toggle='modal' data-target='#exampleModalLong' style='width: 200px;border: unset;height: 40px;background-image: linear-gradient(#ffb19f, #a9bee4);' type='submit'><div style='color: white'> Activer</div></button>" +
                         "</div>" +
                         "<div align='center' style='padding-top: 20px' class='col'>" +
                         "<button style='width: 200px;border: unset;height: 40px;background-image: linear-gradient(#ffb19f, #a9bee4);' type='submit'><div style='color: white'> Acheter</div></button>" +
@@ -689,6 +709,21 @@
 
                 "</div>")
 
+        }
+        function purchasedirection(){
+
+            $.ajax({
+                url: "{{ path('activatedfasionboard') }}",
+
+                type: "POST",
+                success: function (result) {
+                    console.log(result)
+                    $('#exampleModalLong').modal('hide');
+                    window.location.href = 'http://localhost:8000/quiz';
+
+
+                }
+            });
         }
     </script>
 {% endblock %}
