@@ -501,7 +501,7 @@
                         "<div style='color: #aeabab'> <strong><h5>Vous avez " + tmp + " style boards à activer dans votre armoire</h5></strong></div>" +
                         "</div>" +
                         "<div align='center' style='padding-top: 20px' class='col'>" +
-                        "<button data-confirm='Etes-vous certain de vouloir supprimer? ' data-toggle='modal' data-target='#exampleModalLong' style='width: 200px;border: unset;height: 40px;background-image: linear-gradient(#ffb19f, #a9bee4);' type='submit'><div style='color: white'> Activer</div></button>" +
+                        "<button onclick='purchasedirection()' style='width: 200px;border: unset;height: 40px;background-image: linear-gradient(#ffb19f, #a9bee4);' type='submit'><div style='color: white'> Activer</div></button>" +
                         "</div>" +
                         "<div align='center' style='padding-top: 20px' class='col'>" +
                         "<button style='width: 200px;border: unset;height: 40px;background-image: linear-gradient(#ffb19f, #a9bee4);' type='submit'><div style='color: white'> Acheter</div></button>" +
@@ -696,11 +696,7 @@
 
                 type: "POST",
                 success: function (result) {
-                    console.log(result)
-                    $('#exampleModalLong').modal('hide');
-                    window.location.href = 'http://localhost:8000/quiz';
-
-
+                    window.location.href ='http://127.0.0.1:8000/quiz';
                 }
             });
         }

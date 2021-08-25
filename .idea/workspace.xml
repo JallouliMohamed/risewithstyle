@@ -21,8 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="aab2ea77-e05f-4e2e-8cc2-3c1bf4c0e093" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/logo/Unconfirmed 7301.crdownload" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/profile.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -311,6 +309,7 @@
       <workItem from="1625358659084" duration="30000" />
       <workItem from="1626034871085" duration="2854000" />
       <workItem from="1627846786262" duration="482000" />
+      <workItem from="1629732218999" duration="2954000" />
     </task>
     <servers />
   </component>
