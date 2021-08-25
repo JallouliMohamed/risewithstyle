@@ -20,9 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aab2ea77-e05f-4e2e-8cc2-3c1bf4c0e093" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/89219a6d-55a0-4ad2-a87a-49013cc51289.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/89219a6d-55a0-4ad2-a87a-49013cc51289.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/profile.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,7 +183,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="Symfony2.SettingsForm" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.composer" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -304,7 +302,14 @@
       <workItem from="1619260149014" duration="526000" />
       <workItem from="1619376415376" duration="647000" />
       <workItem from="1619849321427" duration="1359000" />
-      <workItem from="1620987967048" duration="795000" />
+      <workItem from="1620987967048" duration="6180000" />
+      <workItem from="1621119353205" duration="2392000" />
+      <workItem from="1622457120697" duration="1844000" />
+      <workItem from="1623587306865" duration="10520000" />
+      <workItem from="1625358659084" duration="30000" />
+      <workItem from="1626034871085" duration="2854000" />
+      <workItem from="1627846786262" duration="482000" />
+      <workItem from="1629732218999" duration="2954000" />
     </task>
     <servers />
   </component>

@@ -377,10 +377,8 @@ class DefaultController extends AbstractController
         $activatedboards = $this->getDoctrine()->getRepository(Fashionboard::class)->findBy(['user' => $this->getUser(), 'clientActivation' => 1]);
 
         $boards = $this->getDoctrine()->getRepository(Fashionboard::class)->findBy(['user' => $this->getUser()]);
-        return $this->render('default/fashionboard.html.twig', array(
-            'boards' => $boards,
-            'nbboards' => sizeof($boards),
-            'nbactivatedboards' => sizeof($activatedboards)
+        return $this->render('default/profile.html.twig', array(
+            'boards' => $boards
         ));
     }
 
